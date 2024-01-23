@@ -1,195 +1,69 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-html{
-    background:linear-gradient( rgba(0, 0, 0, 0.699), rgba(0, 0, 0, 0.562)), url("../IMAGES/Untitled\ design\ \(1\).png"), no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
 body{
-    height: 100%;   
-    width: 100%;
-}
-
-
-
-
-
-
-/*Navigation*/
-nav{
-    font-family: Arial;
-    height: 15vh;
     display: flex;
-    color: rgb(255, 255, 255);
-    align-items: center;
-    justify-content: space-between;
-    top: 0;
-    position: sticky;
-    
-    
-}   
-nav ul{
-    list-style: none;
-    display: flex;
-    
-}
-nav li{
-    padding: 1rem;
-    height: 100%;
-}
-nav a{
-    color: inherit;
-    text-decoration: none;
-    font-size: 25px;
-    letter-spacing: 3px;
-    height: stretch;
-}
-nav h1{
-    font-size: 35px;
-}
-nav li.active{
-    color:greenyellow;
-    text-decoration: dashed;
-    border-bottom: solid;
-    background-color: rgba(128, 128, 128, 0.281);
-    
-}
-nav li:hover{
-    background-color: gray;
-}
-
-.Login-Container{
-    display: flex;
-    height: 100%;
-    width: 100%;
     flex-direction: column;
-    align-items: center;
+    scrollbar-gutter: stable;
 }
-.Login-Container h1 {
-    font-size: 50px;
-    
-    color: yellowgreen;
-}
-.Login-Container form{
+main{
     display: flex;
-    height: 60vh;
-    background-color: #ffffff78;
-    flex-direction: column;
+    height: 80vh;
     justify-content: center;
-    align-items: center;
-    width: 50%;
-    border-radius: 20px;
-    margin-bottom: 100px;
-}
-.Login-Container label {
-    font-size: 25px;
-    margin: 20px;
-}
-.Login-Container input {
-    height: 5vh;
-    width: 60%;
-    font-size: 20px;
-    border-radius: 6px;
-    padding: 2px;
-    border-style: none;
-}
-.btn-Login {
-    margin-top: 20px;
-    display:flex;
-    position: relative;
-    justify-content: flex-end;
-}
-.btn-Login button{
-    background-color: #A2B92F;
-    width: 24vh;
-    height: 5vh;
-    margin: 20px;
-    border-radius: 6px;
-    font-size: 22px;
-    border:none;
-}
-.btn-Login button:hover{
-    box-shadow: 0px 0px 10px rgb(0, 0, 0);
-
-}
-.btn-Login button a{
-    text-decoration: none;
-    color:black;
-}
-.SignUp-Container{
-    display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 100px ;
-}
-.SignUp-Container h1{
-    font-size: 40px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    color: yellowgreen;
     
+    background: linear-gradient(rgba(0,0,0,0.500),rgba(0,0,0,0.500)) , url("/images/background-outline.png"), no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }
-.SignUp-Form{
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 50%;
-    height: 100%;
-    background-color: #ffffff78;
-    justify-content: center;
-    align-items: center;
-}
-.SignUp-Form input{
-    height: 5vh;
-    width: 60%;
-    font-size: 20px;
-    border-radius: 6px;
-    padding: 2px;
-    border-style: none;
+    
 
+/* navigation */
+.navbar-brand{
+    color:white;
+    font-weight: bolder;
 }
-.SignUp-Form label{
-    font-size: 25px;
-    margin: 10px;
-}
-
-footer{
-    height: 70vh;
-    display: flex;
-    flex-direction: column;
-    background-color: #000000;
-    font-family: Arial;
+.nav-link{
     color: white;
 }
-footer h1{
 
-    font-size: 67px;
-    margin-top: 10vh;
-    margin-left: 15vh;
-    margin-bottom: 10vh;
-    font-weight: 100;
+.navbar{
+    background-color: forestgreen;
+}
+
+/* form container */
+.filter{
+    /* backdrop-filter: blur(5px); */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+/* footer */
+
+footer{
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* justify-content: center; */
+}
+footer h1{
+    margin: 5%;
+    margin-bottom: 200px;
 }
 footer ul{
     display: flex;
     justify-content: space-around;
-    
+    /* flex-direction: column; */
+    margin: 0;
+    padding: 0;
 }
 footer li{
-   list-style: none;
-}
-footer label{
-    font-size: 24px;
+    list-style: none;
 }
 footer a{
+    color:whitesmoke;
     text-decoration: none;
-    color: inherit;
-    font-size: 24px;
+    font-size: 20px;
 }
 footer a:hover{
     color: yellowgreen;

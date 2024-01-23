@@ -1,0 +1,653 @@
+body{
+    display: flex;
+    flex-direction: column;
+    scrollbar-gutter: stable;
+}
+main{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.100),rgba(0,0,0,0.100)) , url("../images/background-outline.png"), no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: black;
+
+   
+}
+.filter{
+    /* backdrop-filter: blur(5px); */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+main button a{
+    color: white;
+    text-decoration: none;
+}
+/* Navigation */
+.navbar-brand{
+    color:white;
+    font-weight: bolder;
+}
+.nav-link{
+    color: white;
+}
+
+.navbar{
+    background-color: forestgreen;
+}
+/* Services-Container */
+.Services-Container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    margin-bottom: 100px;
+}
+.Services-Container .birthday{
+    background:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.800)), url("../images/Filipino_Birthday.jpg"), no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.Services-Container .baptismal{
+    background:linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.800)), url("../images/Filipino_Baptismal.jpg"), no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.Services-Container a:hover{
+    align-items: center;
+    background: linear-gradient(rgb(0 0 0 / 70%), rgb(0 0 0 / 70%));
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px black;
+}
+.Services-Container ul{
+    margin-top: 100px;
+    display: flex;
+    list-style: none;
+    width: 100%;
+    gap: 10%;
+    justify-content: center;
+   
+    
+}
+.Services-Container a{
+    text-decoration: none;
+    color:white;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    font-size:  55px;
+    align-items: flex-end;
+    box-shadow: 12px 12px 20px black ;
+}
+
+.Services-Container li{
+    height: 60vh;
+    width: 40vh;
+    border-radius: 10px;
+    background: linear-gradient(75deg, rgba(166, 2, 199, 0.500),rgba(255, 0, 140, 0.500));
+    
+}
+
+/* sub-services container */
+/* Services*/
+.pre-made{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.pre-made ul{
+list-style: none;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+flex-direction: column;
+width: 100%;
+padding: 0;
+}
+.pre-made li{
+    height: auto;
+width: 100%;
+margin-bottom: 100px;
+}
+.title{
+    color: black;
+}
+
+.pre-made a{
+text-decoration: none;
+}
+.pre-made a li h1{
+color: black;
+/* text-shadow: 3px 3px 3px rgb(0, 0, 0); */
+
+}
+.pre-made img{
+height: 70vh;
+box-shadow: 14px 14px 11px black ;
+}
+.pre-made p{
+    font-size: 1.5rem;
+    margin: 50px;
+}
+.pre-made img:hover{
+    box-shadow: 10px 10px 3px rgb(0, 0, 0) ;
+    color: orangered;
+    text-shadow: 3px 3px 3px rgb(0, 0, 0);
+}
+.pre-made a h1:hover{
+    color: forestgreen;
+    text-shadow: 3px 3px 3px rgb(0, 0, 0);
+
+}
+
+/* Pre-made Form */
+.premade-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+.premade-form ul{
+    width: 80%;
+
+}
+.premade-form li{
+    font-size: 1.25rem;
+    margin: 10px;
+}
+.premade-form img{
+    height: 70vh;
+}
+.premade-form p{
+    font-size: 1.5rem;
+    margin-top: 50px;
+}
+
+
+/* form */
+.form-container a{
+    color: white;
+    text-decoration: none;
+    }
+.form-container{
+    display: flex;
+    width: 70%;
+    height: auto ;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+    padding-top: 50px;
+    background-color: rgb(0 0 0 / 33%);
+    margin-bottom: 100px;
+    border-radius: 20px;
+    box-shadow: 11px 11px 10px black;
+}
+.form-container input{
+    font-size: 20px;
+    width: 50vh;
+}
+.form-container td{
+
+    font-size: 1.50rem;
+}
+.input-group-text{
+    font-size: 20px;
+}
+.form-container table{
+margin-bottom: 50px;
+width: 90%;
+}
+.form-container hr{
+width: 90%;
+}
+.form-container h1{
+    width: 90%;
+}
+
+/* menu selection */
+.menu-selection{
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.menu-selection table{
+    width: 90%;
+}
+.btn-position{
+    width: 100%;
+    display: flex;
+}
+.btn-submit{
+    margin: 25px;
+}
+/* Terms and condition */
+
+.modal-body{
+    text-align: justify;
+    color: black;
+}
+
+.modal-body p{
+    letter-spacing: .5px;
+}
+.modal-body i{
+    color: blue;
+}
+.modal-body ol{
+    text-indent: 5%;
+    margin: 5%;
+}
+.modal-body li{
+    margin: 20px;
+    
+}
+/* Customize */
+.custom-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.customization{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.customize-selection{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+
+.option-container{
+height: 350px;
+width: 250px;
+margin:5px;
+background: azure;
+color: black;
+border-radius: 20px;
+    box-shadow: 10px 10px 10px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.option-container ul{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 25px;
+    list-style: none;
+    height: 100%;
+    width: 100%;
+}
+input[type="checkbox"]{
+    
+        height: 30px;
+        width: 20px
+}
+/* selection item */
+.btn-pos{
+    /* height: 400px; */
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* justify-content: flex-end;
+    position: relative;
+    top: -40px; */
+    align-items: flex-end;
+    /* left: -40px; */
+}
+
+.info{
+    backdrop-filter: blur(3px);
+    background: linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 70%)), url(../images/official-background.jpg),no-repeat;
+    /* background-position: center; */
+    background-size: cover;
+    height: 65vh;
+    width: 100%;
+    background-attachment: fixed;
+    color: whitesmoke;
+}
+.info-container{
+    backdrop-filter: blur(1px);
+    height: 100%;
+    width: auto;
+}
+.beef{
+
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/Beef-And-Broccoli.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.beef:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.pork{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/babybackribs.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pork:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.chicken{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/ChickenPastel.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.chicken:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.fish{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/FishFillet.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.fish:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.seafood{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/ButteredShrimp.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.seafood:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.pasta{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/CharlieChanPasta.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.pasta:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.vegetable{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/sipo-egg.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.vegetable:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.dessert{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/CoffeeJelly.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.dessert:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.drinks{
+    background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(../html/menu/img/BlueLemonade.jpg),no-repeat;
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 40px;
+    justify-content: flex-end;
+    box-shadow: 15px 15px 20px 1px black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.drinks:hover{
+    box-shadow: 10px 10px 10px black;
+}
+.most-ordered-menu li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    
+}
+
+.most-ordered-menu ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    justify-content: space-evenly;
+    padding: 0;
+}
+.info-pos{
+    display: flex;
+    justify-content: space-around;
+}
+.foodinfo{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+.modal-food-info{
+    display: flex;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Footer */
+footer{
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* justify-content: center; */
+}
+footer h1{
+    margin: 5%;
+    margin-bottom: 200px;
+}
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: column; */
+    margin: 0;
+    padding: 0;
+}
+footer li{
+    list-style: none;
+}
+footer a{
+    color:whitesmoke;
+    text-decoration: none;
+    font-size: 20px;
+}
+footer a:hover{
+    color: yellowgreen;
+}
+@media (max-width: 500px){
+    .pre-made img{
+        height: 25vh;
+        box-shadow: 14px 14px 11px black ;
+        }
+        .pre-made p{
+            font-size: 1rem;
+            margin: 50px;
+        }
+}
+@media (max-width: 700px){
+
+.Services-Container ul{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+.Services-Container li{
+    margin: 10%;
+}
+.pre-made img{
+    height: 30vh;
+    box-shadow: 14px 14px 11px black ;
+    }
+    .pre-made p{
+        font-size: 1.25rem;
+        margin: 50px;
+    }
+
+    footer{
+        background-color: black;
+        color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+
+    }
+    footer h1{
+        margin: 5%;
+    }
+    footer ul{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+    }
+    footer li{
+        list-style: none;
+    }
+    footer a{
+        color:whitesmoke;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    footer a:hover{
+        color: yellowgreen;
+    }
+}

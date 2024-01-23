@@ -1,0 +1,257 @@
+body{
+    display: flex;
+    flex-direction: column;
+    scrollbar-gutter: stable;
+}
+main{
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    background:linear-gradient(rgba(0,0,0,0.100),rgba(0,0,0,0.100)) ,url("../images/background-outline.png"),no-repeat;
+    background-position: center;
+    
+    background-attachment: fixed;
+}
+/* Navigation */
+.navbar-brand{
+    color:white;
+    font-weight: bolder;
+}
+.nav-link{
+    color: white;
+}
+
+.navbar{
+    background-color: forestgreen;
+}
+/* Menu */
+.menu{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+.menu ul{
+list-style: none;
+display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 0;
+}
+.menu li{
+    height: 350px;
+    width: 250px;
+border-radius: 5px;
+box-shadow: 15px 15px 20px 1px black;
+
+}
+.menu li:hover{
+    box-shadow: 11px 11px 10px 1px black;
+}
+.target{
+    text-decoration: none;
+    color:whitesmoke;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+.target:hover{
+    text-decoration: none;
+    color:whitesmoke;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+
+/* Menu Page */
+.info-pos{
+    display: flex;
+    justify-content: space-around;
+}
+.menu-selection{
+    display: flex;
+    justify-content: center;
+    height: auto;
+    /* overflow: scroll; */
+}
+.menu-selection ul{
+list-style: none ;
+width: 100%;
+display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+/* .menu-selection li{
+    width: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 40vh;
+} */
+/* .menu-selection h2{
+color: whitesmoke;
+height: 100%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: flex-end;
+} */
+.selection-container{
+    height: 350px;
+    width: 250px;
+border-radius: 5px;
+
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+align-items: center;
+}
+.selection-container img{
+    height: 350px;
+    width: 250px;
+    filter: brightness(0.5);
+    border-radius: 10px;
+}
+.name{
+    position: absolute;
+}
+/* .selection-container:hover{
+    
+    justify-content: center;
+    box-shadow: 10px 10px 10px black;
+    
+} */
+
+
+.menu-selection li{
+    /* background: linear-gradient(rgb(0 0 0 / 4%), rgb(0 0 0 / 70%)), url(/html/menu/img/babybackribs.jpg), no-repeat;
+    background-position: center;
+    background-size: cover; */
+    /* box-shadow: 11px 11px 20px black; */
+    box-shadow: 15px 15px 20px 1px black;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    font-size: 40px;
+    flex-direction: column;
+    border-radius: 10px;
+    justify-content: flex-end;
+}
+.menu-selection li:hover{
+    box-shadow: 11px 11px 10px black;
+}
+.food-info{
+position: absolute;
+}
+.food-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+.food-container img {
+    width: 350px;
+    height: 250px;
+    border-radius: 10px;
+    filter: brightness(0.5);
+}
+.menu-selection .modal-body{
+    display: flex;
+    /* background: burlywood; */
+}
+.menu-selection .modal-body .info{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+
+.menu-selection .modal-body img{
+    width: 50%;
+    /* box-shadow: 10px 6px 20px black; */
+}
+/* Footer */
+footer{
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* justify-content: center; */
+}
+footer h1{
+    margin: 5%;
+    margin-bottom: 200px;
+}
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: column; */
+    margin: 0;
+    padding: 0;
+}
+footer li{
+    list-style: none;
+}
+footer a{
+    color:whitesmoke;
+    text-decoration: none;
+    font-size: 20px;
+}
+footer a:hover{
+    color: yellowgreen;
+}
+@media (max-width: 700px){
+
+.Services-Container ul{
+    display: flex;
+    list-style: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+.Services-Container li{
+    margin: 10%;
+}
+
+    footer{
+        background-color: black;
+        color: whitesmoke;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+
+    }
+    footer h1{
+        margin: 5%;
+    }
+    footer ul{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-evenly;
+    }
+    footer li{
+        list-style: none;
+    }
+    footer a{
+        color:whitesmoke;
+        text-decoration: none;
+        font-size: 20px;
+    }
+    footer a:hover{
+        color: yellowgreen;
+    }
+}

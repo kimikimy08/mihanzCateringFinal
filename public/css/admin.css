@@ -1,0 +1,234 @@
+
+body{
+    display: flex;
+    flex-direction: column;
+    scrollbar-gutter: stable;
+    background:linear-gradient(rgba(0,0,0,0.100),rgba(0,0,0,0.100)) ,url("../images/background-outline.png"),no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;height: 100%;
+}
+h1 {
+    font-family: 'Playfair Display', serif;
+}
+
+/* navigation */
+.navbar-brand{
+    color:white;
+    font-weight: bolder;
+}
+.nav-link{
+    color: white;
+}
+
+.navbar{
+    background-color: forestgreen;
+}
+/* main */
+main{
+    height: 85vh;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.btn-position{
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+}
+section{
+    scrollbar-gutter: stable;
+}
+/* Dashboard */
+.Dashboard{
+    width: 50%;
+}
+.Dashboard ul{
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.Dashboard li{
+    height: 150px;
+    width:200px;
+    border-radius: 10px;
+    margin: 10px;
+    background: white;
+    box-shadow: 10px 10px 20px;
+    border: solid 3px green;
+}
+/* .Dashboard li:nth-child(1){
+    border: solid 3px green;
+}.Dashboard li:nth-child(2){
+    border: solid 3px goldenrod;
+}.Dashboard li:nth-child(3){
+    border: solid 3px orangered;
+}.Dashboard li:nth-child(4){                            
+    border: solid 3px darkcyan;
+}.Dashboard li:nth-child(5){
+    border: solid 3px green;
+} */
+.Dashboard a{
+    display: flex;
+    font-size: 21px;
+    height: 100%;
+    width: 100%;
+ color: black;
+ text-decoration: none;
+ flex-direction: column;
+ align-items: center;
+ border-radius: 10px;
+ 
+}
+.Dashboard li:hover{
+    box-shadow: 5px 5px 10px;
+}
+.Dashboard-container{
+    display: flex;
+    margin-bottom: 100px;
+    width: 100%;
+    align-items: center;
+}
+.calendar-container{
+/* border:solid 1px; */
+/* height: 100vh; */
+width: 50%;
+display: flex;
+flex-direction: column;
+background: white;
+margin-right: 20px;
+box-shadow: 10px 10px 10px;
+}
+.calendar{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* border:solid 1px; */
+    
+}
+.calendar-event{
+    height: 50%;
+    width: 100%;
+    display: flex;
+    /* border:solid 1px; */
+    flex-direction: column;
+    align-items: center; 
+}
+.calendar-event section{
+    width: 100%;
+    overflow: scroll;
+    height: 200px;
+}
+.calendar-event section thead{
+    position: sticky;
+    top: 0;
+}
+.section-footer{
+    height: 20%;
+}
+/*  */
+.img-menu{
+    
+    height: 350px;
+}
+.view{
+    display: flex;
+}
+
+/* Pending */
+.section-pending{
+height: 90%;
+overflow: scroll;
+
+}
+.section-pending thead{
+    position: sticky;
+    top:0;
+}
+/* Status */
+.status-container{
+    display: flex;
+}
+.status-user-info{
+width: 40%;
+}
+.status-call{
+    width: 100%;
+}
+.btn-position-status{
+    display: flex;
+    width: 90%;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-end;
+}
+/* Approved */
+.approved-section{
+    height: 90%;
+    overflow: scroll;
+}
+.approved-section thead{
+    position: sticky;
+    top:0;
+    
+}
+/* History */
+.section-history{
+    height: 90%;
+    overflow: scroll;  
+}
+.section-history thead{
+    position: sticky;
+    top:0;
+}
+/* Menu */
+.img-thumbnail {
+    max-width: 100px; /* Set the maximum width as needed */
+    max-height: 100px; /* Set the maximum height as needed */
+    width: auto;
+    height: auto;
+}
+
+.Menu-section{
+    height: 83%;
+    overflow: scroll;  
+}
+.Menu-section thead{
+    position: sticky;
+    top:0;
+}
+/* Services */
+.Services-section{
+    height: 83%;
+    overflow: scroll; 
+}
+.Services-section thead{
+    position: sticky;
+    top:0;
+}
+/* Packages */
+.Package-section{
+    height: 83%;
+    overflow: scroll;
+}
+.Package-section thead{
+    position: sticky;
+    top:0;
+}
+.modal-footer{
+    flex-wrap: nowrap;
+}
+/* User */
+.User-section{
+    height: 90%;
+    overflow: scroll; 
+}
+.User-section thead{
+    position: sticky;
+    top:0;
+}
