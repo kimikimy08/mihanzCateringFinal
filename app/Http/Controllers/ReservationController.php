@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Menu;
-use App\Models\Reservation;
-use App\Models\ReservationPremade;
-use App\Models\ReservationSelection;
-use App\Models\ServicePackage;
-use Illuminate\Support\Facades\Auth;
-use App\Models\ReservationCustomize;
 use App\Models\MenuSelection;
+use App\Models\Reservation;
+use App\Models\ReservationCustomize;
+use App\Models\ServicePackage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
@@ -27,8 +25,7 @@ class ReservationController extends Controller
             'vegetable' => Menu::where('menu_selection_id', 7)->get(),
             'dessert' => Menu::where('menu_selection_id', 8)->get(),
             'drink' => Menu::where('menu_selection_id', 9)->get(),
-            
-            
+
         ];
 
         $specificPackage = ServicePackage::findOrFail($packageId);
@@ -60,10 +57,9 @@ class ReservationController extends Controller
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|boolean|accepted',
 
-
-        ],[
+        ], [
             'agree_terms.accepted' => 'Please check the terms and conditions.',
-        ] );
+        ]);
 
         $packageId = $request->input('selected_package');
 
@@ -86,7 +82,6 @@ class ReservationController extends Controller
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
 
-
         ]);
 
         $reservation->selections()->create([
@@ -107,22 +102,23 @@ class ReservationController extends Controller
     public function showSummary($reservationId)
     {
         $reservations = Reservation::with('premades.servicePackage', 'user', 'reservationCustomize', 'reservationSelection')->findOrFail($reservationId);
-        
 
         return view('user.reservations.p_summary', compact('reservations'));
     }
 
-    public function custom(){
+    public function custom()
+    {
         return view('user.reservations.custom_package');
     }
 
-    public function showCustomize(){
-       
+    public function showCustomize()
+    {
 
         return view('user.reservations.customize-form');
     }
 
-    public function showCustomizeStore(Request $request){
+    public function showCustomizeStore(Request $request)
+    {
         $request->validate([
             'budget' => ['required', 'numeric', 'min:18000'],
             'pax' => ['required', 'numeric', 'min:50'],
@@ -145,13 +141,15 @@ class ReservationController extends Controller
         return view('user.reservations.form', compact('menus'));
     }
 
-    public function showCustomizeForm(Request $request){
+    public function showCustomizeForm(Request $request)
+    {
         $menus = $this->getMenus();
 
         return view('user.reservations.form', compact('menus'));
     }
 
-    public function submitCustomizeForm(Request $request){
+    public function submitCustomizeForm(Request $request)
+    {
         $request->validate([
 
             'celebrant_name' => 'required|string',
@@ -173,11 +171,9 @@ class ReservationController extends Controller
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|boolean|accepted',
 
-
-        ],[
+        ], [
             'agree_terms.accepted' => 'Please check the terms and conditions.',
-        ] );
-
+        ]);
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -197,7 +193,6 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-
 
         ]);
 
@@ -222,7 +217,6 @@ class ReservationController extends Controller
     // public function showSummaryCustomize($reservationId)
     // {
     //     $reservations = Reservation::with('user', 'reservationCustomize', 'reservationSelection')->findOrFail($reservationId);
-        
 
     //     return view('user.reservations.custom_summary', compact('reservations'));
     // }

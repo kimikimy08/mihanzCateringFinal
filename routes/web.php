@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +11,7 @@ use App\Http\Controllers\PdfController;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,7 +48,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/admin/services/{id}/{p_id}', 'App\Http\Controllers\Admin\PackageController@update')->name('admin.package.update');
     Route::get('/admin/services/{id}/{p_id}', 'App\Http\Controllers\Admin\PackageController@show');
     Route::delete('/admin/services/{id}/{p_id}', 'App\Http\Controllers\Admin\PackageController@destroy')->name('admin.package.destroy');
-    
 
     // ADMIN THEME
     Route::get('/admin/theme', 'App\Http\Controllers\Admin\ThemeController@index')->name('admin.theme.index');
@@ -61,9 +59,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/theme/{id}', 'App\Http\Controllers\Admin\ThemeController@destroy')->name('admin.theme.destroy');
 
     Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
-    Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit'); 
+    Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
     Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
-    
+
     // Route::get('/users/{user}', 'App\Http\Controllers\UserController@usermanagement_show')->name('admin.users.view');
     // Route::get('/users/{user}/edit', 'App\Http\Controllers\UserController@usermanagement_edit')->name('admin.users.edit');
     // Route::put('/users/{user}', 'App\Http\Controllers\UserController@usermanagement_update')->name('users.update');
@@ -94,21 +92,18 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
     Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
     Route::group(['middleware' => 'check.service.packages'], function () {
-        // Routes that require the user to have visited user.servicePackages
         Route::get('/reservation/{packageId}', 'App\Http\Controllers\ReservationController@showForm')->name('user.reservations.premade');
         Route::post('/reservation/submit', 'App\Http\Controllers\ReservationController@submitForm')->name('reservation.submit');
         Route::get('/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummary')->name('user.reservations.p_summary');
         Route::get('/generate-summary-pdf/{reservationId}', 'App\Http\Controllers\PDFController@generateSummaryPDF');
         Route::get('/customize', 'App\Http\Controllers\ReservationController@custom')->name('user.reservations.custom_package');
-    Route::get('/customize/reservation', 'App\Http\Controllers\ReservationController@showCustomize')->name('user.reservations.customize');
-    Route::post('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeStore')->name('user.reservations.store');
-    Route::get('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeForm')->name('user.reservations.customize-form');
-    Route::post('/customize/reservation/form/submit', 'App\Http\Controllers\ReservationController@submitCustomizeForm')->name('reservation.customize.submit');
-    // Route::get('/customize/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummaryCustomize')->name('user.reservations.custom_summary');
+        Route::get('/customize/reservation', 'App\Http\Controllers\ReservationController@showCustomize')->name('user.reservations.customize');
+        Route::post('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeStore')->name('user.reservations.store');
+        Route::get('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeForm')->name('user.reservations.customize-form');
+        Route::post('/customize/reservation/form/submit', 'App\Http\Controllers\ReservationController@submitCustomizeForm')->name('reservation.customize.submit');
+        // Route::get('/customize/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummaryCustomize')->name('user.reservations.custom_summary');
     });
-   
 
-    
 });
 
 Auth::routes();
@@ -120,6 +115,3 @@ Route::get('/services', 'App\Http\Controllers\ServiceController@index')->name('g
 Route::get('/services/{serviceCategory}/packages', 'App\Http\Controllers\ServiceController@servicePromoIndex')->name('user.servicePackages');
 
 Route::get('/themes', 'App\Http\Controllers\ThemesController@index')->name('user.themes');
-
-
-
