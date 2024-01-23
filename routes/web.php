@@ -93,18 +93,22 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
     Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
     Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
-
-    Route::get('/reservation/{packageId}', 'App\Http\Controllers\ReservationController@showForm')->name('user.reservations.premade');
-    Route::post('/reservation/submit', 'App\Http\Controllers\ReservationController@submitForm')->name('reservation.submit');
-    Route::get('/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummary')->name('user.reservations.p_summary');
-    Route::get('/generate-summary-pdf/{reservationId}', 'App\Http\Controllers\PDFController@generateSummaryPDF');
-
-    Route::get('/customize', 'App\Http\Controllers\ReservationController@custom')->name('user.reservations.custom_package');
+    Route::group(['middleware' => 'check.service.packages'], function () {
+        // Routes that require the user to have visited user.servicePackages
+        Route::get('/reservation/{packageId}', 'App\Http\Controllers\ReservationController@showForm')->name('user.reservations.premade');
+        Route::post('/reservation/submit', 'App\Http\Controllers\ReservationController@submitForm')->name('reservation.submit');
+        Route::get('/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummary')->name('user.reservations.p_summary');
+        Route::get('/generate-summary-pdf/{reservationId}', 'App\Http\Controllers\PDFController@generateSummaryPDF');
+        Route::get('/customize', 'App\Http\Controllers\ReservationController@custom')->name('user.reservations.custom_package');
     Route::get('/customize/reservation', 'App\Http\Controllers\ReservationController@showCustomize')->name('user.reservations.customize');
     Route::post('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeStore')->name('user.reservations.store');
     Route::get('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeForm')->name('user.reservations.customize-form');
     Route::post('/customize/reservation/form/submit', 'App\Http\Controllers\ReservationController@submitCustomizeForm')->name('reservation.customize.submit');
     // Route::get('/customize/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummaryCustomize')->name('user.reservations.custom_summary');
+    });
+   
+
+    
 });
 
 Auth::routes();

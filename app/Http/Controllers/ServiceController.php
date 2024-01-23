@@ -18,14 +18,24 @@ class ServiceController extends Controller
     }
 
     public function servicePromoIndex($serviceCategory = null)
-    {
-        $categoryName = ServiceSelection::where('services_category', $serviceCategory)->first()->services_category;
-        $promos = ServicePackage::whereHas('serviceSelection', function ($query) use ($serviceCategory) {
-            $query->where('services_category', $serviceCategory);
-        })->get();
+{
+    $serviceSelection = ServiceSelection::where('services_category', $serviceCategory)->first();
 
-        session(['categoryName' => $categoryName ]);
-    
-        return view('user.servicePackages', compact('promos', 'categoryName'));
+    if (!$serviceSelection) {
+        // Handle the case where no matching service category is found.
+        // You can redirect the user or display an error message.
+        // For now, let's redirect them to the index page.
+        return redirect()->route('guest.services');
     }
+
+    $categoryName = $serviceSelection->services_category;
+    
+    $promos = ServicePackage::whereHas('serviceSelection', function ($query) use ($serviceCategory) {
+        $query->where('services_category', $serviceCategory);
+    })->get();
+
+    session(['categoryName' => $categoryName]);
+
+    return view('user.servicePackages', compact('promos', 'categoryName'));
+}
 }
