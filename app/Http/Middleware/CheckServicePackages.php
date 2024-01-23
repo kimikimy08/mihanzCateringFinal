@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Http\Controllers\ServiceController;
 
 class CheckServicePackages
 {
@@ -21,8 +22,9 @@ class CheckServicePackages
             return $next($request);
         }
 
-        // If not, redirect or handle it as you see fit
-        $route = route('user.servicePackages', ['serviceCategory' => 'default']); // Replace 'default' with a default value or adjust as needed
+        // If not, redirect with the default value
+        $defaultCategory = 'default'; // Replace 'default' with your actual default category
+        $route = route('user.servicePackages', ['serviceCategory' => $defaultCategory]);
         return redirect($route);
     }
 }

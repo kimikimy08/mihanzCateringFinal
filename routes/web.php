@@ -91,7 +91,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
     Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
     Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
-    Route::group(['middleware' => 'check.service.packages'], function () {
+    Route::group([], function () {
         Route::get('/reservation/{packageId}', 'App\Http\Controllers\ReservationController@showForm')->name('user.reservations.premade');
         Route::post('/reservation/submit', 'App\Http\Controllers\ReservationController@submitForm')->name('reservation.submit');
         Route::get('/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummary')->name('user.reservations.p_summary');

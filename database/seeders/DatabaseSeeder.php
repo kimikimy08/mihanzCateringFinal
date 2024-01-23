@@ -32,10 +32,6 @@ class DatabaseSeeder extends Seeder
             ThemeSelectionSeeder::class,
             MenuSeeder::class,
             ServicePackageSeeder::class,
-            ReservationSeeder::class,
-            ReservationCustomizesSeeder::class,
-            ReservationPremadesSeeder::class,
-            ReservationSelectionsSeeder::class,
     	]);
     }
 }

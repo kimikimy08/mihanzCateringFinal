@@ -81,6 +81,7 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
+            'call_status' => 'Waiting',
 
         ]);
 
@@ -193,6 +194,7 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
+            'call_status' => 'Waiting',
 
         ]);
 

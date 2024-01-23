@@ -16,9 +16,12 @@ class ServiceController extends Controller
         return view('user.services', compact('servicesItems'));
     }
 
-    public function servicePromoIndex($serviceCategory = null)
+    public function servicePromoIndex($serviceCategory)
     {
-        $serviceSelection = ServiceSelection::where('services_category', $serviceCategory)->first();
+        // If $serviceCategory is not provided or not found in the database, use the default category
+        $serviceSelection = $serviceCategory
+            ? ServiceSelection::where('services_category', $serviceCategory)->first()
+            : ServiceSelection::where('services_category', $this->getDefaultCategory())->first();
 
         if (!$serviceSelection) {
             return redirect()->route('guest.services');
@@ -26,12 +29,20 @@ class ServiceController extends Controller
 
         $categoryName = $serviceSelection->services_category;
 
-        $promos = ServicePackage::whereHas('serviceSelection', function ($query) use ($serviceCategory) {
-            $query->where('services_category', $serviceCategory);
+        $promos = ServicePackage::whereHas('serviceSelection', function ($query) use ($categoryName) {
+            $query->where('services_category', $categoryName);
         })->get();
 
         session(['categoryName' => $categoryName]);
 
         return view('user.servicePackages', compact('promos', 'categoryName'));
+    }
+
+    protected function getDefaultCategory()
+    {
+        // You can implement your logic here to determine the default category.
+        // For example, you might retrieve it from a database table or use a configuration.
+        // For simplicity, I'm returning 'default' as the default category.
+        return 'default';
     }
 }
