@@ -1,0 +1,216 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background:linear-gradient( rgba(0, 0, 0, 0.699), rgba(0, 0, 0, 0.562)), url("Untitled\ design\ \(1\).png"), no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+body{
+    height: 100%;
+    width: 100%;
+
+}
+
+
+
+
+
+
+/*Navigation*/
+nav{
+    font-family: Arial;
+    height: 15vh;
+    display: flex;
+    color: rgb(255, 255, 255);
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    position: sticky;
+    
+    
+}   
+nav ul{
+    list-style: none;
+    display: flex;
+    
+}
+nav li{
+    padding: 1rem;
+    height: 100%;
+}
+nav a{
+    color: inherit;
+    text-decoration: none;
+    font-size: 25px;
+    letter-spacing: 3px;
+}
+nav h1{
+    font-size: 35px;
+}
+nav a.active{
+    color: yellowgreen;
+    text-decoration: dashed;
+    border-bottom: solid;
+}
+
+/*HOME PAGE*/
+
+.landing_Page{
+    color: white;
+height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.landing_Page h1{
+    
+    text-transform: balance;
+    margin-top: 15vh;
+    font-size: 67px;
+    font-weight: 100;
+}
+.landing_Page button{
+    margin-top: 10vh;
+    background-color: #A2B92F;
+    width: 40vh;
+    height: 7vh;
+    border-radius: 50px;
+    font-size: 22px;
+    border:none;
+}
+.landing_Page a{
+    text-decoration: none;
+    color:inherit;
+}
+/*mihanz-information*/
+.mihanz-info{
+    
+    color: white;
+    background-color: #0B360F;
+    display:flex;
+    height: 100vh;
+    justify-content: space-evenly;
+}
+.mihanz-info h1 {
+    font-size: 67px;
+    margin: 5vh;
+    font-weight: 100;
+    
+}
+.mihanz-info #p2 {
+    font-size: 24px;
+    width: 60%;
+    word-spacing: 2px;
+    text-align: justify;
+}
+.mihanz-info h1 #p1{
+    font-size: 30px;
+}
+.mihanz-info h1,p {
+    margin-top: 15vh;
+}
+/*reservation-information*/
+.reservation-Info{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    color: white;
+    background-color: #0B360F;
+}
+.reservation-Info h1{
+    font-size: 67px;
+    margin: 5vh;
+    font-weight: 100;
+}
+.reservation-Info ul{
+    list-style: disc;
+    margin: 5vh;
+}
+.reservation-Info li{
+    font-size: 24px;
+    
+}
+.reservation-Info a{
+    text-decoration: none;
+    color: inherit;
+}
+.reservation-Info button{
+    margin-top: 10vh;
+    background-color: #A2B92F;
+    width: 40vh;
+    height: 7vh;
+    border-radius: 50px;
+    font-size: 22px;
+    border:none;
+    position: absolute;
+    left:75%;
+}
+.landing_Page button:hover{
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+.reservation-Info button:hover{
+    box-shadow: 0px 0px 10px rgb(255, 255, 255);
+}
+/*calendar-dates*/
+.calendar-Date{
+    display: flex;
+    gap: 10%;
+
+    height: 100vh;
+    color: white;
+    background-color: #0B360F;
+
+}
+.calendar-Date h1{
+    font-size: 67px;
+}
+.calendar-Date p{
+    margin: 0;
+    font-size: 24px;
+}
+#green{
+    color: green;
+}
+#red{
+    color: red;
+}
+
+
+footer{
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    font-family: Arial;
+    color: white;
+}
+footer h1{
+
+    font-size: 67px;
+    margin-top: 10vh;
+    margin-left: 15vh;
+    margin-bottom: 10vh;
+    font-weight: 100;
+}
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    
+}
+footer li{
+   list-style: none;
+}
+footer label{
+    font-size: 24px;
+}
+footer a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 24px;
+}
+footer a:hover{
+    color: yellowgreen;
+}
