@@ -213,7 +213,7 @@ class ReservationController extends Controller
         session()->forget(['budget', 'pax', 'categoryName']);
 
         // Redirect to the summary page
-        return redirect()->route('user.reservations.custom_summary', $reservation->id);
+        return redirect()->route('user.reservations.p_summary', $reservation->id);
     }
 
     // public function showSummaryCustomize($reservationId)
