@@ -35,7 +35,6 @@ class ReservationController extends Controller
                 'celebrant_age' => $reservation->celebrant_age,
                 'celebrant_gender' => $reservation->celebrant_gender,
                 'event_theme' => $reservation->event_theme,
-                'call_status' => $reservation->call_status,
                 'reservation_status' => $reservation->reservation_status,
 
                 'beef_menu' => $reservation->getMenuName('beefMenu'),
