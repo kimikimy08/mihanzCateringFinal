@@ -28,6 +28,7 @@ class Reservations extends Migration
             $table->string('venue_address');
             $table->boolean('agree_terms');
             $table->enum('call_status', ['Waiting', 'Contacted', 'Approved', 'Cancelled']);
+            $table->enum('reservation_status', ['Approve', 'Decline']);
 
             $table->unsignedBigInteger('pork_menu_id')->nullable();
             $table->unsignedBigInteger('beef_menu_id')->nullable();

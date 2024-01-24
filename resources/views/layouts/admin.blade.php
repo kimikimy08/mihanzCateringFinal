@@ -32,6 +32,7 @@
                       Reservation
                     </a>
                     <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{{ url('/admin/reservation') }}">All</a></li>
                       <li><a class="dropdown-item" href="reservation/Pending/index.html">Pending</a></li>
                       <li><a class="dropdown-item" href="reservation/Approved/index.html">Approved</a></li>
                       <li><a class="dropdown-item" href="reservation/History/index.html">History</a></li>

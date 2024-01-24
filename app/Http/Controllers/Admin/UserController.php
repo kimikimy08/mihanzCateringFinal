@@ -13,26 +13,7 @@ use Illuminate\Support\Carbon;
 
 class UserController extends Controller
 {
-    public function landingpage(){
-        $allReservations = Reservation::all();
-        $futureEvents = [];
-        foreach ($allReservations as $reservation) {
-            $eventDate = Carbon::parse($reservation->event_date)->format('Y-m-d');
-            $currentDate = Carbon::today()->format('Y-m-d');
-        
-            $futureEvent = [
-                'id' => $reservation->id,
-                'title' => $reservation->celebrant_name,
-                'start' => Carbon::parse($reservation->event_date . ' ' . $reservation->event_time)->format('Y-m-d H:i:s'),
-                // ... (other properties)
-        
-                // Set availability based on the date
-                'availability' => ($eventDate === $currentDate) ? 'not-available' : 'available',
-            ];
-        
-            $futureEvents[] = $futureEvent;
-        }
-    }
+    
 
     public function index()
     {

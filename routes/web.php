@@ -58,6 +58,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/theme/{id}', 'App\Http\Controllers\Admin\ThemeController@show');
     Route::delete('/admin/theme/{id}', 'App\Http\Controllers\Admin\ThemeController@destroy')->name('admin.theme.destroy');
 
+    // ADMIN RESERVATION
+    Route::get('/admin/reservation', 'App\Http\Controllers\Admin\ReservationController@index')->name('admin.reservation.index');
+
     Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
     Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
     Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
@@ -67,22 +70,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Route::put('/users/{user}', 'App\Http\Controllers\UserController@usermanagement_update')->name('users.update');
     // Route::delete('/users/{user}','App\Http\Controllers\UserController@usermanagement_destroy')->name('users.destroy');
 
-    Route::get('/service', 'App\Http\Controllers\ServiceController@adminindex')->name('admin.services.index');
-    Route::get('/service/create', 'App\Http\Controllers\ServiceController@admincreate')->name('admin.services.create');
-    Route::post('/service', 'App\Http\Controllers\ServiceController@adminstore')->name('admin.services.store');
-    Route::get('/service/{id}/edit', 'App\Http\Controllers\ServiceController@adminedit')->name('admin.services.edit');
-    Route::put('/service/{id}', 'App\Http\Controllers\ServiceController@adminupdate')->name('admin.services.update');
-    Route::delete('/service/{id}', 'App\Http\Controllers\ServiceController@admindestroy')->name('admin.services.destroy');
-    Route::get('/services/{id}', 'App\Http\Controllers\ServiceController@adminview')->name('admin.services.view');
+    // Route::get('/service', 'App\Http\Controllers\ServiceController@adminindex')->name('admin.services.index');
+    // Route::get('/service/create', 'App\Http\Controllers\ServiceController@admincreate')->name('admin.services.create');
+    // Route::post('/service', 'App\Http\Controllers\ServiceController@adminstore')->name('admin.services.store');
+    // Route::get('/service/{id}/edit', 'App\Http\Controllers\ServiceController@adminedit')->name('admin.services.edit');
+    // Route::put('/service/{id}', 'App\Http\Controllers\ServiceController@adminupdate')->name('admin.services.update');
+    // Route::delete('/service/{id}', 'App\Http\Controllers\ServiceController@admindestroy')->name('admin.services.destroy');
+    // Route::get('/services/{id}', 'App\Http\Controllers\ServiceController@adminview')->name('admin.services.view');
 
-    Route::get('/services/{id}/create', 'App\Http\Controllers\ServiceController@pckgcreate')->name('admin.packages.create');
-    Route::post('/services/{id}', 'App\Http\Controllers\ServiceController@pckgstore')->name('admin.packages.store');
-    Route::get('/services/{id}/{p_id}/edit', 'App\Http\Controllers\ServiceController@pckgedit')->name('admin.packages.edit');
-    Route::put('/services/{id}/{p_id}', 'App\Http\Controllers\ServiceController@pckgupdate')->name('admin.packages.update');
-    Route::delete('/service/{id}/{p_id}', 'App\Http\Controllers\ServiceController@pckgdestroy')->name('admin.packages.destroy');
+    // Route::get('/services/{id}/create', 'App\Http\Controllers\ServiceController@pckgcreate')->name('admin.packages.create');
+    // Route::post('/services/{id}', 'App\Http\Controllers\ServiceController@pckgstore')->name('admin.packages.store');
+    // Route::get('/services/{id}/{p_id}/edit', 'App\Http\Controllers\ServiceController@pckgedit')->name('admin.packages.edit');
+    // Route::put('/services/{id}/{p_id}', 'App\Http\Controllers\ServiceController@pckgupdate')->name('admin.packages.update');
+    // Route::delete('/service/{id}/{p_id}', 'App\Http\Controllers\ServiceController@pckgdestroy')->name('admin.packages.destroy');
 
-    Route::delete('/theme/{id}', 'App\Http\Controllers\ServiceController@admin_theme_destroy')->name('admin.themes.destroy');
-    Route::get('/theme/{id}', 'App\Http\Controllers\ServiceController@admin_theme_view')->name('admin.themes.view');
+    // Route::delete('/theme/{id}', 'App\Http\Controllers\ServiceController@admin_theme_destroy')->name('admin.themes.destroy');
+    // Route::get('/theme/{id}', 'App\Http\Controllers\ServiceController@admin_theme_view')->name('admin.themes.view');
 
 });
 
