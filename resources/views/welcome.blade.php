@@ -10,9 +10,26 @@
       
         <h1 class="display-1 ">Mihanz Catering Service</h1>
         <!-- Button trigger modal -->
+        @guest
+        @if (Route::has('login'))
 <button type="button" class="btn btn-success  btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Log In
+<a class=" {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
   </button>
+  @endif
+  @else
+            @if (auth()->check())
+            @if (auth()->user()->hasRole('admin'))
+            <button type="button" class="btn btn-success  btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a  href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+  </button>
+            @else
+            <button type="button" class="btn btn-success  btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a  href="{{ route('user.dashboard') }}">{{ __('Dashboard') }}</a>
+  </button>
+            @endif
+          </li>
+          @endif
+  @endguest
 </div>
     </div>
  
@@ -29,9 +46,9 @@
     <div class="selection">
       <h1 class="display-2 text-center">Things We Offer</h1>
         <ul>
-          <li><a href="Services.html">Services</a></li>
-          <li><a href="Menu.html">Menu</a></li>
-          <li><a href="Themes.html">Themes</a></li>
+          <li><a href="{{ url('/services') }}">Services</a></li>
+          <li><a href="{{ url('/menus') }}">Menu</a></li>
+          <li><a href="{{ url('/themes') }}">Themes</a></li>
         </ul>
 
 
@@ -50,7 +67,7 @@
             <li>We can customize your package base on your budget</li>
             <li>Check out our menu below</li>
         </ul>
-        <div id="menu-btn"><button type="button" class="btn btn-primary btn-lg"> <a href="Menu.html">Check out our Menu</a> </button></div>
+        <div id="menu-btn"><button type="button" class="btn btn-primary btn-lg"> <a href="{{ url('/menus') }}">Check out our Menu</a> </button></div>
 
         
     </div>

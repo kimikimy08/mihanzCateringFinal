@@ -9,11 +9,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Include jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- FullCalendar CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.10/main.min.css" />
-    <!-- FullCalendar DayGrid plugin CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+  <!-- FullCalendar CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.10/main.min.css" />
+  <!-- FullCalendar DayGrid plugin CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
+  <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
   <title>Mihan'z Catering</title>
 </head>
 
@@ -29,29 +29,29 @@
         <ul class="nav nav-tabs ">
           @guest
           <li class="nav-item">
-                            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">{{ __('Home') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('menus') ? 'active' : '' }}" href="{{ url('/menus') }}">{{ __('Menu') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ url('/services') }}">{{ __('Services') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Request::is('themes') ? 'active' : '' }}" href="{{ url('/themes') }}">{{ __('Theme') }}</a>
-                        </li>
+            <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="{{ url('/') }}">{{ __('Home') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('menus') ? 'active' : '' }}" href="{{ url('/menus') }}">{{ __('Menu') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ url('/services') }}">{{ __('Services') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('themes') ? 'active' : '' }}" href="{{ url('/themes') }}">{{ __('Theme') }}</a>
+          </li>
           @if (Route::has('login'))
           <li class="nav-item">
-                                <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
+            <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}">{{ __('Login') }}</a>
+          </li>
           @endif
 
           @if (Route::has('register'))
           <li class="nav-item">
-                                <a class="nav-link {{ Request::is('register') ? 'active' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
+            <a class="nav-link {{ Request::is('register') ? 'active' : '' }}" href="{{ route('register') }}">{{ __('Register') }}</a>
+          </li>
           @endif
-          
+
           @else
           <li class="nav-item">
             @if (auth()->check())
@@ -63,14 +63,14 @@
           </li>
           @endif
           <li class="nav-item">
-                                <a class="nav-link {{ Request::is('menus') ? 'active' : '' }}" href="{{ url('/menus') }}">{{ __('Menu') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ url('/services') }}">{{ __('Services') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ Request::is('themes') ? 'active' : '' }}" href="{{ url('/themes') }}">{{ __('Theme') }}</a>
-                            </li>
+            <a class="nav-link {{ Request::is('menus') ? 'active' : '' }}" href="{{ url('/menus') }}">{{ __('Menu') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('services') ? 'active' : '' }}" href="{{ url('/services') }}">{{ __('Services') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('themes') ? 'active' : '' }}" href="{{ url('/themes') }}">{{ __('Theme') }}</a>
+          </li>
           <li class="nav-item dropdown">
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }}
@@ -141,8 +141,8 @@
   </footer>
 
   <script src="https://unpkg.com/moment@2.29.1/moment.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/core@6.1.10/main.min.js"></script>
-    <script src="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.js"></script>
+  <script src="https://unpkg.com/@fullcalendar/core@6.1.10/main.min.js"></script>
+  <script src="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.js"></script>
 </body>
 
 </html>

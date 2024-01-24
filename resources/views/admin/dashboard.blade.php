@@ -12,7 +12,7 @@
       <li><a href="reservation/Approved/">Approved Request <p class="mt-4 fs-1">1</p></a></li>
       <li><a href="">Incoming Events <p class="mt-4 fs-1">1</p></a></li>
       <li><a href="reservation/History/index.html">Past Events <p class="mt-4 fs-1">1</p></a></li>
-      <li><a href="user/index.html">Users <p class="mt-4 fs-1">1</p></a></li>
+      <li><a href="{{ url('/admin/user') }}">Users <p class="mt-4 fs-1">{{ $userCount }}</p></a></li>
     </ul>
   </div>
   <div class="calendar-container">
