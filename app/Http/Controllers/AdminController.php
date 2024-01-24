@@ -26,6 +26,7 @@ class AdminController extends Controller
 
                 'name' => $reservation->user->name,
                 'email' => $reservation->user->email,
+                'contact_number' => $reservation->user->contact_number,
                 'event_date' => Carbon::parse($reservation->event_date)->format('Y-m-d'),
                 'event_time' => Carbon::parse($reservation->event_time)->format('H:i:s'),
                 'venue_address' => $reservation->venue_address,

@@ -1,344 +1,175 @@
-@extends('layouts.admin')
-
-@section('content')
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-
-<h1 class="display-1 ">Pending</h1>
-        
-        <section class="section-pending" >
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Contact No.</th>
-                <th scope="col">Date of Event</th>
-                <th scope="col">Time of Event</th>
-                <th scope="col">Type of Event</th>
-                <th scope="col">Date</th>
-                <th scope="col">Time</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td> </td>
-                <td> </td>
-                <td>Birthday</td>
-                <td>11/23/23 </td>
-                <td>11:05</td>
-                <td>
-                  <button type="button" class="btn btn-primary"><a href="status/index.html" class="">Status</a> </button>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Viewrequestdetail">View</button>
-                  <!-- <button type="button" class="btn btn-secondary"><a href="edit.html" class="">Edit</a> </button> -->
-                  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Editrequestdetail">Edit </button>
-                  <button type="button" class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#Deleterequestdetail" >Delete</button>
-                </td>
-              </tr>
-
-
-              
-            </tbody>
-          </table>
-
-        </section>
-        <!-- View Request detail -->
-        <div class="modal fade" id="Viewrequestdetail" tabindex="-1" aria-labelledby="ViewrequestdetailLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="ViewrequestdetailLabel">Request Detail</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-               <div>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="row">Name:</th>
-                      <td></td>
-                      <th scope="row">Date of Event:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Email:</th>
-                      <td></td>
-                      <th scope="row">Time of Event:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >Event Location:</th>
-                      <td colspan="4"></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th scope="row" colspan="4"  class=" fs-2">Details</th> 
-                    </tr>
-                    <tr>
-                      <th scope="row">Event:</th>
-                      <td></td>
-                      <th scope="row">Theme</th>
-                      <td></td>
-                      
-                    </tr>
-                    <tr>
-                      <th scope="row">Pax:</th>
-                      <td></td>
-                      <th scope="row">Budget:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Celebrant Name:</th>
-                      <td></td>
-                      <th scope="row">Celebrant Age:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Celebrant Gender:</th>
-                      <td></td>
-                      <th scope="row">Package Type:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row" colspan="4"  class="fs-2 ">Menu</th> 
-                    </tr>
-                    <tr>
-                      <th scope="row">Pork:</th>
-                      <td></td>
-                      <th scope="row">Beef:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Chicken:</th>
-                      <td></td>
-                      <th scope="row">Fish:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Seafood:</th>
-                      <td></td>
-                      <th scope="row">Vegetables:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Pasta:</th>
-                      <td></td>
-                      <th scope="row">Dessert:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Drink:</th>
-                      <td></td>
-                    </tr>
-                    
-                  </tbody>
-                </table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/Admin.css">
+    <title>Mihan'z Catering | Admin</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg  " >
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/Index.html">Mihan'z Catering</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="nav nav-tabs ">
+                <li class="nav-item">
+                  <a class="nav-link " aria-current="page" href="/html/admin/index.html">Dashboard</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Reservation
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item active" href="">Pending</a></li>
+                      <li><a class="dropdown-item" href="../Approved/index.html">Approved</a></li>
+                      <li><a class="dropdown-item" href="../Approved/index.html">History</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/html/admin/services/index.html">Services</a>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle  " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Menu
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item " href="/html/admin/menu/index.html">All</a></li>
+                      <li><a class="dropdown-item " href="/html/admin/menu/menu pages/pork.html">Pork</a></li>
+                      <li><a class="dropdown-item" href="/html/admin/menu/menu pages/beef.html">Beef</a></li>
+                      <li><a class="dropdown-item" href="/html/admin/menu/menu pages/chicken.html">Chicken</a></li>
+                      <li><a class="dropdown-item " href="/html/admin/menu/menu pages/seafood.html">Seafood</a></li>
+                      <li><a class="dropdown-item" href="/html/admin/menu/menu pages/fish.html">Fish</a></li>
+                      <li><a class="dropdown-item" href="/html/admin/menu/menu pages/pasta.html">Pasta</a></li>
+                      <li><a class="dropdown-item " href="/html/admin/menu/menu pages/dessert.html">Dessert</a></li>
+                      <li><a class="dropdown-item" href="/html/admin/menu/menu pages/drinks.html">Drinks</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/html/admin/themes/index.html">Themes</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/html/admin/user/index.html">User</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href=".html">Logout</a>
+                  </li>
+                            
                 
-               </div>
-              </div>
-              <div class="modal-footer">
-                
-                <button type="submit" class="btn btn-primary">Accept</button>
-                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Decline</button>
-              </div>
-            </div>
+            </ul>
           </div>
         </div>
-        <!-- Edit Request detail -->
-        <div class="modal fade" id="Editrequestdetail" tabindex="-1" aria-labelledby="EditrequestdetailLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl modal-dialog-scrollable">
+      </nav>
+      <main>
+        <h1 class="display-1 mb-5">Client Status</h1>
+        <div class="btn-position-status mb-5"><button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add</button></div>
+        <div class="status-container">
+          <div class="status-user-info">
+          
+          <table class="table">
+            
+            <tr>
+                <th scope="col">Reservation ID:</th>
+                <td></td>
+            </tr>
+                <th scope="col">Name:</th>
+                <td></td>
+            <tr>
+
+            </tr>
+            <tr>
+                <th scope="col">Contact No. :</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="col">Date of Event:</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="col">Type of Event:</th>
+                <td></td>
+            </tr>   
+            
+          </table>
+        </div>
+          <div class="status-call" >
+           
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Remarks</th>
+                  </tr>
+                </thead>
+
+                <tbody >
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    
+                  </tr>
+                  
+                </tbody>
+              </table>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="EditrequestdetailLabel">Edit Request Detail</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Status</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                <div>
                 <table class="table">
-                  <thead>
-                    <tr>
-                      <th scope="row">Name:</th>
-                      <td><input type="text" class="input-group input-group-text" readonly></td>
-                      <th scope="row">Date:</th>
-                      <td><input type="date" class="input-group input-group-text" ></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Email:</th>
-                      <td><input type="email" class="input-group input-group-text" readonly></td>
-                      <th scope="row">Time:</th>
-                      <td><input type="time" class="input-group input-group-text" ></td>
-                    </tr>
-                    <tr>
-                      <th scope="row" >Event Location:</th>
-                      <td colspan="4"><input type="text" class="input-group input-group-text" ></td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td scope="row" colspan="4" ><h1>Details</h1></td> 
-                    </tr>
-                    <tr>
-                      <th scope="row">Event:</th>
-                      <td><input type="text" class="input-group input-group-text" ></td>
-                      <th scope="row">Package Type:</th>
-                      <td><input type="text" class="input-group input-group-text" ></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Pax:</th>
-                      <td><input type="text" class="input-group input-group-text" ></td>
-                      <th scope="row">Budget:</th>
-                      <td><input type="number" class="input-group input-group-text" ></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Celebrant Name:</th>
-                      <td><input type="text" class="input-group input-group-text" ></td>
-                      <th scope="row">Celebrant Age:</th>
-                      <td><input type="text" class="input-group input-group-text" ></td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Celebrant Gender:</th>
-                      <td>
-                        <select name="" id=""  class="form-select">
-                          <option value=""></option>
-                          <option value="">Male</option>
-                          <option value="">Female</option>
-                        </select>
-                    </td>
-                    </tr>
-                    <tr>
-                      <td scope="row" colspan="4" ><h1>Menu</h1></td> 
-                    </tr>
-                    <tr>
-                      <th scope="row">Pork:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                      <th scope="row">Beef:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Chicken:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                      <th scope="row">Fish:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Seafood:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                      <th scope="row">Vegetables:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Pasta:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                      <th scope="row">Dessert:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th scope="row">Drink:</th>
-                      <td>
-                        <select name="" id="" class="form-select">
-                            <option value="" selected></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                      </td>
-                      
-                    </tr>
                     
-                  </tbody>
-                </table>
+                    <tr>
+                        <th scope="col">Date:</th>
+                        <td><input type="date" class="form-control"></td>
+                    </tr> 
+                    <tr>
+                        <th scope="col">time:</th>
+                        <td><input type="time" class="form-control " ></td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Status:</th>
+                        <td>
+                            <select name="" id="" class="form-select">
+                                <option value=""></option>
+                                <option value="">Waiting</option>
+                                <option value="">Contacted</option>
+                                <option value="">Approved</option>
+                                <option value="">Canceled</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="col">Remarks:</th>
+                        <td> <textarea class="form-control" aria-label="With textarea"></textarea></td>
+                    </tr>
+                  </table>
                 
                </div>
               </div>
               <div class="modal-footer">
                 
                 <button type="submit" class="btn btn-primary">Save</button>
+                
               </div>
             </div>
           </div>
         </div>
-        <!-- Delete Request detail -->
-        <div class="modal fade" id="Deleterequestdetail" tabindex="-1" aria-labelledby="DeleterequestdetailLabel" aria-hidden="true">
-          <div class="modal-dialog  modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="DeleterequestdetailLabel">Delete</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <div class="fs-5">
-                  Are you sure you want to delete this package?
-                </div>
-                
-              </div>
-              <div class="modal-footer">
-                
-                <button class=" btn btn-primary">Yes</button>
-                <button class="btn btn-secondary">No</button>
-              </div>
-            </div>
-          </div>
-        </div>
+      </main>
 
-        @endsection
+</body>
+</html>
