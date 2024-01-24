@@ -7,7 +7,13 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/core@6.1.10/main.min.css" />
+    <!-- FullCalendar DayGrid plugin CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
   <title>Mihan'z Catering</title>
 </head>
 
@@ -133,6 +139,10 @@
     </ul>
 
   </footer>
+
+  <script src="https://unpkg.com/moment@2.29.1/moment.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/core@6.1.10/main.min.js"></script>
+    <script src="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.js"></script>
 </body>
 
 </html>

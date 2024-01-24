@@ -57,72 +57,59 @@
     <!-- Calendar -->
     <div class="calendar-Date">
 
-        <div>
+        <!-- <div>
             <h1>Mark your Dates</h1>
         <p>Here is our Available Event dates <br/>
         
           <b id="green">Green</b> means its Available</p>
         <p><b id="red">Red</b> means it's Occupied</p>
-        </div>
+        </div> -->
         
-        <div class="calendar">
-          <table class="table table-dark table-striped text-center">
-            <tr>
-              <th colspan="7">Month/Year</th>
-              
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-            </tr>
-            <tr>
-             <td colspan="7"></td>
-            </tr>
-          </table>
-        </div>
+        <div id="calendar"></div>
         </div>       
    
-   
+
+        <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: @json($futureEvents),
+      height: '70vh', // Set the height of the calendar
+      width: '80%',   // Set the width of the calendar to 100% of the container
+      eventRender: function(info) {
+        var availability = info.event.extendedProps.availability;
+
+        // Customize the content of the event
+        var eventContent = '<div style="text-align: center; padding: 5px;">';
+        eventContent += '<b>' + info.event.title + '</b><br>';
+        eventContent += 'Availability: ' + availability + '<br>';
+        // Add more details if needed
+
+        eventContent += '</div>';
+        
+        // Set the HTML content to the event
+        info.el.innerHTML = eventContent;
+
+        // Apply styles based on availability
+        if (availability === 'available') {
+          info.el.style.backgroundColor = 'green';
+        } else {
+          info.el.style.backgroundColor = 'red';
+        }
+
+        // Show availability as a title on the event
+        info.el.title = 'Availability: ' + availability;
+      },
+      eventClick: function(info) {
+        // Handle event click if needed
+        console.log(info);
+      }
+    });
+
+    calendar.render();
+  });
+</script>
     
         @endsection

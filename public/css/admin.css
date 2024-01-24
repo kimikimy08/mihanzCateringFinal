@@ -232,3 +232,45 @@ width: 40%;
     position: sticky;
     top:0;
 }
+
+
+.fc-col-header-cell-cushion {
+    color: #000 !important; /* Use !important to override existing styles */
+    background-color: #fff !important;
+}
+
+.fc-daygrid-day-number{
+    color: #000 !important; /* Use !important to override existing styles */
+    background-color: #fff !important;
+}
+
+.fc-event-time  {
+    color: blue !important; /* Use !important to override existing styles */
+    background-color: lightblue;
+}
+
+.fc-event-title {
+    color: blue !important; /* Use !important to override existing styles */
+    background-color: lightblue;
+}
+
+.fc-daygrid-event{
+    background-color: lightblue;
+}
+
+.fc-media-screen {
+    width: 80%; /* Adjust the width as needed */
+    height: 500px; /* Adjust the height as needed */
+    margin: auto; /* Center the calendar on the page */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#event-description {
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }

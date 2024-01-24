@@ -1,0 +1,142 @@
+body{
+    display: flex;
+    flex-direction: column;
+    scrollbar-gutter: stable;
+}
+main{
+    display: flex;
+    height: auto;
+   align-items: center;
+    flex-direction: column;
+    background:linear-gradient(rgba(0,0,0,0.100),rgba(0,0,0,0.100)) , url("../images/background-outline.png"),no-repeat;
+    background-position: center;
+    
+    background-attachment: fixed;
+    
+    
+}
+/* navigation */
+.navbar-brand{
+    color:white;
+    font-weight: bolder;
+}
+.nav-link{
+    color: white;
+}
+
+.navbar{
+    background-color: forestgreen;
+}
+/* User-container */
+.User-container{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    
+}
+/* Profile And details */
+.con1{
+   
+    width: 100%;
+    
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 12px 9px 20px 0px black;
+    background-color: white;
+    margin-left: 20px;
+}
+.con1-container{
+    display: flex;
+    flex-direction: column;
+    
+}
+.icon-container{
+    height: 200px;
+}
+/* Other Information */
+.con2{
+    
+   
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.con-A{
+   
+    height: 350px;
+    width: 90%;
+    background-color: white;
+    box-shadow: 12px 9px 20px 0px black;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+ a{
+    color: white;
+    text-decoration: none;
+}
+.con-B{
+    box-shadow: 12px 9px 20px 0px black;
+    height: 350px;
+    width: 90%;
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+section{
+    height: 100%;
+    overflow: scroll;
+}
+.section-footer{
+    height: 20%;
+}
+section thead{
+    position: sticky;
+    top: 0;
+}
+
+/* Footer */
+footer{
+    background-color: black;
+    color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* justify-content: center; */
+}
+footer h1{
+    margin: 5%;
+    margin-bottom: 200px;
+}
+footer ul{
+    display: flex;
+    justify-content: space-around;
+    /* flex-direction: column; */
+    margin: 0;
+    padding: 0;
+}
+footer li{
+    list-style: none;
+}
+footer a{
+    color:whitesmoke;
+    text-decoration: none;
+    font-size: 20px;
+}
+footer a:hover{
+    color: yellowgreen;
+}

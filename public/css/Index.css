@@ -1,3 +1,5 @@
+@import '@fullcalendar/core/main.css';
+@import '@fullcalendar/daygrid/main.css';
 
 body{
     display: flex;
@@ -5,7 +7,7 @@ body{
     scrollbar-gutter: stable;
 }
 main{
-    display: flex;
+
     height: auto;
    align-items: center;
     flex-direction: column;   
@@ -174,13 +176,15 @@ margin: 5%;
 /* Calendar */
 .calendar-Date{
     height: auto;
-    display: flex;
+
     margin-bottom: 20vh;
     font-size: 20px;
-    width: 100%;
+    width: 60%;
     justify-content: space-evenly;
     flex-direction: row-reverse;
     flex-wrap: wrap;
+    margin: auto;
+    margin-bottom: 50px;
 }
 #red{
 color: red;
@@ -192,7 +196,7 @@ color: red;
 .calendar{
     display: flex;
     border: solid;
-    width: 100vh;
+    width: 50vh;
     height: 70vh;
 }
 /* footer */
