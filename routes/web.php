@@ -118,3 +118,10 @@ Route::get('/services', 'App\Http\Controllers\ServiceController@index')->name('g
 Route::get('/services/{serviceCategory}/packages', 'App\Http\Controllers\ServiceController@servicePromoIndex')->name('user.servicePackages');
 
 Route::get('/themes', 'App\Http\Controllers\ThemesController@index')->name('user.themes');
+
+// Route::get('/most-ordered-menu/{categoryName}','App\Http\Controllers\MenuController@showMostOrderedMenu')
+//     ->name('most-ordered-menu');
+
+    Route::get('/most-ordered-menu/{category}','App\Http\Controllers\MenuController@showMostOrderedMenu')
+    ->name('most-ordered-menu');
+

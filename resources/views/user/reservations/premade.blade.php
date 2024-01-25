@@ -4,15 +4,7 @@
 
 <link rel="stylesheet" href="{{ asset('css/Services.css') }}">
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+
 
 <div class="premade-form">
         <h1 class="display-1">
@@ -38,6 +30,15 @@
 
     <input type="hidden" name="selected_package" value="{{ $specificPackage->id }}">
         <table>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
           <tr>
             <td>
               <div class="input-group mb-3">

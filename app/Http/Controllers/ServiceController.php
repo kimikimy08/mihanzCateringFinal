@@ -19,9 +19,13 @@ class ServiceController extends Controller
     public function servicePromoIndex($serviceCategory)
     {
         // If $serviceCategory is not provided or not found in the database, use the default category
+        
+
         $serviceSelection = $serviceCategory
             ? ServiceSelection::where('services_category', $serviceCategory)->first()
             : ServiceSelection::where('services_category', $this->getDefaultCategory())->first();
+
+            $categoryName = $serviceSelection->services_category;
 
         if (!$serviceSelection) {
             return redirect()->route('guest.services');

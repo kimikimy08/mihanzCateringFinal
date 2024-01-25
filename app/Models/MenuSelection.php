@@ -15,11 +15,13 @@ class MenuSelection extends Model
 
     public function menus()
     {
-        return $this->hasMany(Menu::class);
+        return $this->hasMany(Menu::class, 'menu_selection_id');
     }
 
     public function reservation()
     {
         return $this->hasMany(Reservation::class);
     }
+    
+    
 }

@@ -73,6 +73,17 @@ class ReservationController extends Controller
             $events[] = $event;
         }
 
-        return view('admin.reservation.index',compact('categories', 'events'));
+        $menus = [];
+        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus;
+        $menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus;
+        $menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus;
+        $menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus;
+        $menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus;
+        $menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus;
+        $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus;
+        $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus;
+        $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus;
+
+        return view('admin.reservation.index',compact('categories', 'events', 'menus'));
     }
 }

@@ -21,7 +21,6 @@ return new class extends Migration
             $table->unsignedBigInteger('menu_selection_id');
             $table->foreign('menu_selection_id')->references('id')->on('menu_selections');
             $table->string('menus_image')->nullable();
-            $table->integer('order_count')->default(0);
             $table->timestamps();
         });
     }

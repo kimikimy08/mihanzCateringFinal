@@ -9,6 +9,7 @@ use App\Models\ReservationCustomize;
 use App\Models\ServicePackage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class ReservationController extends Controller
 {
@@ -42,7 +43,13 @@ class ReservationController extends Controller
             'celebrant_age' => 'required|numeric|min:0',
             'event_theme' => 'required|string',
             'celebrant_gender' => 'required|in:Male,Female',
-            'event_date' => 'required|date',
+            'event_date' => [
+                'required',
+                'date',
+                'after_or_equal:' . now()->addDays(7)->toDateString(),
+                Rule::unique('reservations')->where(function ($query) use ($request) {
+                    return $query->where('event_date', $request->input('event_date'));
+                })],
             'event_time' => 'required|date_format:H:i',
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',
@@ -156,7 +163,13 @@ class ReservationController extends Controller
             'celebrant_age' => 'required|numeric|min:0',
             'event_theme' => 'required|string',
             'celebrant_gender' => 'required|in:Male,Female',
-            'event_date' => 'required|date',
+            'event_date' => [
+                'required',
+                'date',
+                'after_or_equal:' . now()->addDays(7)->toDateString(),
+                Rule::unique('reservations')->where(function ($query) use ($request) {
+                    return $query->where('event_date', $request->input('event_date'));
+                })],
             'event_time' => 'required|date_format:H:i',
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',

@@ -22,80 +22,80 @@ class Reservation extends Model
         return $this->hasOne(ReservationPremade::class);
     }
 
-    
-
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-
     public function porkMenu()
-{
-    return $this->belongsTo(Menu::class, 'pork_menu_id');
-}
+    {
+        return $this->belongsTo(Menu::class, 'pork_menu_id');
+    }
 
+    public function beefMenu()
+    {
+        return $this->belongsTo(Menu::class, 'beef_menu_id');
+    }
 
+    public function pastaMenu()
+    {
+        return $this->belongsTo(Menu::class, 'pasta_menu_id');
+    }
 
-public function beefMenu()
-{
-    return $this->belongsTo(Menu::class, 'beef_menu_id');
-}
+    public function chickenMenu()
+    {
+        return $this->belongsTo(Menu::class, 'chicken_menu_id');
+    }
 
-public function pastaMenu()
-{
-    return $this->belongsTo(Menu::class, 'pasta_menu_id');
-}
+    public function vegetableMenu()
+    {
+        return $this->belongsTo(Menu::class, 'veggies_menu_id');
+    }
 
-public function chickenMenu()
-{
-    return $this->belongsTo(Menu::class, 'chicken_menu_id');
-}
+    public function fishMenu()
+    {
+        return $this->belongsTo(Menu::class, 'fish_menu_id');
+    }
 
-public function vegetableMenu()
-{
-    return $this->belongsTo(Menu::class, 'veggies_menu_id');
-}
+    public function seafoodMenu()
+    {
+        return $this->belongsTo(Menu::class, 'seafood_menu_id');
+    }
 
-public function fishMenu()
-{
-    return $this->belongsTo(Menu::class, 'fish_menu_id');
-}
+    public function dessertMenu()
+    {
+        return $this->belongsTo(Menu::class, 'dessert_menu_id');
+    }
 
-public function seafoodMenu()
-{
-    return $this->belongsTo(Menu::class, 'seafood_menu_id');
-}
+    public function drinkMenu()
+    {
+        return $this->belongsTo(Menu::class, 'drink_menu_id');
+    }
 
-public function dessertMenu()
-{
-    return $this->belongsTo(Menu::class, 'dessert_menu_id');
-}
+    public function getMenuName($menuType)
+    {
+        return $this->$menuType ? $this->$menuType->name : null;
+    }
 
-public function drinkMenu()
-{
-    return $this->belongsTo(Menu::class, 'drink_menu_id');
-}
+    public function reservationSelection()
+    {
+        return $this->hasOne(ReservationSelection::class);
+    }
 
+    public function reservationCustomize()
+    {
+        return $this->hasOne(ReservationCustomize::class);
+    }
 
-public function getMenuName($menuType)
-{
-    return $this->$menuType ? $this->$menuType->name : null;
-}
-
-public function reservationSelection()
-{
-    return $this->hasOne(ReservationSelection::class);
-}
-
-public function reservationCustomize()
-{
-    return $this->hasOne(ReservationCustomize::class);
-}
-
-public function menuSelection()
+    public function menuSelection()
     {
         return $this->hasOne(MenuSelection::class);
     }
+
+    public function callStatuses()
+    {
+        return $this->hasMany(CallStatus::class);
+    }
+
 
 }

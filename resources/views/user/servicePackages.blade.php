@@ -20,7 +20,7 @@
               <h1 class="display-4 text-center">Customize base on your budget </h1>
             </li>
           </a>
-          <a href="../MostOrderedMenu.html">
+          <a href="{{ route('most-ordered-menu', ['category' => $categoryName]) }}">
             <li >
               <h1 class="display-4 text-center">Most Ordered Menu</h1>
               
