@@ -108,6 +108,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::post('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeStore')->name('user.reservations.store');
         Route::get('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeForm')->name('user.reservations.customize-form');
         Route::post('/customize/reservation/form/submit', 'App\Http\Controllers\ReservationController@submitCustomizeForm')->name('reservation.customize.submit');
+        Route::put('/user/update', 'App\Http\Controllers\UserController@update')->name('profile.update');
         // Route::get('/customize/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummaryCustomize')->name('user.reservations.custom_summary');
     });
 

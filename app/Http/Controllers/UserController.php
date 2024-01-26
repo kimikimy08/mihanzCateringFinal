@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\Request;
 use App\Models\MenuSelection;
 use App\Models\Reservation;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -54,6 +55,17 @@ class UserController extends Controller
     {
         // Get the authenticated user
         $user = Auth::user();
+
+
+    // Retrieve reservations for the authenticated user where event_date is less than today's date
+    $pastReservations = $user->reservations()
+        ->where('event_date', '<', Carbon::now()->toDateString())
+        ->get();
+
+        $latestReservations = $user->reservations()
+        ->where('event_date', '>=', Carbon::now()->subDays(7)->toDateString()) // within the last 7 days
+        ->orderBy('event_date', 'desc') // order by event_date in descending order
+        ->get();
 
         // Fetch reservations related to the authenticated user
         $allReservations = $user->reservations;
@@ -146,6 +158,49 @@ class UserController extends Controller
             $futureEvents[] = $futureEvent;
         }
 
-        return view('user.dashboard', compact('user', 'events', 'futureEvents'));
+        return view('user.dashboard', compact('user', 'events', 'futureEvents', 'pastReservations', 'latestReservations'));
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+
+    // Validation rules
+    $rules = [
+        'name' => 'required|string|max:255',
+        'address' => 'required|string|max:255',
+        'contact_number' => 'required|string|max:20',
+        'email' => [
+            'required',
+            'string',
+            'email',
+            'max:255',
+            Rule::unique('users')->ignore($user->id),
+        ],
+        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Assuming profile picture is an image
+    ];
+
+    // Validate the request
+    $request->validate($rules);
+
+    // Update user data
+    $user->name = $request->input('name');
+    $user->address = $request->input('address');
+    $user->contact_number = $request->input('contact_number');
+    $user->email = $request->input('email');
+
+
+    $imagePath = null;
+        if ($request->hasFile('profile_picture')) {
+            $profile_picture = $request->file('profile_picture');
+            $imagePath = time() . '_' . $profile_picture->getClientOriginalName();
+            $profile_picture->move(public_path('images/user'), $imagePath);
+            $user->profile_picture = $imagePath;
+        }
+
+    // Save the changes
+    $user->save();
+
+        return redirect()->route('user.dashboard')->with('success', 'Profile updated successfully.');
     }
 }
