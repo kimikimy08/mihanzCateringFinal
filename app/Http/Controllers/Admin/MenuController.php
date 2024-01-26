@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\MenuSelection;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -31,8 +32,9 @@ class MenuController extends Controller
     public function create()
     {
         $categories = MenuSelection::all();
+        $reservation_categories = Reservation::all();
 
-        return view('admin.menu.addmenu', ['categories' => $categories]);
+        return view('admin.menu.addmenu', ['categories' => $categories, 'reservation_categories'=>$reservation_categories]);
     }
 
     public function store(Request $request)

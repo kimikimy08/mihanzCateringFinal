@@ -7,19 +7,22 @@ use Illuminate\Http\Request;
 use App\Models\ServiceSelection;
 use App\Models\ServicePackage;
 use App\Models\MenuSelection;
+use App\Models\Reservation;
 
 class ServiceController extends Controller
 {
     public function index()
     {
+        $status = 'all';
         $services = ServiceSelection::all();
         $categories = MenuSelection::all();
-        return view('admin.service.index', compact('services', 'categories'));
+        $reservation_categories = Reservation::all();
+        return view('admin.service.index', compact('services', 'categories', 'reservation_categories', 'status'));
     }
 
     public function show($id)
     {
-
+        $status = 'all';
         $services = ServiceSelection::findOrFail($id);
         $categories = MenuSelection::all();
         $packages = ServicePackage::where('service_selection_id', $services->id)->get();
@@ -28,7 +31,7 @@ class ServiceController extends Controller
             $package->service_promo_image = asset("images/services/packages/".rawurlencode($package->service_promo_image));
         }
     
-        return view('admin.service.viewservice', compact('services', 'packages', 'categories'));
+        return view('admin.service.viewservice', compact('services', 'packages', 'categories', 'status'));
     }
 
     public function create()

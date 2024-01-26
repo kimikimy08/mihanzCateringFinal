@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 use App\Models\ThemeSelection;
 use App\Models\MenuSelection;
 use App\Models\ServiceSelection;
+use App\Models\Reservation;
 
 
 class ThemeController extends Controller
 {
     public function index()
     {
+        $status = 'all';
         $themes = ThemeSelection::all();
         $categories = MenuSelection::all();
         $services = ServiceSelection::all(); 
+        $reservation_categories = Reservation::all();
 
-        return view('admin.theme.index', ['themes' => $themes, 'categories' => $categories, 'services' => $services]);
+        return view('admin.theme.index', ['themes' => $themes, 'categories' => $categories, 'services' => $services, 'reservation_categories'=>$reservation_categories, 'status'=>$status]);
     }
 
     public function create()
@@ -65,7 +68,7 @@ class ThemeController extends Controller
         $themes = ThemeSelection::findOrFail($id);
 
         $request->validate([
-            'theme_name' => 'required|string|unique:theme_selections',
+            'theme_name' => 'required|string|unique:theme_selections,theme_name,'. $id,
             'service_selection_id' => 'required|exists:service_selections,id',
             'themes_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);

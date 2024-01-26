@@ -59,6 +59,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/admin/theme/{id}', 'App\Http\Controllers\Admin\ThemeController@destroy')->name('admin.theme.destroy');
 
     // ADMIN RESERVATION
+    Route::get('/admin/reservation/{status}', 'App\Http\Controllers\Admin\ReservationController@showReservationStatus');
     Route::get('/admin/reservation', 'App\Http\Controllers\Admin\ReservationController@index')->name('admin.reservation.index');
     Route::get('/admin/reservation/{id}/edit', 'App\Http\Controllers\Admin\ReservationController@edit')->name('admin.reservation.edit');
     Route::put('/admin/reservation/{id}', 'App\Http\Controllers\Admin\ReservationController@update')->name('admin.reservation.update');

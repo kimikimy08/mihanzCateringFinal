@@ -15,6 +15,7 @@ class MenuController extends Controller
 {
     public function index()
     {
+        
         $menuItems = MenuSelection::all();
         foreach ($menuItems as $menuItem) {
             $menuItem->menu_image = asset("images/menu/menu_selection/".rawurlencode($menuItem->menu_image));

@@ -17,10 +17,12 @@ class UserController extends Controller
 
     public function index()
     {
+        $status = 'all';
         $users = User::all();
         $categories = MenuSelection::all();
+        $reservation_categories = Reservation::all();
         $roles = Role::all();
-        return view('admin.user.index', compact('users', 'categories', 'roles'));
+        return view('admin.user.index', compact('users', 'categories', 'roles', 'reservation_categories', 'status'));
     }
 
     public function show($id)

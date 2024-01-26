@@ -3,7 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 
-<h1 class="display-1 ">Pending</h1>
+<h1 class="display-1 ">{{ ucwords($status) }} Reservation</h1>
         
         <section class="section-pending" >
           <table class="table">

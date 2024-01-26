@@ -11,9 +11,16 @@ class AdminController extends Controller
 {
     public function index()
     {
+
+        $status = 'all';
+
+
         $userCount = User::count();
         $futureReservationsCount = Reservation::where('event_date', '>=', Carbon::today())->count();
         $pastReservationsCount = Reservation::where('event_date', '<', Carbon::today())->count();
+        $pendingReservationsCount = Reservation::where('reservation_status', 'pending')->count();
+        $approvedReservationsCount = Reservation::where('reservation_status', 'approve')->count();
+        
 
         $categories = MenuSelection::all();
         $allReservations = Reservation::all();
@@ -106,6 +113,6 @@ class AdminController extends Controller
             $futureEvents[] = $futureEvent;
         }
 
-        return view('admin.dashboard', compact('categories', 'userCount', 'events', 'futureEvents', 'futureReservationsCount', 'pastReservationsCount'));
+        return view('admin.dashboard', compact('categories', 'userCount', 'events', 'futureEvents', 'futureReservationsCount', 'pastReservationsCount', 'status', 'pendingReservationsCount', 'approvedReservationsCount'));
     }
 }
