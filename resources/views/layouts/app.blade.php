@@ -56,9 +56,9 @@
           <li class="nav-item">
             @if (auth()->check())
             @if (auth()->user()->hasRole('admin'))
-            <a class="nav-link" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+            <a class="nav-link {{ Request::is('admin-dashboard') ? 'active' : '' }}" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
             @else
-            <a class="nav-link" href="{{ route('user.dashboard') }}">{{ __('Dashboard') }}</a>
+            <a class="nav-link {{ Request::is('user-dashboard') ? 'active' : '' }}" href="{{ route('user.dashboard') }}">{{ __('Dashboard') }}</a>
             @endif
           </li>
           @endif

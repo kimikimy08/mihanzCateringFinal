@@ -13,6 +13,7 @@ class MenuController extends Controller
 {
     public function showMenuByCategory($category)
     {
+        $status = 'all';
         if ($category === 'all') {
             $menus = Menu::all();
         } else {
@@ -26,11 +27,13 @@ class MenuController extends Controller
             'menus' => $menus,
             'category' => $category,
             'categories' => $categories,
+            'status' => $status
         ]);
     }
 
     public function create()
     {
+        
         $categories = MenuSelection::all();
         $reservation_categories = Reservation::all();
 

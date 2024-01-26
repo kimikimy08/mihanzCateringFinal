@@ -25,38 +25,38 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="nav nav-tabs ">
                 <li class="nav-item">
-                  <a class="nav-link active " aria-current="page" href="/admin-dashboard">Dashboard</a>
+                  <a class="nav-link {{ Request::is('admin-dashboard') ? 'active' : '' }} " aria-current="page" href="/admin-dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Reservation
-                    </a>
-                    <ul class="dropdown-menu">
-                    <li><a class="dropdown-item {{ $status === 'all' ? 'active' : '' }}" href="{{ url('/admin/reservation/all') }}">All</a></li>
-                    <li><a class="dropdown-item {{ $status === 'pending' ? 'active' : '' }}" href="{{ url('/admin/reservation/pending') }}">Pending</a></li>
-                <li><a class="dropdown-item {{ $status === 'approved' ? 'active' : '' }}" href="{{ url('/admin/reservation/approved') }}">Approved</a></li>
-                      <li><a class="dropdown-item" href="reservation/History/index.html">History</a></li>
-                    </ul>
-                  </li>
+        <a class="nav-link dropdown-toggle {{ Request::is('admin/reservation/*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Reservation
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item {{ $status === 'all' ? 'active' : '' }}" href="{{ url('/admin/reservation/all') }}">All</a></li>
+            <li><a class="dropdown-item {{ $status === 'pending' ? 'active' : '' }}" href="{{ url('/admin/reservation/pending') }}">Pending</a></li>
+            <li><a class="dropdown-item {{ $status === 'approved' ? 'active' : '' }}" href="{{ url('/admin/reservation/approved') }}">Approved</a></li>
+            <li><a class="dropdown-item" href="{{ url('/admin/reservation/history') }}">History</a></li>
+        </ul>
+    </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{{ url('/admin/service') }}">Services</a>
+                  <a class="nav-link {{ Request::is('admin/service') ? 'active' : '' }}" href="{{ url('/admin/service') }}">Services</a>
                 </li>
                 <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle  " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Menu
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item " href="{{ url('/admin/menu/all') }}">All</a></li>
-                    @foreach($categories as $category)
-    <li><a class="dropdown-item" href="{{ url('/admin/menu/' . $category->menu_category) }}">{{ $category->menu_category }}</a></li>
-@endforeach
-                  </ul>
-                </li>
+        <a class="nav-link dropdown-toggle {{ Request::is('admin/menu*') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Menu
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item {{ Request::is('admin/menu/all') ? 'active' : '' }}" href="{{ url('/admin/menu/all') }}">All</a></li>
+            @foreach($categories as $category)
+                <li><a class="dropdown-item {{ Request::is('admin/menu/' . $category->menu_category) ? 'active' : '' }}" href="{{ url('/admin/menu/' . $category->menu_category) }}">{{ $category->menu_category }}</a></li>
+            @endforeach
+        </ul>
+    </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ url('/admin/theme') }}">Themes</a>
+                    <a class="nav-link {{ Request::is('admin/theme') ? 'active' : '' }} " href="{{ url('/admin/theme') }}">Themes</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/admin/user') }}">User</a>
+                    <a class="nav-link nav-link {{ Request::is('admin/user') ? 'active' : '' }}" href="{{ url('/admin/user') }}">User</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link " href="{{ route('logout') }}" onclick="event.preventDefault();

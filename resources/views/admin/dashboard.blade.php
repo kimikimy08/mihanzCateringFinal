@@ -10,8 +10,8 @@
     <ul>
       <li><a href="{{ url('/admin/reservation/pending') }}">Pending Request <p class="mt-4 fs-1">{{ $pendingReservationsCount }}</p></a></li>
       <li><a href="{{ url('/admin/reservation/approved') }}">Approved Request <p class="mt-4 fs-1">{{ $approvedReservationsCount }}</p></a></li>
-      <li><a href="{{ url('/admin/reservation/incoming_events') }}">Incoming Events <p class="mt-4 fs-1">{{ $futureReservationsCount }}</p></a></li>
-      <li><a href="{{ url('/admin/reservation/past_events') }}">Past Events <p class="mt-4 fs-1">{{ $pastReservationsCount }}</p></a></li>
+      <li><a href="{{ url('/admin/reservation/incoming') }}">Incoming Events <p class="mt-4 fs-1">{{ $futureReservationsCount }}</p></a></li>
+      <li><a href="{{ url('/admin/reservation/history') }}">Past Events <p class="mt-4 fs-1">{{ $pastReservationsCount }}</p></a></li>
       <li><a href="{{ url('/admin/user') }}">Users <p class="mt-4 fs-1">{{ $userCount }}</p></a></li>
     </ul>
   </div>
