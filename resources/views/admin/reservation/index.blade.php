@@ -24,7 +24,7 @@
             <tbody>
             @foreach($events as $event)
               <tr>
-                <th scope="row"></th>
+                <th scope="row">{{ $event['id'] }}</th>
                 <td>{{ $event['name'] }}</td>
                 <td>{{ $event['contact_number'] }}</td>
                 <td>{{ $event['event_date'] }} </td>
@@ -49,7 +49,11 @@
                   <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Editreservation{{ $event['id'] }}">
                 Edit
             </button>
-                  <button type="button" class="btn btn-danger"data-bs-toggle="modal" data-bs-target="#Deleterequestdetail" >Delete</button>
+            <form action="{{ route('reservation.destroy', $event['id']) }}" method="post" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this reservation?')">Delete</button>
+            </form>
                 </td>
               </tr>
 

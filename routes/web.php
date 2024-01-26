@@ -60,10 +60,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // ADMIN RESERVATION
     Route::get('/admin/reservation', 'App\Http\Controllers\Admin\ReservationController@index')->name('admin.reservation.index');
+    Route::get('/admin/reservation/{id}/edit', 'App\Http\Controllers\Admin\ReservationController@edit')->name('admin.reservation.edit');
+    Route::put('/admin/reservation/{id}', 'App\Http\Controllers\Admin\ReservationController@update')->name('admin.reservation.update');
+    Route::delete('/admin/reservation/{id}', 'App\Http\Controllers\Admin\ReservationController@destroy')->name('reservation.destroy');
 
-    Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
-    Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
-    Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
+    // Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
+    // Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
+    // Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');
 
     // Route::get('/users/{user}', 'App\Http\Controllers\UserController@usermanagement_show')->name('admin.users.view');
     // Route::get('/users/{user}/edit', 'App\Http\Controllers\UserController@usermanagement_edit')->name('admin.users.edit');

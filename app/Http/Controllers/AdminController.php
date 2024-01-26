@@ -12,9 +12,13 @@ class AdminController extends Controller
     public function index()
     {
         $userCount = User::count();
+        $futureReservationsCount = Reservation::where('event_date', '>=', Carbon::today())->count();
+        $pastReservationsCount = Reservation::where('event_date', '<', Carbon::today())->count();
+
         $categories = MenuSelection::all();
         $allReservations = Reservation::all();
         $futureReservations = Reservation::where('event_date', '>=', Carbon::today())->get();
+       
         $events = [];
         $futureEvents = [];
 
@@ -102,6 +106,6 @@ class AdminController extends Controller
             $futureEvents[] = $futureEvent;
         }
 
-        return view('admin.dashboard', compact('categories', 'userCount', 'events', 'futureEvents'));
+        return view('admin.dashboard', compact('categories', 'userCount', 'events', 'futureEvents', 'futureReservationsCount', 'pastReservationsCount'));
     }
 }

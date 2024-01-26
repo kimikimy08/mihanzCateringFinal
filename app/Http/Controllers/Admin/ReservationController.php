@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Reservation;
 use App\Models\User;
 use Illuminate\Support\Carbon;
+use Illuminate\Validation\Rule;
 
 use App\Models\MenuSelection;
 
@@ -86,4 +87,88 @@ class ReservationController extends Controller
 
         return view('admin.reservation.index',compact('categories', 'events', 'menus'));
     }
+
+    public function edit($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+    
+        return view('admin.reservation.edit', compact('reservation'));
+    }
+    
+    public function update(Request $request, $id)
+        {
+            $reservations = Reservation::findOrFail($id);
+    
+            $request->validate([
+
+                'celebrant_name' => 'required|string',
+                'celebrant_age' => 'required|numeric|min:0',
+                'event_theme' => 'required|string',
+                'celebrant_gender' => 'required|in:Male,Female',
+                'event_date' => [
+                    'required',
+                    'date',
+                    'after_or_equal:' . now()->addDays(7)->toDateString(),
+                    Rule::unique('reservations')->ignore($request->route('reservation'), 'id')
+                    ->where(function ($query) use ($request) {
+                        return $query->where('event_date', '!=', $request->input('event_date'));
+                    }),
+            ],
+                'event_time' => 'required',
+                'venue_address' => 'required|string',
+                'pork_menu' => 'exists:menus,id',
+                'beef_menu' => 'exists:menus,id',
+                'chicken_menu' => 'exists:menus,id',
+                'fish_menu' => 'exists:menus,id',
+                'seafood_menu' => 'required|exists:menus,id',
+                'vegetable_menu' => 'required|exists:menus,id',
+                'dessert_menu' => 'required|exists:menus,id',
+                'drink_menu' => 'required|exists:menus,id',
+                'pasta_menu' => 'required|exists:menus,id',
+
+            ]);
+    
+            $reservations->update([
+                'celebrant_name' => $request->input('celebrant_name'),
+                'celebrant_age' => $request->input('celebrant_age'),
+                'event_theme' => $request->input('event_theme'),
+                'celebrant_gender' => $request->input('celebrant_gender'),
+                'event_date' => $request->input('event_date'),
+                'event_time' => $request->input('event_time'),
+                'venue_address' => $request->input('venue_address'),
+                'pork_menu_id' => $request->input('pork_menu'),
+                'beef_menu_id' => $request->input('beef_menu'),
+                'chicken_menu_id' => $request->input('chicken_menu'),
+                'fish_menu_id' => $request->input('fish_menu'),
+                'seafood_menu_id' => $request->input('seafood_menu'),
+                'veggies_menu_id' => $request->input('vegetable_menu'),
+                'dessert_menu_id' => $request->input('dessert_menu'),
+                'drink_menu_id' => $request->input('drink_menu'),
+                'pasta_menu_id' => $request->input('pasta_menu'),
+    
+            ]);
+
+            $reservations->selections()->update([
+                'categoryName' => $request->input('categoryName'),
+                'choice' => 'customize',
+            ]);
+
+            $reservations->reservationCustomize()->update([
+                'pax' => $request->input('pax'),
+            'price' => $request->input('price'),
+            ]);
+    
+            return redirect()->back()->with('success', 'Reservation details updated successfully!');
+        }
+
+        public function destroy($id)
+{
+    $reservation =  Reservation::findOrFail($id);
+
+
+    // Delete the menu item
+    $reservation->delete();
+
+    return redirect()->back()->with('success', 'Reservation deleted successfully!');
+}
 }
