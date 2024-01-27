@@ -8,7 +8,7 @@ class Reservation extends Model
 {
     protected $fillable = [
         'celebrant_name', 'celebrant_age', 'event_theme', 'event_date', 'event_time', 'venue_address', 'celebrant_gender', 'agree_terms', 'pork_menu_id', 'chicken_menu_id', 'veggies_menu_id',
-        'beef_menu_id', 'pasta_menu_id', 'fish_menu_id', 'seafood_menu_id', 'dessert_menu_id', 'drink_menu_id',
+        'beef_menu_id', 'pasta_menu_id', 'fish_menu_id', 'seafood_menu_id', 'dessert_menu_id', 'drink_menu_id', 'reservation_status',
 
     ];
 

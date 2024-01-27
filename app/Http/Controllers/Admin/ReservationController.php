@@ -122,7 +122,6 @@ class ReservationController extends Controller
             'event_date' => [
                 'required',
                 'date',
-                'after_or_equal:' . now()->addDays(7)->toDateString(),
                 Rule::unique('reservations')->ignore($request->route('reservation'), 'id')
                     ->where(function ($query) use ($request) {
                         return $query->where('event_date', '!=', $request->input('event_date'));
@@ -139,8 +138,9 @@ class ReservationController extends Controller
             'dessert_menu' => 'required|exists:menus,id',
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
-
+            'reservation_status'  => 'required',
         ]);
+        
 
         $reservations->update([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -159,7 +159,7 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-
+            'reservation_status' => $request->input('reservation_status'), 
         ]);
 
         $reservations->selections()->update([

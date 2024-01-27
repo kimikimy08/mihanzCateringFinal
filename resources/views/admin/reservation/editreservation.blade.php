@@ -12,15 +12,6 @@
         <div class="modal-body">
           <div>
             <table class="table">
-              @if ($errors->any())
-              <div class="alert alert-danger">
-                <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-                </ul>
-              </div>
-              @endif
               <thead>
                 <tr>
                   <th scope="row">Name:</th>
@@ -167,6 +158,17 @@
                   </td>
 
                 </tr>
+
+                <tr class="mt-10">
+                      <th scope="row"  class="fs-6 ">Reservation Status</th> 
+            
+                      <td><select name="reservation_status" class="form-select">
+                      <option value="" @if($event['reservation_status']=="" ) selected @endif></option>
+                      <option value="Pending" @if($event['reservation_status']=="Pending" ) selected @endif>Pending</option>
+                      <option value="Approve" @if($event['reservation_status']=="Approve" ) selected @endif>Approve</option>
+                      <option value="Decline" @if($event['reservation_status']=="Decline" ) selected @endif>Decline</option>
+                    </select></td>
+                    </tr>
 
               </tbody>
             </table>
