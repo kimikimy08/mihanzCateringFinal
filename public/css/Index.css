@@ -7,7 +7,7 @@ body{
     scrollbar-gutter: stable;
 }
 main{
-
+    display: flex;
     height: auto;
    align-items: center;
     flex-direction: column;   
@@ -56,7 +56,7 @@ main{
 }
 /* selection */
 .selection{
-    height: 100vh;
+    height: 120vh;
     width: 100%;
     background:linear-gradient(rgba(0,0,0,0.100),rgba(0,0,0,0.100)) ,url("/images/background-outline.png"),no-repeat;
     background-position: center;
@@ -153,6 +153,7 @@ margin-bottom: 20vh;
 flex-direction: column;
 padding-left: 10%;
 width: 100%;
+margin-top: 100px;
 
 }
 #menu-btn{
@@ -184,7 +185,7 @@ margin: 5%;
     flex-direction: row-reverse;
     flex-wrap: wrap;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 20vh;
 }
 #red{
 color: red;

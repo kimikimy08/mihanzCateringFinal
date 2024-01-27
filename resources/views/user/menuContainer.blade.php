@@ -30,7 +30,7 @@
   <!-- Modal -->
   @foreach($menus as $menu)
   <div class="modal fade" id="menuModal{{ $menu->id }}" tabindex="-1" aria-labelledby="menuModalLabel{{ $menu->id }}" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
@@ -39,13 +39,13 @@
         <div class="modal-body">
             <img src="{{  asset('images/menu/' . $menu->menus_image) }}" alt="" class="">
             <div class="info">
-            <h1 class="display-5 text-center fw-semibold">{{$menu->name}}</h1>
+            <h1 class="display-5  fw-semibold">{{$menu->name}}</h1>
             
            <div class="info-pos">
             <p class="text-center fw-bolder ">Price: ₱{{$menu->price}}</p>
             <p class="text-center fw-bolder  mb-5">Serving: {{$menu->serving}}</p>
            </div>
-          <p class="text-center" style="font-size: 20px;">
+          <p class="" style="font-size: 20px;">
           {{$menu->description}}
           </p>
         </div>

@@ -46,7 +46,7 @@ main button a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
     margin-bottom: 100px;
 }
 .Services-Container .birthday{
@@ -66,7 +66,7 @@ main button a{
     box-shadow: 5px 5px 5px black;
 }
 .Services-Container ul{
-    margin-top: 100px;
+    /* margin-top: 100px; */
     display: flex;
     list-style: none;
     width: 100%;

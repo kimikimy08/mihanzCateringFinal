@@ -44,7 +44,7 @@
       </div>
     <!-- selection -->
     <div class="selection">
-      <h1 class="display-2 text-center">Things We Offer</h1>
+      <h1 class="display-2 text-center"  style="font-family: 'Playfair Display', serif; margin-top: 100px;">Things We Offer</h1>
         <ul>
           <li><a href="{{ url('/services') }}">Services</a></li>
           <li><a href="{{ url('/menus') }}">Menu</a></li>
@@ -58,7 +58,7 @@
 
     <!-- Reservation Information -->
     <div class="reservation-Info">
-        <h1 class="display-4">
+        <h1 class="display-4"  style="font-family: 'Playfair Display', serif;">
             Ready to make your reservation? 
         </h1>
         <ul>
@@ -74,13 +74,13 @@
     <!-- Calendar -->
     <div class="calendar-Date">
 
-        <!-- <div>
+         {{-- <div>
             <h1>Mark your Dates</h1>
         <p>Here is our Available Event dates <br/>
         
           <b id="green">Green</b> means its Available</p>
         <p><b id="red">Red</b> means it's Occupied</p>
-        </div> -->
+        </div>  --}}
         
         <div id="calendar"></div>
         </div>       
@@ -93,7 +93,7 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       events: @json($futureEvents),
-      height: '70vh', // Set the height of the calendar
+      height: '86vh', // Set the height of the calendar
       width: '80%',   // Set the width of the calendar to 100% of the container
       eventRender: function(info) {
         var availability = info.event.extendedProps.availability;

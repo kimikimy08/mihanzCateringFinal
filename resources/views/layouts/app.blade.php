@@ -109,7 +109,7 @@
   <!-- footer -->
 
   <footer>
-    <h1 class="display-1 ">
+    <h1 class="display-1 "  style="font-family: 'Playfair Display', serif;">
       Mihanz Catering
     </h1>
 
@@ -135,7 +135,7 @@
         </a>
 
       </li>
-      <a href="/ADMIN/Index.html"> Admin</a>
+     
     </ul>
 
   </footer>
