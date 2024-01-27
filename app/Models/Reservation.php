@@ -92,7 +92,7 @@ class Reservation extends Model
         return $this->hasOne(MenuSelection::class);
     }
 
-    public function callStatuses()
+    public function callStatus()
     {
         return $this->hasMany(CallStatus::class);
     }

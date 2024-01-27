@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\MenuSelection;
 use App\Models\Reservation;
 use App\Models\User;
+use App\Models\CallStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\Rule;
@@ -184,4 +185,45 @@ class ReservationController extends Controller
 
         return redirect()->back()->with('success', 'Reservation deleted successfully!');
     }
+
+    public function indexCallStatus($id)
+    {
+        $status = 'all';
+        $categories = MenuSelection::all();
+        $reservation = Reservation::findOrFail($id);
+        $callStatuses = $reservation->callStatus()->orderBy('call_status_date', 'desc')->get();
+
+        return view('admin.reservation.call.index', compact('reservation', 'callStatuses', 'status', 'categories'));
+    }
+
+    public function addCallStatus($id)
+    {
+        $reservation = Reservation::findOrFail($id);
+
+        return view('admin.reservations.add_call_status', compact('reservation'));
+    }
+
+    public function storeCallStatus(Request $request, $id)
+{
+    $request->validate([
+        'call_status_date' => 'required|date',
+        'call_status_time' => 'required|date_format:H:i',
+        'call_status' => 'required|in:Waiting,Contacted,Approved,Canceled',
+        'call_remarks' => 'nullable|string',
+    ]);
+
+    // The $id parameter is already the reservation_id
+    $reservation = Reservation::findOrFail($id);
+
+    $call = new CallStatus([
+        'call_status_date' => $request->input('call_status_date'),
+        'call_status_time' => $request->input('call_status_time'),
+        'call_status' => $request->input('call_status'),
+        'call_remarks' => $request->input('call_remarks'),
+    ]);
+
+    $reservation->callStatus()->save($call);
+
+    return redirect()->route('call-status.index', $id)->with('success', 'Call status added successfully.');
+}
 }

@@ -65,6 +65,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/admin/reservation/{id}', 'App\Http\Controllers\Admin\ReservationController@update')->name('admin.reservation.update');
     Route::delete('/admin/reservation/{id}', 'App\Http\Controllers\Admin\ReservationController@destroy')->name('reservation.destroy');
 
+    // ADMIN CALL STATUS
+    Route::get('/admin/reservation/{id}/call', 'App\Http\Controllers\Admin\ReservationController@indexCallStatus')->name('call-status.index');
+    Route::get('reservations/{id}/call-status/add', 'App\Http\Controllers\Admin\ReservationController@addCallStatus')->name('call-status.add');
+    Route::post('reservations/{id}/call-status/store', 'App\Http\Controllers\Admin\ReservationController@storeCallStatus')->name('call-status.store');
+
     // Route::get('/user/{id}', 'App\Http\Controllers\UserController@show')->name('user.show');
     // Route::get('/user/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('user.edit');
     // Route::put('/user/{id}', 'App\Http\Controllers\UserController@update')->name('user.update');

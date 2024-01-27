@@ -56,7 +56,7 @@
                         @endif</td>
                 <td>{{ $event['reservation_status'] }}</td>
                 <td>
-                  <button type="button" class="btn btn-primary"><a href="status/index.html" class="">Status</a> </button>
+                  <button type="button" class="btn btn-primary"><a href="{{ route('call-status.index', ['id' => $event['id']]) }}" class="">Status</a> </button>
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Viewreservation{{ $event['id'] }}">
                             View
                         </button>
