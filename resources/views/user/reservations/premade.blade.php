@@ -16,7 +16,7 @@
           Reservation Package for <b>50</b> Guest
           The Package you chose already includes the following:
       </p>
-      <img src="../baptismal/Images/1.png" class="img-fluid" alt="">
+      {{-- <img src="../baptismal/Images/1.png" class="img-fluid" alt=""> --}}
 
       </div>
       
