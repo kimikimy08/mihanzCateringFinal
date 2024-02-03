@@ -93,7 +93,7 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       events: @json($futureEvents),
-      height: '86vh', // Set the height of the calendar
+      height: '90vh', // Set the height of the calendar
       width: '80%',   // Set the width of the calendar to 100% of the container
       eventRender: function(info) {
         var availability = info.event.extendedProps.availability;

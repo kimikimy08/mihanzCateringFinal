@@ -13,12 +13,12 @@
     <!-- FullCalendar DayGrid plugin CSS -->
     <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
-    <title>Mihan'z Catering | Admin</title>
+    <title>Mihanz Catering | Admin</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg " >
         <div class="container-fluid">
-          <a class="navbar-brand" href="{{ url('/') }}">Mihan'z Catering</a>
+          <a class="navbar-brand" href="{{ url('/') }}">Mihanz Catering</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

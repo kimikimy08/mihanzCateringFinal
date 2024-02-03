@@ -14,7 +14,7 @@
   <!-- FullCalendar DayGrid plugin CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
-  <title>Mihan'z Catering</title>
+  <title>Mihanz Catering</title>
 </head>
 
 <body>

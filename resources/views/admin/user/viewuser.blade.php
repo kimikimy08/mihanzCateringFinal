@@ -9,7 +9,7 @@
               <div class="modal-body">
                <div class="view">
                 <table class="table">
-                  <img src="/images/background4.jpg" alt="" class="img-thumbnail img-menu">
+                  {{-- <img src="/images/background4.jpg" alt="" class="img-thumbnail img-menu"> --}}
                     <tr>
                       <th scope="col">User ID</th>
                       <td>{{$user->id}}</td>

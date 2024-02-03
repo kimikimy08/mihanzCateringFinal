@@ -2,20 +2,19 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
-
-<div>
-          <h1 class="display-1 mb-5">Themes</h1>
+          <h1 class="display-1">Themes</h1>
           <div class="btn-position"> 
             <!-- <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#Addthemes"><a href="add.html">Add</a></button> -->
             <button class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#Addthemes">Add</button>
           </div>
+          <section class="themeTable">
           <table class="table">
-            <thead>
+            
             @if (session('success'))
     <div class="alert alert-success mt-3">
         {{ session('success') }}
     </div>
-@endif
+            @endif
             @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -54,7 +53,8 @@
               @endforeach
             </tbody>
           </table>
-        </div>
+          </section>
+        
         <!-- Add Theme Modal -->
         <div class="modal fade" id="Addthemes" tabindex="-1" aria-labelledby="AddthemesLabel" aria-hidden="true">
           <div class="modal-dialog modal-lg modal-dialog-centered">
