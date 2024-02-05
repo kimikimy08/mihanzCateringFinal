@@ -43,7 +43,7 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-                <input type="text" class="form-control"  name="celebrant_name"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input type="text" class="form-control"  name="celebrant_name" value="{{ old('celebrant_name') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
               </div>
             </td>
           </tr>
@@ -52,7 +52,7 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Venue Address</span>
-                <input type="text" class="form-control"  name="venue_address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input type="text" class="form-control"  name="venue_address" value="{{ old('venue_address') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
               </div>
             </td>
             
@@ -61,7 +61,7 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
-                <input type="number" class="form-control"  name="celebrant_age" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" min="0" required>
+                <input type="number" class="form-control"  name="celebrant_age" value="{{ old('celebrant_age') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" min="0" required>
               </div>
             </td>
             
@@ -70,7 +70,7 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
-                <input type="text" class="form-control"  name="event_theme" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input type="text" class="form-control"  name="event_theme" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
               </div>
             </td>
             
@@ -79,11 +79,11 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
-                <select class="form-select"  name="celebrant_gender" aria-label="Default select example" required>
-                  <option selected></option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
+                <select class="form-select" name="celebrant_gender" aria-label="Default select example">
+                <option value="" disabled>Select Gender</option>
+                <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
+            </select>
               </div>
             </td>
             
@@ -92,7 +92,7 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
-                <input type="date" class="form-control"  name="event_date" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input type="date" class="form-control"  name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
               </div>
             </td>
             
@@ -102,7 +102,7 @@
             <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Time of the event</span>
-                <input type="time" class="form-control"  name="event_time" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                <input type="time" class="form-control"  name="event_time" value="{{ old('event_time') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
               </div>
             </td>
             
@@ -121,7 +121,7 @@
                 <select class="form-select" name="pork_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Pork Menu</option>
                 @foreach($menuSelections['pork'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('pork_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -134,7 +134,7 @@
                 <select class="form-select" name="beef_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Beef Menu</option>
                 @foreach($menuSelections['beef'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('beef_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -146,7 +146,7 @@
                 <select class="form-select" name="chicken_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Chicken Menu</option>
                 @foreach($menuSelections['chicken'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('chicken_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -158,7 +158,7 @@
                 <select class="form-select" name="seafood_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Seafood Menu</option>
                 @foreach($menuSelections['seafood'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('seafood_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -170,7 +170,7 @@
                 <select class="form-select" name="fish_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Fish Menu</option>
                 @foreach($menuSelections['fish'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('fish_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -182,7 +182,7 @@
                 <select class="form-select" name="vegetable_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Vegetable Menu</option>
                 @foreach($menuSelections['vegetable'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('vegetable_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -194,7 +194,7 @@
                 <select class="form-select" name="pasta_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Pasta Menu</option>
                 @foreach($menuSelections['pasta'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('pasta_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -206,7 +206,7 @@
                 <select class="form-select" name="dessert_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Dessert Menu</option>
                 @foreach($menuSelections['dessert'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('dessert_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -218,7 +218,7 @@
                 <select class="form-select" name="drink_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Drink Menu</option>
                 @foreach($menuSelections['drink'] as $menu)
-                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('drink_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
                 </select>
               </td>
@@ -230,7 +230,9 @@
             <div class="input-group"> 
             <input type="checkbox" name="agree_terms" value="1" {{ old('agree_terms') ? 'checked' : '' }}>
             
-               <p class=" ms-1 mx-1"> I have read and agree to the</p><a href="" data-bs-toggle="modal" data-bs-target="#Termsandcondition" style="color: blue;"  class=" "> terms and condition </a> <p class="ms-1">  of Mihanz Catering</p>
+            <p class="ms-1 mx-1">I have read and agree to the</p>
+        <a href="" data-bs-toggle="modal" data-bs-target="#Termsandcondition" style="color: blue;" class="">terms and condition</a>
+        <p class="ms-1">of Mihanz Catering</p>
           </div>
         </div>
         <div class="btn-position justify-content-center mb-5">
