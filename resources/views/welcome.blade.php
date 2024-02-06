@@ -36,7 +36,7 @@
         <!-- Mihanz Information -->
         <div class="mihanz-info">
           <h1 class="display-5">
-              Mihan'z Catering 
+              Mihanz Catering 
               <p id="p1">Since 2015</p>
           
           </h1>
