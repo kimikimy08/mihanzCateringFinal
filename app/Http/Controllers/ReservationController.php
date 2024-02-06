@@ -62,10 +62,11 @@ class ReservationController extends Controller
             'dessert_menu' => 'required|exists:menus,id',
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
-            'agree_terms' => 'required|boolean|accepted',
+            'agree_terms' => 'required|accepted',
 
         ], [
             'agree_terms.accepted' => 'Please check the terms and conditions.',
+            'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
 
         $packageId = $request->input('selected_package');
@@ -182,10 +183,11 @@ class ReservationController extends Controller
             'dessert_menu' => 'required|exists:menus,id',
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
-            'agree_terms' => 'required|boolean|accepted',
+            'agree_terms' => 'required|accepted',
 
         ], [
             'agree_terms.accepted' => 'Please check the terms and conditions.',
+            'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
 
         $reservation = Auth::user()->reservations()->create([

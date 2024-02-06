@@ -120,8 +120,8 @@
               </div>
               <div class="modal-footer">
                 
-                <button type="submit" class="btn btn-primary">Accept</button>
-                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Decline</button>
+                <!-- <button type="submit" class="btn btn-primary">Accept</button>
+                <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Decline</button> -->
               </div>
             </div>
           </div>
