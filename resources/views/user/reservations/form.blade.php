@@ -7,7 +7,7 @@
         <h1 class="display-1 mb-5" style=" font-family: 'Playfair Display', serif;">
          Customization Form
       </h1>
-      <h2 class="display-6 text-start">PLEASE READ FIRST</h2>
+      {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
   
       <p class="">
           Reservation Package for <b>50</b> Guest

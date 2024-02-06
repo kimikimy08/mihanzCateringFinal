@@ -7,14 +7,13 @@
 
 
 <div class="premade-form">
-        <h1 class="display-1">
+        <h1 class="display-1" style="font-family: 'Playfair Display', serif;">
           Pre-made Form
       </h1>
-      <h2 class="display-6 text-start">PLEASE READ FIRST</h2>
+      {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
   
-      <p class="">
-          Reservation Package for <b>50</b> Guest
-          The Package you chose already includes the following:
+      <p >
+          <i><b>Please kindly fill up the following;</b></i>
       </p>
       {{-- <img src="../baptismal/Images/1.png" class="img-fluid" alt=""> --}}
 
