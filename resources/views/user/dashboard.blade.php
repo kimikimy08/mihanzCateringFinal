@@ -9,9 +9,9 @@
                   
                   
                     <table class="table">
-                      <tr>
+                      {{-- <tr>
                         <th scope="col" colspan="2"><img src="{{ asset('images/user/' . $user->profile_picture) }}" alt="" class=" img-thumbnail icon-container"></th>
-                      </tr>
+                      </tr> --}}
                         <tr>
                           <th scope="row">Name:</th>
                           <td>{{ $user->name }}</td>

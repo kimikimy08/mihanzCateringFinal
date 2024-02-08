@@ -139,6 +139,10 @@ box-shadow: 10px 10px 10px;
 .view{
     display: flex;
 }
+.view img{
+    max-height: 200px;
+    max-width: 200px;
+}
 
 /* Pending */
 .section-pending{
@@ -222,6 +226,19 @@ width: 40%;
 }
 .modal-footer{
     flex-wrap: nowrap;
+}
+.viewpackage img{
+    max-height: 100%;
+    max-width: 100%;
+}
+/* Theme */
+.themeTable{
+    height: 83%;
+    overflow: scroll;
+}
+.themeTable thead{
+    position: sticky;
+    top: 0;
 }
 /* User */
 .User-section{

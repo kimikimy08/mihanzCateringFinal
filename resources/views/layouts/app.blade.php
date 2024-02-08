@@ -14,7 +14,7 @@
   <!-- FullCalendar DayGrid plugin CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
-  <title>Mihan'z Catering</title>
+  <title>Mihanz Catering</title>
 </head>
 
 <body>
@@ -109,7 +109,7 @@
   <!-- footer -->
 
   <footer>
-    <h1 class="display-1 ">
+    <h1 class="display-1 "  style="font-family: 'Playfair Display', serif;">
       Mihanz Catering
     </h1>
 
@@ -135,7 +135,7 @@
         </a>
 
       </li>
-      <a href="/ADMIN/Index.html"> Admin</a>
+     
     </ul>
 
   </footer>

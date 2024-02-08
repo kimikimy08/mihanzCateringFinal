@@ -1,6 +1,6 @@
  <!-- View Package -->
  <div class="modal fade" id="Viewpackage{{ $package->id }}" tabindex="-1" aria-labelledby="ViewpackageLabel" aria-hidden="true">
-          <div class="modal-dialog  modal-dialog-centered">
+          <div class="modal-dialog  modal-dialog-centered modal-lg">
             <div class="modal-content">
               <div class="modal-header">
                 <h1 class="modal-title fs-5" id="ViewpackageLabel">Package</h1>

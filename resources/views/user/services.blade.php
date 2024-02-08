@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/services.css') }}">
 
     <div class="Services-Container ">
-        <h1 class="display-1 ">Services</h1>
+        <h1 class="display-1 " style="font-family: 'Playfair Display', serif;">Services</h1>
 <hr>
         <ul >
         @foreach ($servicesItems as $key => $servicesItem)

@@ -6,10 +6,10 @@
         <h1 class="modal-title fs-5" id="EditreservationLabel{{ $event['id'] }}">Edit Request Detail</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action="{{ url('/admin/reservation/' . $event['id']) }}" method="post">
+      <form action="{{ url('/admin/reservation/' . $event['id']) }}" method="post" style="overflow: scroll" >
         @csrf
         @method('PUT')
-        <div class="modal-body">
+        <div class="modal-body ">
           <div>
             <table class="table">
               <thead>
@@ -175,6 +175,7 @@
 
           </div>
         </div>
+     
         <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Save</button>
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

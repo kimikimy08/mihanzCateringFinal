@@ -46,7 +46,7 @@ main button a{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgb(255, 255, 255);
+    /* color: rgb(255, 255, 255); */
     margin-bottom: 100px;
 }
 .Services-Container .birthday{
@@ -66,7 +66,7 @@ main button a{
     box-shadow: 5px 5px 5px black;
 }
 .Services-Container ul{
-    margin-top: 100px;
+    /* margin-top: 100px; */
     display: flex;
     list-style: none;
     width: 100%;
@@ -155,6 +155,7 @@ box-shadow: 14px 14px 11px black ;
     align-items: center;
     width: 100%;
     height: auto;
+    padding-top: 50px;
 }
 .premade-form ul{
     width: 80%;
@@ -184,7 +185,7 @@ box-shadow: 14px 14px 11px black ;
     height: auto ;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     padding-top: 50px;
     background-color: rgb(255, 255, 255);
     margin-bottom: 100px;
@@ -342,6 +343,11 @@ input[type="checkbox"]{
 }
 .food-name{
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+    text-align: center;
 }
 
 .info{
