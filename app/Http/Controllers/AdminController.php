@@ -19,7 +19,7 @@ class AdminController extends Controller
         $futureReservationsCount = Reservation::where('event_date', '>=', Carbon::today())->count();
         $pastReservationsCount = Reservation::where('event_date', '<', Carbon::today())->count();
         $pendingReservationsCount = Reservation::where('reservation_status', 'pending')->count();
-        $approvedReservationsCount = Reservation::where('reservation_status', 'approve')->count();
+        $approvedReservationsCount = Reservation::where('reservation_status', 'approved')->count();
         
 
         $categories = MenuSelection::all();

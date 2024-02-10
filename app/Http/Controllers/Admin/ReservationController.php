@@ -22,7 +22,7 @@ class ReservationController extends Controller
         if ($status === 'all') {
             $allReservations = Reservation::all();
         } else if ($status === 'pending' or $status === 'approved') {
-            $allReservations = ($status === 'pending') ? Reservation::where('reservation_status', 'pending')->get() : Reservation::where('reservation_status', 'approve')->get();
+            $allReservations = ($status === 'pending') ? Reservation::where('reservation_status', 'pending')->get() : Reservation::where('reservation_status', 'approved')->get();
         } else if ($status === 'incoming' ){
             $allReservations = Reservation::where('event_date', '>=', Carbon::today())->get();
         } else if ($status === 'history') {
