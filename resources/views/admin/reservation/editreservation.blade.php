@@ -165,7 +165,9 @@
                       <td><select name="reservation_status" class="form-select">
                       <option value="" @if($event['reservation_status']=="" ) selected @endif></option>
                       <option value="Pending" @if($event['reservation_status']=="Pending" ) selected @endif>Pending</option>
+
                       <option value="Approved" @if($event['reservation_status']=="Approved" ) selected @endif>Approved</option>
+
                       <option value="Decline" @if($event['reservation_status']=="Decline" ) selected @endif>Decline</option>
                     </select></td>
                     </tr>
