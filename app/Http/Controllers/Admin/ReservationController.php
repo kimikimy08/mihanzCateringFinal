@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\MenuSelection;
 use App\Models\Reservation;
+use App\Models\ReservationSelection;
 use App\Models\User;
 use App\Models\CallStatus;
 use Illuminate\Http\Request;
@@ -113,6 +114,7 @@ class ReservationController extends Controller
     public function update(Request $request, $id)
     {
         $reservations = Reservation::findOrFail($id);
+        $reservationSelection = ReservationSelection::where('reservation_id', $id)->first();
 
         $request->validate([
 
@@ -130,10 +132,10 @@ class ReservationController extends Controller
             ],
             'event_time' => 'required',
             'venue_address' => 'required|string',
-            'pork_menu' => 'exists:menus,id',
-            'beef_menu' => 'exists:menus,id',
-            'chicken_menu' => 'exists:menus,id',
-            'fish_menu' => 'exists:menus,id',
+            'pork_menu' => 'nullable|exists:menus,id',
+            'beef_menu' => 'nullable|exists:menus,id',
+            'chicken_menu' => 'nullable|exists:menus,id',
+            'fish_menu' => 'nullable|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
             'vegetable_menu' => 'required|exists:menus,id',
             'dessert_menu' => 'required|exists:menus,id',
@@ -163,15 +165,26 @@ class ReservationController extends Controller
             'reservation_status' => $request->input('reservation_status'), 
         ]);
 
-        $reservations->selections()->update([
-            'categoryName' => $request->input('categoryName'),
-            'choice' => 'customize',
-        ]);
+        if ($reservationSelection) {
+            $choice = $reservationSelection->choice;
+        
+            if ($choice === 'customize') {
+                $reservations->reservationCustomize()->update([
+                    'pax' => $request->input('premade_pax'),
+                    'price' => $request->input('premade_price'),
+                ]);
+            } elseif ($choice === 'premade') {
+                $reservations->selections()->update([
+                    'categoryName' => $request->input('categoryName'),
+                ]);
+            }
+        } else {
+            // Handle the case when no reservation selection is found
+        }
 
-        $reservations->reservationCustomize()->update([
-            'pax' => $request->input('pax'),
-            'price' => $request->input('price'),
-        ]);
+        
+
+        
 
         return redirect()->back()->with('success', 'Reservation details updated successfully!');
     }

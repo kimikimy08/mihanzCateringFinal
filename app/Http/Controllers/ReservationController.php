@@ -53,8 +53,8 @@ class ReservationController extends Controller
             'event_time' => 'required|date_format:H:i',
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',
-            'pork_menu' => 'required|exists:menus,id',
-            'beef_menu' => 'required|exists:menus,id',
+            'pork_menu' => 'exists:menus,id',
+            'beef_menu' => 'exists:menus,id',
             'chicken_menu' => 'required|exists:menus,id',
             'fish_menu' => 'required|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
@@ -129,11 +129,11 @@ class ReservationController extends Controller
     {
         $request->validate([
             'budget' => ['required', 'numeric', 'min:18000'],
-            'pax' => ['required', 'numeric', 'min:50'],
+            'pax' => ['required', 'numeric', 'min:50', 'max:350'],
         ]);
-
-        session(['budget' => $request->input('budget')]);
-        session(['pax' => $request->input('pax')]);
+    
+        session()->put('budget', $request->input('budget'));
+        session()->put('pax', $request->input('pax'));
 
         $menus = [];
         $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus;
@@ -152,8 +152,10 @@ class ReservationController extends Controller
     public function showCustomizeForm(Request $request)
     {
         $menus = $this->getMenus();
-
-        return view('user.reservations.form', compact('menus'));
+        $pax = session('pax'); // Providing a default value of 0 if 'pax' is not set
+    $budget = session('budget'); // Providing a default value of 0 if 'budget' is not set
+    
+        return view('user.reservations.form', compact('menus', 'pax', 'budget'));
     }
 
     public function submitCustomizeForm(Request $request)
@@ -251,5 +253,13 @@ class ReservationController extends Controller
 
         return $menus;
     }
+
+    public function checkDateAvailability(Request $request)
+{
+    $selectedDate = $request->input('event_date');
+    $existingReservation = Reservation::where('event_date', $selectedDate)->exists();
+
+    return response()->json(['available' => !$existingReservation]);
+}
 
 }

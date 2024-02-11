@@ -12,16 +12,17 @@
       </h1>
       {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
   
-      <p >
-          <i><b>Please kindly fill up the following;</b></i>
+      <p class="">
+          Reservation Package for <b>{{$specificPackage->pax}}</b> Guest
+          The Package you chose already includes the following:
       </p>
-      {{-- <img src="../baptismal/Images/1.png" class="img-fluid" alt=""> --}}
+      <img src="{{  asset('images/services/packages/' . $specificPackage->service_pckg_image) }}" class="img-fluid" alt="">
 
       </div>
       
       <div class="form-container">
         <!-- Celebrants detail -->
-        <h1 class="display-3 text-center mb-5"> More details</h1>
+        <h1 class="display-3 text-center mb-5"> More detail</h1>
         <form action="{{ route('reservation.submit', ['packageId' => $specificPackage->id]) }}" method="post">
         @csrf
         <h1 class="text-start">Celebrant Information</h1>
@@ -89,10 +90,11 @@
           </tr>
           <tr>
             <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
-                <input type="date" class="form-control"  name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
+            <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
+            <input type="date" class="form-control" id="event_date" name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+        </div>
+        <span id="availability-message" style="color:red; font-size:12px;"></span>
             </td>
             
           </tr>
@@ -113,31 +115,33 @@
         <div class="menu-selection">
           <h1 class="text-start">Menu</h1>
           <table>
-            <tr>
+          <tr>
               <td>
               <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Pork</span>
-                <select class="form-select" name="pork_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Pork Menu</option>
-                @foreach($menuSelections['pork'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('pork_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
-                @endforeach
-                </select>
+              <select id="menuCategory" name="menu_category" class="input-group-text" aria-label="Default select example" required>
+                                <option selected value="pork">Pork</option>
+                                <option value="beef">Beef</option>
+                            </select>
+
+                            <select id="porkMenuOptions" name="pork_menu" class="form-select" aria-label="Default select example" required>
+                                <option selected disabled>Select Pork Menu</option>
+                                @foreach($menuSelections['pork'] as $menu)
+                                    <option value="{{ $menu->id }}" {{ old('pork_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                                @endforeach
+                            </select>
+                     
+
+             
+                            <select  id="beefMenuOptions" style="display: none;" name="beef_menu" class="form-select" aria-label="Default select example" required>
+                                <option selected disabled>Select Beef Menu</option>
+                                @foreach($menuSelections['beef'] as $menu)
+                                    <option value="{{ $menu->id }}" {{ old('beef_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                                @endforeach
+                            </select>
+                       
               </td>
             </tr>
 
-            <tr>
-              <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Beef</span>
-                <select class="form-select" name="beef_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Beef Menu</option>
-                @foreach($menuSelections['beef'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('beef_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
-                @endforeach
-                </select>
-              </td>
-            </tr>
             <tr>
               <td>
               <div class="input-group mb-3">
@@ -236,8 +240,29 @@
         </div>
         <div class="btn-position justify-content-center mb-5">
             <!-- Remove the modal and use a regular submit button -->
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Submit">Submit</button>
         </div>
+
+        <!-- Submit -->
+<div class="modal fade" id="Submit" tabindex="-1" aria-labelledby="SubmitLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          Are you sure to submit this form?
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+        <button type="submit" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
           </form>
 
 <!-- Terms And Condition -->
@@ -362,5 +387,79 @@
     </div>
   </div>
 </div>
+
+<script>
+   document.getElementById('menuCategory').addEventListener('change', function () {
+    var selectedMenuCategory = this.value;
+
+    // Hide all menu options initially
+    document.getElementById('porkMenuOptions').style.display = 'none';
+    document.getElementById('beefMenuOptions').style.display = 'none';
+
+    // Show the relevant menu options based on the user's selection
+    if (selectedMenuCategory === 'pork') {
+        document.getElementById('porkMenuOptions').style.display = 'table-row';
+    } else if (selectedMenuCategory === 'beef') {
+        document.getElementById('beefMenuOptions').style.display = 'table-row';
+    }
+});
+
+
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var eventDateInput = document.getElementById('event_date');
+
+        // Set the minimum date to today
+        var today = new Date().toISOString().split('T')[0];
+        eventDateInput.setAttribute('min', today);
+
+        // Set the minimum date to 7 days from today
+        var sevenDaysLater = new Date();
+        sevenDaysLater.setDate(sevenDaysLater.getDate() + 7);
+        var minDate = sevenDaysLater.toISOString().split('T')[0];
+        eventDateInput.setAttribute('min', minDate);
+
+        // Add an event listener to the date input
+        eventDateInput.addEventListener('change', function () {
+            // Additional logic can be added here if needed
+        });
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+ $(document).ready(function () {
+    $('#event_date').on('change', function () {
+        var selectedDate = $(this).val();
+
+        $.ajax({
+            url: "{{ route('check.date.availability') }}",
+            method: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "event_date": selectedDate,
+            },
+            success: function (response) {
+                if (response.available) {
+                    // The date is available, remove the error message
+                    $('#availability-message').text('');
+                } else {
+                    // The date is not available, display the error message
+                    $('#availability-message').text('Date is not available. Please choose another date.');
+                }
+            },
+            error: function (error) {
+                console.error('Error checking date availability:', error);
+                // Display a generic error message if there's an issue with the request
+                $('#availability-message').text('Error checking date availability. Please try again.');
+            }
+        });
+    });
+});
+</script>
+
 
 @endsection
