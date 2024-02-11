@@ -64,4 +64,14 @@ public function update(Request $request, $id)
         return redirect()->back()->with('success', 'User details updated successfully!');
     }
 
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        // Delete the menu item
+        $user->delete();
+
+        return redirect()->back()->with('success', 'User deleted successfully!');
+    }
+
 }

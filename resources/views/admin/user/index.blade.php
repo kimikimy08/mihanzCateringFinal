@@ -48,6 +48,11 @@
                   <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#Edituser{{ $user->id }}">
                 Edit
             </button>
+            <form action="{{ route('admin.users.destroy', $user->id) }}" method="post" style="display: inline-block;">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+            </form>
                 </td>
                 
               </tr>

@@ -33,6 +33,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/user/{id}', 'App\Http\Controllers\Admin\UserController@show');
     Route::get('/admin/user/{id}/edit', 'App\Http\Controllers\Admin\UserController@edit')->name('admin.users.edit');
     Route::put('/admin/user/{id}', 'App\Http\Controllers\Admin\UserController@update')->name('admin.users.update');
+    Route::delete('/admin/user/{id}', 'App\Http\Controllers\Admin\UserController@destroy')->name('admin.users.destroy');
 
     // ADMIN SERVICES AND PACKAGES
     Route::get('/admin/service', 'App\Http\Controllers\Admin\ServiceController@index')->name('admin.service.index');
