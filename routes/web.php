@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -116,7 +116,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::post('/customize/reservation/form/submit', 'App\Http\Controllers\ReservationController@submitCustomizeForm')->name('reservation.customize.submit');
         Route::put('/user/update', 'App\Http\Controllers\UserController@update')->name('profile.update');
         Route::post('/check-date-availability', 'App\Http\Controllers\ReservationController@checkDateAvailability')->name('check.date.availability');
-        // Route::get('/customize/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummaryCustomize')->name('user.reservations.custom_summary');
+        Route::get('/generate-pdf/{reservationId}', [PDFController::class, 'generatePDF'])->name('generate.pdf');
     });
 
 });
