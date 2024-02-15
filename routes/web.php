@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PDFController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\PasswordController;
+use App\Http\Controllers\Auth\VerificationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +37,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/user/{id}', 'App\Http\Controllers\Admin\UserController@show');
     Route::get('/admin/user/{id}/edit', 'App\Http\Controllers\Admin\UserController@edit')->name('admin.users.edit');
     Route::put('/admin/user/{id}', 'App\Http\Controllers\Admin\UserController@update')->name('admin.users.update');
+    Route::delete('/admin/user/{id}', 'App\Http\Controllers\Admin\UserController@destroy')->name('admin.users.destroy');
 
     // ADMIN SERVICES AND PACKAGES
     Route::get('/admin/service', 'App\Http\Controllers\Admin\ServiceController@index')->name('admin.service.index');
@@ -114,7 +119,8 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('/customize/reservation/form', 'App\Http\Controllers\ReservationController@showCustomizeForm')->name('user.reservations.customize-form');
         Route::post('/customize/reservation/form/submit', 'App\Http\Controllers\ReservationController@submitCustomizeForm')->name('reservation.customize.submit');
         Route::put('/user/update', 'App\Http\Controllers\UserController@update')->name('profile.update');
-        // Route::get('/customize/reservation/summary/{reservationId}', 'App\Http\Controllers\ReservationController@showSummaryCustomize')->name('user.reservations.custom_summary');
+        Route::post('/check-date-availability', 'App\Http\Controllers\ReservationController@checkDateAvailability')->name('check.date.availability');
+        Route::get('/generate-pdf/{reservationId}', [PDFController::class, 'generatePDF'])->name('generate.pdf');
     });
 
 });
@@ -134,4 +140,10 @@ Route::get('/themes', 'App\Http\Controllers\ThemesController@index')->name('user
 
     Route::get('/most-ordered-menu/{category}','App\Http\Controllers\MenuController@showMostOrderedMenu')
     ->name('most-ordered-menu');
+
+// Password Reset Routes
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 

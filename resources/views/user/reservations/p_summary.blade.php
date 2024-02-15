@@ -179,7 +179,7 @@
         </table>
 
         <div class="btn-position justify-content-center m-5">
-            <button class="btn btn-primary">Download PDF File</button>
+            <a href="{{ route('generate.pdf',$reservations->id) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download PDF File</a>
         </div>
         <div class="fs-5 mb-3 fst-italic">Disclaimer: For any changes please contact the catering.</div>
     </div>

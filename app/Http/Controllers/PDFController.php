@@ -5,29 +5,23 @@ namespace App\Http\Controllers;
 use PDF;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class PDFController extends Controller
 {
-    public function generateSummaryPDF($reservationId)
+    public function generatePDF($reservationId)
     {
-        $reservation = Reservation::with('premades.servicePackage', 'user')->findOrFail($reservationId);
+        // Fetch the reservation data
+        $reservation = Reservation::findOrFail($reservationId);
 
-        $data = [
-            'reservations' => $reservation,
-        ];
+        // Load the PDF view with the reservation data
+        $pdf = PDF::loadView('pdf.document', compact('reservation'));
 
-        // Load the view file into PDF
-        $pdf = PDF::loadView('user.reservations.p_summary', $data)->setOptions(['no-images' => true]);
+        // Generate a response and set headers to force opening in a new tab
+        $response = Response::make($pdf->output(), 200);
+        $response->header('Content-Type', 'application/pdf');
+        $response->header('Content-Disposition', 'inline; filename=document.pdf');
 
-        // Use a relative path for the output file
-        $pdfPath = 'pdf/' . uniqid('summary_') . '.pdf';
-
-        // Save the PDF to the specified path
-        $pdf->save($pdfPath);
-
-        // Create a response and delete the file after sending
-        return response()
-            ->file($pdfPath, ['Content-Type' => 'application/pdf'])
-            ->deleteFileAfterSend(true);
+        return $response;
     }
 }

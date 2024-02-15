@@ -26,7 +26,8 @@
             
           <ul>
           
-          @if ($menus->isNotEmpty())
+          @if (collect($menus)->isNotEmpty())
+
           @foreach ($menus as $menu)
             <li data-bs-toggle="modal" data-bs-target="#menuModal{{ $menu->id }}">
               <div class="food-container ">

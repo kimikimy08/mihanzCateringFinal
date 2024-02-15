@@ -40,13 +40,30 @@
                   <th scope="row">Event:</th>
                   <td><input type="text" name="event_theme" value="{{ $event['event_theme'] }}" class="input-group input-group-text"></td>
                   <th scope="row">Package Type:</th>
+                  @if ($event['choice'] == 'premade' && $event['premade_package'])
                   <td><input type="text" name="categoryName" value="{{ $event['premade_package'] }}" class="input-group input-group-text"></td>
+                        @elseif ($event['choice'] == 'customize')
+                        <td><input type="text" name="categoryName" value="Customized" class="input-group input-group-text"></td>
+                        @endif
+                 
                 </tr>
                 <tr>
                   <th scope="row">Pax:</th>
-                  <td><input type="text" name="premade_pax" value="{{ $event['premade_pax'] }}" class="input-group input-group-text"></td>
+                 @if ($event['choice'] == 'premade' && $event['premade_pax'])
+                  <td><input type="text" name="premade_pax" value="{{ $event['premade_pax'] }}" class="input-group input-group-text" disabled></td>
+                        @elseif ($event['choice'] == 'customize' && $event['customize_pax'])
+                        <td><input type="text" name="premade_pax" value="{{ $event['customize_pax'] }}" class="input-group input-group-text"></td>
+                        @endif
+                
+                  
                   <th scope="row">Budget:</th>
-                  <td><input type="number" name="premade_price" value="{{ $event['premade_price'] }}" class="input-group input-group-text"></td>
+                  @if ($event['choice'] == 'premade' && $event['premade_price'])
+                  <td><input type="number" name="premade_price" value="{{ $event['premade_price'] }}" class="input-group input-group-text" disabled></td>
+                        @elseif ($event['choice'] == 'customize' && $event['customize_price'])
+                        <td><input type="number" name="premade_price" value="{{ $event['customize_price'] }}" class="input-group input-group-text"></td>
+                        @endif
+
+                
                 </tr>
                 <tr>
                   <th scope="row">Celebrant Name:</th>

@@ -11,6 +11,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Role;
+use App\Mail\WelcomeMail; 
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
@@ -70,14 +73,23 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $userRole = Role::where('name', 'User')->first();
-        return User::create([
-            'name' => $data['name'],
-            'address' => $data['address'],
-            'email' => $data['email'],
-            'contact_number' => $data['contact_number'],
-            'password' => Hash::make($data['password']),
-            'role_id' => $userRole->id,
-        ]);
+
+    $user = User::create([
+        'name' => $data['name'],
+        'address' => $data['address'],
+        'email' => $data['email'],
+        'contact_number' => $data['contact_number'],
+        'password' => Hash::make($data['password']),
+        'role_id' => $userRole->id,
+    ]);
+
+    $verificationCode = Str::random(40);
+
+    // Pass the user instance and verification code to the WelcomeMail constructor
+    Mail::to($user->email)->send(new WelcomeMail($user, $verificationCode));
+
+    return $user;
+        
     }
 
     
