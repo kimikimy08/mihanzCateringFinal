@@ -39,4 +39,21 @@ class VerificationController extends Controller
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
+
+    public function verify($code)
+    {
+        $user = User::where('verification_code', $code)->first();
+
+        if (!$user) {
+            return redirect('/')->with('error', 'Invalid verification code.');
+        }
+
+        // Mark the user as verified
+        $user->update([
+            'verified' => true,
+            'verification_code' => null, // Optionally clear the verification code after successful verification
+        ]);
+
+        return redirect('/')->with('success', 'Email verification successful. You can now log in.');
+    }
 }

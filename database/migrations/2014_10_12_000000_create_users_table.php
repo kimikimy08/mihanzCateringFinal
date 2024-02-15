@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('profile_picture')->nullable()->default('no_image.jpg');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('verification_code')->nullable(); // New column for verification code
+            $table->boolean('verified')->default(false); 
             $table->rememberToken();
             $table->timestamps();
             $table->unsignedBigInteger('role_id');

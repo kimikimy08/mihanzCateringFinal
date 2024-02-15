@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ReservationApprovedMail;
+use App\Mail\ReservationDeclinedMail;
+use App\Models\CallStatus;
 use App\Models\MenuSelection;
 use App\Models\Reservation;
 use App\Models\ReservationSelection;
 use App\Models\User;
-use App\Models\CallStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class ReservationController extends Controller
@@ -19,19 +22,19 @@ class ReservationController extends Controller
     {
         $categories = MenuSelection::all();
         $reservation_categories = Reservation::all();
-        
+
         if ($status === 'all') {
             $allReservations = Reservation::all();
         } else if ($status === 'pending' or $status === 'approved') {
             $allReservations = ($status === 'pending') ? Reservation::where('reservation_status', 'pending')->get() : Reservation::where('reservation_status', 'approved')->get();
-        } else if ($status === 'incoming' ){
+        } else if ($status === 'incoming') {
             $allReservations = Reservation::where('event_date', '>=', Carbon::today())->get();
         } else if ($status === 'history') {
             $allReservations = Reservation::where('event_date', '<', Carbon::today())->get();
         } else {
             return abort(404);
         }
-    
+
         $events = [];
         foreach ($allReservations as $reservation) {
             $event = [
@@ -87,7 +90,7 @@ class ReservationController extends Controller
 
             $events[] = $event;
         }
-    
+
         $menus = [];
         $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus;
         $menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus;
@@ -98,11 +101,9 @@ class ReservationController extends Controller
         $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus;
         $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus;
         $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus;
-    
+
         return view('admin.reservation.index', compact('categories', 'events', 'menus', 'reservation_categories', 'status'));
     }
-
-
 
     public function edit($id)
     {
@@ -113,11 +114,11 @@ class ReservationController extends Controller
 
     public function update(Request $request, $id)
     {
-        $reservations = Reservation::findOrFail($id);
+        $reservation = Reservation::findOrFail($id);
+        $user = $reservation->user;
         $reservationSelection = ReservationSelection::where('reservation_id', $id)->first();
 
         $request->validate([
-
             'celebrant_name' => 'required|string',
             'celebrant_age' => 'required|numeric|min:0',
             'event_theme' => 'required|string',
@@ -141,11 +142,10 @@ class ReservationController extends Controller
             'dessert_menu' => 'required|exists:menus,id',
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
-            'reservation_status'  => 'required',
+            'reservation_status' => 'required',
         ]);
-        
 
-        $reservations->update([
+        $reservation->update([
             'celebrant_name' => $request->input('celebrant_name'),
             'celebrant_age' => $request->input('celebrant_age'),
             'event_theme' => $request->input('event_theme'),
@@ -162,29 +162,43 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-            'reservation_status' => $request->input('reservation_status'), 
+            'reservation_status' => $request->input('reservation_status'),
         ]);
+
+        // Check if 'reservation_status' was changed
+        if ($reservation->wasChanged('reservation_status')) {
+            // Send notification based on the new status
+            $newStatus = $reservation->reservation_status;
+
+            if ($newStatus === 'Approved') {
+                // Send approval email
+                Mail::to($user->email)->send(new ReservationApprovedMail($user, $reservation));
+            } else if ($newStatus === 'Decline') {
+                Mail::to($user->email)->send(new ReservationDeclinedMail($user, $reservation));
+            }
+        } else {
+            // Log if the reservation status is not updated
+            info('Reservation status not updated.');
+        }
 
         if ($reservationSelection) {
             $choice = $reservationSelection->choice;
-        
+
             if ($choice === 'customize') {
-                $reservations->reservationCustomize()->update([
+                $reservation->reservationCustomize()->update([
                     'pax' => $request->input('premade_pax'),
                     'price' => $request->input('premade_price'),
                 ]);
             } elseif ($choice === 'premade') {
-                $reservations->selections()->update([
+                $reservation->selections()->update([
                     'categoryName' => $request->input('categoryName'),
                 ]);
             }
+
+            
         } else {
             // Handle the case when no reservation selection is found
         }
-
-        
-
-        
 
         return redirect()->back()->with('success', 'Reservation details updated successfully!');
     }
@@ -217,26 +231,26 @@ class ReservationController extends Controller
     }
 
     public function storeCallStatus(Request $request, $id)
-{
-    $request->validate([
-        'call_status_date' => 'required|date',
-        'call_status_time' => 'required|date_format:H:i',
-        'call_status' => 'required|in:Waiting,Contacted,Approved,Canceled',
-        'call_remarks' => 'nullable|string',
-    ]);
+    {
+        $request->validate([
+            'call_status_date' => 'required|date',
+            'call_status_time' => 'required|date_format:H:i',
+            'call_status' => 'required|in:Waiting,Contacted,Approved,Canceled',
+            'call_remarks' => 'nullable|string',
+        ]);
 
-    // The $id parameter is already the reservation_id
-    $reservation = Reservation::findOrFail($id);
+        // The $id parameter is already the reservation_id
+        $reservation = Reservation::findOrFail($id);
 
-    $call = new CallStatus([
-        'call_status_date' => $request->input('call_status_date'),
-        'call_status_time' => $request->input('call_status_time'),
-        'call_status' => $request->input('call_status'),
-        'call_remarks' => $request->input('call_remarks'),
-    ]);
+        $call = new CallStatus([
+            'call_status_date' => $request->input('call_status_date'),
+            'call_status_time' => $request->input('call_status_time'),
+            'call_status' => $request->input('call_status'),
+            'call_remarks' => $request->input('call_remarks'),
+        ]);
 
-    $reservation->callStatus()->save($call);
+        $reservation->callStatus()->save($call);
 
-    return redirect()->route('call-status.index', $id)->with('success', 'Call status added successfully.');
-}
+        return redirect()->route('call-status.index', $id)->with('success', 'Call status added successfully.');
+    }
 }
