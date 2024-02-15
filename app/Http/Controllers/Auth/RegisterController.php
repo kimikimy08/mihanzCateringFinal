@@ -74,22 +74,21 @@ class RegisterController extends Controller
     {
         $userRole = Role::where('name', 'User')->first();
 
-    $user = User::create([
-        'name' => $data['name'],
-        'address' => $data['address'],
-        'email' => $data['email'],
-        'contact_number' => $data['contact_number'],
-        'password' => Hash::make($data['password']),
-        'role_id' => $userRole->id,
-    ]);
-
-    $verificationCode = Str::random(40);
-
-    // Pass the user instance and verification code to the WelcomeMail constructor
-    Mail::to($user->email)->send(new WelcomeMail($user, $verificationCode));
-
-    return $user;
+        $user = User::create([
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'email' => $data['email'],
+            'contact_number' => $data['contact_number'],
+            'password' => Hash::make($data['password']),
+            'role_id' => $userRole->id,
+        ]);
         
+        
+        $verificationCode = Str::random(40);
+    
+        Mail::to($data['email'])->send(new WelcomeMail($user, $verificationCode));
+    
+        return $user;
     }
 
     

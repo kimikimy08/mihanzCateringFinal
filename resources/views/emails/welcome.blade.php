@@ -15,7 +15,7 @@
   <!-- FullCalendar DayGrid plugin CSS -->
   <link rel="stylesheet" href="https://unpkg.com/@fullcalendar/daygrid@6.1.10/main.min.css" />
   <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
-  <link rel="stylesheet" href="../css/Welcome.css">
+  <link rel="stylesheet" href="{{ asset('css/welcome.css') }}">
   <title>Mihanz Catering</title>
 </head>
 
@@ -81,7 +81,7 @@
             0916-412-2250
 
           </div>
-          <div class="d-flex justify-content-center"><a href="../Index.html" class="btn btn-lg btn-outline-primary m-5">Continue</a></div>
+          <div class="d-flex justify-content-center"><a href="{{ url('/') }}" class="btn btn-lg btn-outline-primary m-5">Continue</a></div>
         </div>
       </div>
     </main>
