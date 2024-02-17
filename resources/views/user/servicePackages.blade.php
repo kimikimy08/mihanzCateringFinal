@@ -20,12 +20,6 @@
               <h1 class="display-4 text-center" style="font-family: 'Playfair Display', serif;">Customized Based on your Budget </h1>
             </li>
           </a>
-          <a href="{{ route('most-ordered-menu', ['category' => $categoryName]) }}">
-            <li >
-              <h1 class="display-4 text-center"  style="font-family: 'Playfair Display', serif;">Most Ordered Menu</h1>
-              
-            </li>
-          </a>
         </ul>
       </div>
 @endsection

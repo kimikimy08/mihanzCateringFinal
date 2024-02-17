@@ -138,7 +138,7 @@ Route::get('/themes', 'App\Http\Controllers\ThemesController@index')->name('user
 // Route::get('/most-ordered-menu/{categoryName}','App\Http\Controllers\MenuController@showMostOrderedMenu')
 //     ->name('most-ordered-menu');
 
-    Route::get('/most-ordered-menu/{category}','App\Http\Controllers\MenuController@showMostOrderedMenu')
+    Route::get('/most-ordered-menu','App\Http\Controllers\MenuController@mostOrderedMenuPerCategory')
     ->name('most-ordered-menu');
 
 // Password Reset Routes
