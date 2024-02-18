@@ -35,42 +35,57 @@ class MenuController extends Controller
 
 
 
-    public function showMostOrderedMenu($categoryName)
+    public function mostOrderedMenuPerCategory()
     {
-        $validCategories = ['pork', 'beef', 'fish', 'chicken', 'veggies', 'pasta', 'seafood', 'dessert', 'drink'];
+    // List of menu categories
+    $menuCategories = [
+        'pork_menu_id',
+        'beef_menu_id',
+        'pasta_menu_id',
+        'chicken_menu_id',
+        'veggies_menu_id',
+        'fish_menu_id',
+        'seafood_menu_id',
+        'dessert_menu_id',
+        'drink_menu_id',
+    ];
 
-    $mostOrderedMenus = [];
+    $result = [];
 
-    foreach ($validCategories as $category) {
-        $maxCount = ReservationSelection::where('categoryName', $categoryName)
-            ->leftJoin('reservations', 'reservation_selections.reservation_id', '=', 'reservations.id')
-            ->select(DB::raw("COUNT(*) as count"))
-            ->groupBy("reservations.{$category}_menu_id")
+    foreach ($menuCategories as $menuCategory) {
+        $mostOrderedMenus = Reservation::groupBy($menuCategory)
+            ->select($menuCategory, DB::raw('count(*) as count'))
             ->orderByDesc('count')
-            ->value('count');
+            ->get();
 
-        if ($maxCount > 0) {
-            $menusWithMaxCount = Menu::leftJoin('reservations', 'menus.id', '=', "reservations.{$category}_menu_id")
-                ->leftJoin('reservation_selections', 'reservations.id', '=', 'reservation_selections.reservation_id')
-                ->where('reservation_selections.categoryName', $categoryName)
-                ->select('menus.id', 'menus.price', 'menus.description', 'menus.serving', 'menus.name', 'menus.menus_image', "reservations.{$category}_menu_id", DB::raw("COUNT(*) as count"))
-                ->groupBy('menus.id', 'menus.name', 'menus.price', 'menus.description', 'menus.serving', 'menus.menus_image', "reservations.{$category}_menu_id")
-                ->having('count', '=', $maxCount)
-                ->get();
+        $maxCount = $mostOrderedMenus->max('count');
 
-            $mostOrderedMenus[$category] = $menusWithMaxCount;
-        } else {
-            // Handle case where there are no orders for the category
-            $mostOrderedMenus[$category] = [];
+        $menus = $mostOrderedMenus->filter(function ($menu) use ($maxCount) {
+            return $menu->count == $maxCount;
+        });
+
+        foreach ($menus as $mostOrderedMenu) {
+            $menuId = $mostOrderedMenu->{$menuCategory};
+            $menu = Menu::find($menuId);
+            $result[] = [
+                'category_name' => ucfirst(str_replace('_menu_id', '', $menuCategory)),
+                'menu_id' => $menuId,
+                'menu_name' => $menu ? $menu->name : null,
+                'price' => $menu ? $menu->price : null,
+                    'serving' => $menu ? $menu->serving : null,
+                    'description' => $menu ? $menu->description : null,
+                    'count' => $mostOrderedMenu->count,
+                    'menus_image' =>  $menu ? $menu->menus_image : null,
+            ];
         }
     }
 
-
-
-
-    return view('mostOrderedMenu', compact('mostOrderedMenus'));
-
+    return view('mostOrderedMenu', compact('result'));
     }
+    
+
+
+
 
 
     private function getMostOrderedMenuId($categoryIds)
