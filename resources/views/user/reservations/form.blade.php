@@ -60,14 +60,28 @@
             
           </tr>
           <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
-                <input type="text" class="form-control"  name="event_theme" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
-            
-          </tr>
+    <td>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
+            <select class="form-select" name="event_theme" id="eventThemeSelect" onchange="handleThemeSelection(this)">
+                <option value="" disabled selected>Select Event Theme</option>
+                @foreach($themeSelections ?? [] as $theme)
+                    <option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
+                @endforeach
+                <option value="other">Other</option>
+            </select>
+        </div>
+    </td>
+</tr>
+
+<tr id="otherThemeRow" style="display: none;">
+    <td>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
+            <input type="text" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+    </td>
+</tr>
           <tr>
             <td>
               <div class="input-group mb-3">
@@ -394,8 +408,10 @@
 
     // Show the relevant menu options based on the user's selection
     if (selectedMenuCategory === 'pork') {
+        document.getElementById('beefMenuOptions').selectedIndex = 0;
         document.getElementById('porkMenuOptions').style.display = 'table-row';
     } else if (selectedMenuCategory === 'beef') {
+      document.getElementById('porkMenuOptions').selectedIndex = 0;
         document.getElementById('beefMenuOptions').style.display = 'table-row';
     }
 });
@@ -409,8 +425,10 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
 
     // Show the relevant menu options based on the user's selection
     if (selectedMenuCategory === 'chicken') {
+      document.getElementById('fishMenuOptions').selectedIndex = 0;
         document.getElementById('chickenMenuOptions').style.display = 'table-row';
     } else if (selectedMenuCategory === 'fish') {
+      document.getElementById('chickenMenuOptions').selectedIndex = 0;
         document.getElementById('fishMenuOptions').style.display = 'table-row';
     }
 });
@@ -471,5 +489,24 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
 });
 </script>
             
+<script>
+    function handleThemeSelection(select) {
+        var otherThemeInput = document.getElementById('otherThemeInput');
+        var otherThemeRow = document.getElementById('otherThemeRow');
 
+        if (select.value === 'other') {
+            otherThemeInput.required = true;
+            otherThemeRow.style.display = 'table-row';
+        } else {
+            otherThemeInput.required = false;
+            otherThemeInput.value = '';  // Clear the input field
+            otherThemeRow.style.display = 'none';
+        }
+        
+        // If the selected value is not "other", update the input with the selected theme
+        if (select.value !== 'other') {
+            otherThemeInput.value = select.value;
+        }
+    }
+</script>
 @endsection

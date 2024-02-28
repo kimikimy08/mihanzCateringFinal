@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use App\Models\MenuSelection;
+use App\Models\ThemeSelection;
 use App\Models\Reservation;
 use App\Models\ReservationCustomize;
 use App\Models\ServicePackage;
@@ -30,8 +31,9 @@ class ReservationController extends Controller
         ];
 
         $specificPackage = ServicePackage::findOrFail($packageId);
+        $themeSelections = ThemeSelection::all();
 
-        return view('user.reservations.premade', compact('menuSelections', 'specificPackage'));
+        return view('user.reservations.premade', compact('menuSelections', 'specificPackage', 'themeSelections'));
     }
 
     public function submitForm(Request $request)
@@ -154,8 +156,10 @@ class ReservationController extends Controller
         $menus = $this->getMenus();
         $pax = session('pax'); // Providing a default value of 0 if 'pax' is not set
     $budget = session('budget'); // Providing a default value of 0 if 'budget' is not set
+
+    $themeSelections = ThemeSelection::all();
     
-        return view('user.reservations.form', compact('menus', 'pax', 'budget'));
+        return view('user.reservations.form', compact('menus', 'pax', 'budget', 'themeSelections'));
     }
 
     public function submitCustomizeForm(Request $request)
