@@ -34,6 +34,7 @@
                                 @endforeach
                             </ul>
                         </div>
+                        
                     @endif
                             <tbody>
                                 <tr>
