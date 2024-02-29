@@ -7,16 +7,34 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Register</div>
+                    <div class="card-header fw-bolder text-uppercase d-flex justify-content-center" >Register</div>
     
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                         @csrf
-                            <div class="row mb-3">
+                            {{-- <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
     
                                 <div class="col-md-6">
                                     <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus="">
+    
+                                                                </div>
+                            </div> --}}
+                            {{-- First Name --}}
+                            <div class="row mb-3">
+                                <label for="firstName" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="firstName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus="">
+    
+                                                                </div>
+                            </div>
+                            {{-- Last Name --}}
+                            <div class="row mb-3">
+                                <label for="lastName" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="lastName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus="">
     
                                                                 </div>
                             </div>
@@ -65,10 +83,14 @@
                             </div>
     
                             <div class="row mb-0">
+                                
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
+                                    <i class=" p-3">Have an account? <a class="" href="{{ route('login') }}">{{ __('Log In') }}</a></i>
+                                    <button type="submit" class="btn btn-primary ml-5">
+                                    {{ __('Confirm') }}
+                                    
                                     </button>
+                                    
                                 </div>
                             </div>
                         </form>
