@@ -132,6 +132,7 @@
           <table>
           <tr>
               <td>
+                <div class="fs-6"><i>Please choose only one (Pork or Beef)</i></div>
               <div class="input-group mb-3">
               <select id="menuCategory" name="menu_category" class="input-group-text" aria-label="Default select example" required>
                                 <option selected value="pork">Pork</option>

@@ -10,8 +10,7 @@
       {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
   
       <p class="">
-      Reservation Package for <b>{{ number_format(floor(session('budget') / 350)) }}</b> Guest
-          The Package you chose already includes the following:
+          Reservation package is applicable for <b>{{ number_format(floor(session('budget') / 350)) }}</b> guest. The package you choose already includes the following:
       </p>
      
       
@@ -88,6 +87,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
                 <select class="form-select" name="celebrant_gender" aria-label="Default select example">
                 <option value="" disabled>Select Gender</option>
+
                 <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
                 <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
             </select>
@@ -124,7 +124,9 @@
           <table>
             <tr>
               <td>
+                <div class="fs-5">Please choose only one (Pork or Beef)</div>
               <div class="input-group mb-3">
+                
               <select id="menuCategory" name="menu_category" class="input-group-text" aria-label="Default select example" required>
                                 <option selected value="pork">Pork</option>
                                 <option value="beef">Beef</option>
@@ -162,6 +164,7 @@
             </tr> -->
             <tr>
               <td>
+                <div class="fs-5">Please choose only one (Chicken or Fish)</div>
               <div class="input-group mb-3">
               <select id="menuCategory_1" name="menu_category" class="input-group-text" aria-label="Default select example" required>
                                 <option selected value="chicken">Chicken</option>

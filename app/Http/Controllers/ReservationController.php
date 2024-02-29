@@ -131,7 +131,8 @@ class ReservationController extends Controller
     {
         $request->validate([
             'budget' => ['required', 'numeric', 'min:18000', 'max:130000'],
-            'pax' => ['required', 'numeric', 'min:50', 'max:370'],
+            'pax' => ['required', 'numeric', 'min:50', 'max:350'],
+
         ]);
     
         session()->put('budget', $request->input('budget'));
