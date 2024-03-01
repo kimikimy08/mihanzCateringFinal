@@ -22,19 +22,19 @@
                             </div> --}}
                             {{-- First Name --}}
                             <div class="row mb-3">
-                                <label for="firstName" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
+                                <label for="first_name" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="firstName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus="">
+                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus="">
     
                                                                 </div>
                             </div>
                             {{-- Last Name --}}
                             <div class="row mb-3">
-                                <label for="lastName" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
+                                <label for="last_name" class="col-md-4 col-form-label text-md-end">{{ __('Last Name') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="lastName" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus="">
+                                    <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus="">
     
                                                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Address') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" name="name" value="{{ old('address') }}" required autocomplete="address" autofocus="">
+                                    <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus="">
     
                                                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Contact Number') }}</label>
     
                                 <div class="col-md-6">
-                                    <input id="contact_number" type="tel" class="form-control @error('contact_number') is-invalid @enderror" name="contact_number" value="{{ old('contact_number') }}" name="name" value="{{ old('contact_number') }}" required autocomplete="contact_number" autofocus="">
+                                    <input id="contact_number" type="tel" class="form-control @error('contact_number') is-invalid @enderror" name="contact_number" value="{{ old('contact_number') }}"required autocomplete="contact_number" autofocus="">
     
                                                                 </div>
                             </div>
