@@ -14,11 +14,11 @@
                       </tr> --}}
                         <tr>
                           <th scope="row">First Name:</th>
-                          <td>{{ $user->first_name }}</td>
+                          <td class="text-capitalize">{{ $user->first_name }}</td>
                         </tr>
                         <tr>
                           <th scope="row">Last Name:</th>
-                          <td>{{ $user->last_name }}</td>
+                          <td class="text-capitalize">{{ $user->last_name }}</td>
                         </tr>
                         <tr>
                           <th scope="row">Address:</th>
@@ -55,7 +55,7 @@
                         <div>
                           <table class="table">
                         
-                            <tr>
+                            {{-- <tr>
                               <th scope="col">Image</th>
                               <td>
                                   <div class="input-group mb-3">
@@ -64,14 +64,14 @@
                                       
                                     </div>
                               </td>
-                            </tr>
+                            </tr> --}}
                               <tr>
                                 <th scope="col">First Name:</th>
-                                <td ><input type="text" name="first_name" value="{{ $user->first_name }}" class="form-control"></td>
+                                <td ><input type="text" name="first_name" value="{{ $user->first_name }}" class="form-control text-capitalize"></td>
                               </tr>
                               <tr>
                                 <th scope="col">Last Name:</th>
-                                <td ><input type="text" name="last_name" value="{{ $user->last_name }}" class="form-control"></td>
+                                <td ><input type="text" name="last_name" value="{{ $user->last_name }}" class="form-control text-capitalize"></td>
                               </tr>
                               <tr>
                                 <th scope="col">Address:</th>
