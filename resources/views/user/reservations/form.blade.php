@@ -263,10 +263,10 @@
           </table>
         </div>
         <div class="fs-5  start-100 mb-5" style="width: 90%;">
-            <div class="input-group"> 
+            <div class="input-group justify-content-center"> 
             <input type="checkbox" name="agree_terms" value="1" {{ old('agree_terms') ? 'checked' : '' }}>
             
-               <p class=" ms-1 mx-1"> I have read and agree to the</p><a href="" data-bs-toggle="modal" data-bs-target="#Termsandcondition" style="color: blue;"  class=" "> terms and condition </a> <p class="ms-1">  of Mihanz Catering</p>
+               <p class=" ms-1 mx-1"> I have read and agree to the</p><a href="" data-bs-toggle="modal" data-bs-target="#Termsandcondition" style="color: blue;"  class=" "> Terms and Condition </a> <p class="ms-1">  of Mihanz Catering</p>
           </div>
         </div>
         <div class="btn-position justify-content-center mb-5">
@@ -283,7 +283,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div>
+        <div class=" fs-4 fw-semibold text-center">
           Are you sure to submit this form?
         </div>
       </div>

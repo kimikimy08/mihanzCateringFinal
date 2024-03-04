@@ -82,7 +82,7 @@
         <p><b id="red">Red</b> means it's Occupied</p>
         </div>  --}}
         
-        <div id="calendar"></div>
+        <div id="calendar" class=" text-capitalize"></div>
         </div>       
    
 
