@@ -26,7 +26,9 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
+                                <a class=" w-100 d-flex justify-content-end" href="{{ route('password.request') }}">
+                                    <i>Forgot Password?</i>
+                                </a>
                                                             </div>
                         </div>
 
@@ -36,12 +38,10 @@
                                 <button type="submit" class="btn btn-primary w-75">
                                 {{ __('Login') }}
                                 </button>
-                                <div class=" ">
+                                <div class=" w-75 d-flex justify-content-center">
                                     
-                                    <a class=" p-3 mr-5 " href="{{ route('password.request') }}">
-                                        <i>Forgot Password?</i>
-                                    </a>
-                                    <i class="mr-5">Don't have account?<a class="" href="{{ route('register') }}">{{ __('Register') }}</a></i>
+                                    
+                                    <i class="">Don't have account?<a class="" href="{{ route('register') }}">{{ __('Register') }}</a></i>
                                     
                                 </div>
                                   <div>  </div>

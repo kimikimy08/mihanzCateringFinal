@@ -1,8 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-<h1 class="display-1 mb-5">Client Status</h1>
-        <div class="btn-position-status mb-5"><button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add</button></div>
+<link rel="stylesheet" href="{{ asset('css/Admin.css') }}">
+<h1 class="display-1">Client Status</h1>
+        <div class="btn-position-status"><button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add</button></div>
         <div class="status-container">
           <div class="status-user-info">
           
@@ -29,7 +30,7 @@
                 <td>{{$reservation->id}}</td>
             </tr>
                 <th scope="col">Name:</th>
-                <td>{{ $reservation->user->first_name . ' ' . $reservation->user->last_name }}</td>
+                <td class=" text-capitalize">{{ $reservation->user->first_name . ' ' . $reservation->user->last_name }}</td>
             <tr>
 
             </tr>

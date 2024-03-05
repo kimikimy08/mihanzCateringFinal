@@ -11,6 +11,7 @@
     
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
+                            
                         @csrf
                             {{-- <div class="row mb-3">
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
@@ -21,6 +22,9 @@
                                                                 </div>
                             </div> --}}
                             {{-- First Name --}}
+                            
+                            
+                            
                             <div class="row mb-3">
                                 <label for="first_name" class="col-md-4 col-form-label text-md-end">{{ __('First Name') }}</label>
     
@@ -52,7 +56,7 @@
     
                                 <div class="col-md-6">
                                     <input id="contact_number" type="tel" class="form-control @error('contact_number') is-invalid @enderror" name="contact_number" value="{{ old('contact_number') }}"required autocomplete="contact_number" autofocus="">
-    
+                                    
                                                                 </div>
                             </div>
     
