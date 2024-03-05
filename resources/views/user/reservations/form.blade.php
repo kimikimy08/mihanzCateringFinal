@@ -63,11 +63,13 @@
         <div class="input-group mb-3">
             <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
             <select class="form-select" name="event_theme" id="eventThemeSelect" onchange="handleThemeSelection(this)">
-                <option value="" disabled selected>Select Event Theme</option>
-                @foreach($themeSelections ?? [] as $theme)
-                    <option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
-                @endforeach
-                <option value="other">Other</option>
+            <option value="" disabled selected>Select Event Theme</option>
+@if($themeSelections)
+@foreach($themeSelections ?? '' as $theme)
+<option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
+@endforeach
+@endif
+<option value="other">Other</option>
             </select>
         </div>
     </td>

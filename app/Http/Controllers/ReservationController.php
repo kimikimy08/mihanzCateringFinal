@@ -134,6 +134,8 @@ class ReservationController extends Controller
             'pax' => ['required', 'numeric', 'min:50', 'max:350'],
 
         ]);
+
+        $themeSelections = ThemeSelection::all();
     
         session()->put('budget', $request->input('budget'));
         session()->put('pax', $request->input('pax'));
@@ -149,7 +151,7 @@ class ReservationController extends Controller
         $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus;
         $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus;
 
-        return view('user.reservations.form', compact('menus'));
+        return view('user.reservations.form', compact('menus', 'themeSelections'));
     }
 
     public function showCustomizeForm(Request $request)
