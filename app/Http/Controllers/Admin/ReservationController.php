@@ -30,7 +30,7 @@ class ReservationController extends Controller
         } else if ($status === 'incoming') {
             $allReservations = Reservation::where('event_date', '>=', Carbon::today())->get();
         } else if ($status === 'history') {
-            $allReservations = Reservation::where('event_date', '<', Carbon::today())->get();
+            $allReservations = Reservation::where('event_date', '<', Carbon::today())->orWhere('reservation_status', 'decline')->get();
         } else {
             return abort(404);
         }
