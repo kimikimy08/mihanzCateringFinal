@@ -28,7 +28,7 @@ class MenuController extends Controller
         $categoryName = MenuSelection::where('menu_category', $category)->firstOrFail()->menu_category;
         $menus = Menu::whereHas('menuSelection', function ($query) use ($category) {
             $query->where('menu_category', $category);
-        })->get();
+        })->where('status', 'active')->get();
 
         return view('user.menuContainer', compact('menus', 'categoryName'));
     }
