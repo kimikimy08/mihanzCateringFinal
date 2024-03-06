@@ -55,8 +55,8 @@ class ReservationController extends Controller
             'event_time' => 'required|date_format:H:i',
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',
-            'pork_menu' => 'exists:menus,id',
-            'beef_menu' => 'exists:menus,id',
+            'pork_menu' => 'required_without_all:beef_menu|exists:menus,id',
+    'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
             'chicken_menu' => 'required|exists:menus,id',
             'fish_menu' => 'required|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
@@ -67,6 +67,8 @@ class ReservationController extends Controller
             'agree_terms' => 'required|accepted',
 
         ], [
+            'pork_menu.required_without_all' => 'The pork menu field is required ',
+            'beef_menu.required_without_all' => 'The beef menu field is required ',
             'agree_terms.accepted' => 'Please check the terms and conditions.',
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
@@ -183,10 +185,10 @@ class ReservationController extends Controller
             'event_time' => 'required|date_format:H:i',
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',
-            'pork_menu' => 'exists:menus,id',
-            'beef_menu' => 'exists:menus,id',
-            'chicken_menu' => 'exists:menus,id',
-            'fish_menu' => 'exists:menus,id',
+            'pork_menu' => 'required_without_all:beef_menu|exists:menus,id',
+            'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
+            'chicken_menu' => 'required_without_all:fish_menu|exists:menus,id',
+            'fish_menu' => 'required_without_all:chicken_menu|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
             'vegetable_menu' => 'required|exists:menus,id',
             'dessert_menu' => 'required|exists:menus,id',
@@ -195,6 +197,10 @@ class ReservationController extends Controller
             'agree_terms' => 'required|accepted',
 
         ], [
+            'pork_menu.required_without_all' => 'The pork menu field is required ',
+            'beef_menu.required_without_all' => 'The beef menu field is required ',
+            'chicken_menu.required_without_all' => 'The chicken menu field is required ',
+            'fish_menu.required_without_all' => 'The fish menu field is required ',
             'agree_terms.accepted' => 'Please check the terms and conditions.',
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);

@@ -44,7 +44,8 @@ public function update(Request $request, $id)
         $user = User::findOrFail($id);
 
         $request->validate([
-            'name' => 'required|string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
             'address' => 'required|string',
             'contact_number' => 'required|string',
@@ -53,7 +54,8 @@ public function update(Request $request, $id)
         ]);
 
         $user->update([
-            'name' => $request->input('name'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
             'email' => $request->input('email'),
             'address' => $request->input('address'),
             'contact_number' => $request->input('contact_number'),

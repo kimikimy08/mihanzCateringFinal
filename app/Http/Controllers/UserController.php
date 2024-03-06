@@ -167,7 +167,8 @@ class UserController extends Controller
 
     // Validation rules
     $rules = [
-        'name' => 'required|string|max:255',
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
         'address' => 'required|string|max:255',
         'contact_number' => 'required|string|max:20',
         'email' => [
@@ -185,6 +186,7 @@ class UserController extends Controller
 
     // Update user data
     $user->first_name = $request->input('first_name');
+    $user->last_name = $request->input('last_name');
     $user->address = $request->input('address');
     $user->contact_number = $request->input('contact_number');
     $user->email = $request->input('email');
