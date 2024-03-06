@@ -92,15 +92,15 @@ class ReservationController extends Controller
         }
 
         $menus = [];
-        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus;
-        $menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus;
-        $menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus;
-        $menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus;
-        $menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus;
-        $menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus;
-        $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus;
-        $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus;
-        $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus;
+        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus()->where('status', 'active')->get();
+$menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus()->where('status', 'active')->get();
+$menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus()->where('status', 'active')->get();
+$menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus()->where('status', 'active')->get();
+$menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus()->where('status', 'active')->get();
+$menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus()->where('status', 'active')->get();
+$menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus()->where('status', 'active')->get();
+$menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus()->where('status', 'active')->get();
+$menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
         return view('admin.reservation.index', compact('categories', 'events', 'menus', 'reservation_categories', 'status'));
     }
@@ -133,10 +133,10 @@ class ReservationController extends Controller
             ],
             'event_time' => 'required',
             'venue_address' => 'required|string',
-            'pork_menu' => 'required_without_all:beef_menu|exists:menus,id',
-            'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
-            'chicken_menu' => 'required_without_all:fish_menu|exists:menus,id',
-            'fish_menu' => 'required_without_all:chicken_menu|exists:menus,id',
+            'pork_menu' => 'nullable|required_without:beef_menu|exists:menus,id',
+    'beef_menu' => 'nullable|required_without:pork_menu|exists:menus,id',
+            'chicken_menu' => 'nullable|required_without_all:fish_menu|exists:menus,id',
+            'fish_menu' => 'nullable|required_without_all:chicken_menu|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
             'vegetable_menu' => 'required|exists:menus,id',
             'dessert_menu' => 'required|exists:menus,id',

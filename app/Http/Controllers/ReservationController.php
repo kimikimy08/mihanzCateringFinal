@@ -18,15 +18,15 @@ class ReservationController extends Controller
     {
         // Fetch menu selections to populate dropdowns
         $menuSelections = [
-            'pork' => Menu::where('menu_selection_id', 1)->get(),
-            'chicken' => Menu::where('menu_selection_id', 3)->get(),
-            'beef' => Menu::where('menu_selection_id', 2)->get(),
-            'fish' => Menu::where('menu_selection_id', 4)->get(),
-            'seafood' => Menu::where('menu_selection_id', 5)->get(),
-            'pasta' => Menu::where('menu_selection_id', 6)->get(),
-            'vegetable' => Menu::where('menu_selection_id', 7)->get(),
-            'dessert' => Menu::where('menu_selection_id', 8)->get(),
-            'drink' => Menu::where('menu_selection_id', 9)->get(),
+            'pork' => Menu::where('menu_selection_id', 1)->where('status', 'active')->get(),
+            'chicken' => Menu::where('menu_selection_id', 3)->where('status', 'active')->get(),
+            'beef' => Menu::where('menu_selection_id', 2)->where('status', 'active')->get(),
+            'fish' => Menu::where('menu_selection_id', 4)->where('status', 'active')->get(),
+            'seafood' => Menu::where('menu_selection_id', 5)->where('status', 'active')->get(),
+            'pasta' => Menu::where('menu_selection_id', 6)->where('status', 'active')->get(),
+            'vegetable' => Menu::where('menu_selection_id', 7)->where('status', 'active')->get(),
+            'dessert' => Menu::where('menu_selection_id', 8)->where('status', 'active')->get(),
+            'drink' => Menu::where('menu_selection_id', 9)->where('status', 'active')->get(),
 
         ];
 
@@ -143,15 +143,15 @@ class ReservationController extends Controller
         session()->put('pax', $request->input('pax'));
 
         $menus = [];
-        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus;
-        $menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus;
-        $menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus;
-        $menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus;
-        $menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus;
-        $menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus;
-        $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus;
-        $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus;
-        $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus;
+        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus()->where('status', 'active')->get();
+$menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus()->where('status', 'active')->get();
+$menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus()->where('status', 'active')->get();
+$menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus()->where('status', 'active')->get();
+$menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus()->where('status', 'active')->get();
+$menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus()->where('status', 'active')->get();
+$menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus()->where('status', 'active')->get();
+$menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus()->where('status', 'active')->get();
+$menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
         return view('user.reservations.form', compact('menus', 'themeSelections'));
     }
@@ -254,15 +254,15 @@ class ReservationController extends Controller
     private function getMenus()
     {
         $menus = [];
-        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus;
-        $menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus;
-        $menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus;
-        $menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus;
-        $menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus;
-        $menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus;
-        $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus;
-        $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus;
-        $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus;
+        $menus['beef'] = MenuSelection::where('menu_category', 'beef')->first()->menus()->where('status', 'active')->get();
+$menus['pork'] = MenuSelection::where('menu_category', 'pork')->first()->menus()->where('status', 'active')->get();
+$menus['chicken'] = MenuSelection::where('menu_category', 'chicken')->first()->menus()->where('status', 'active')->get();
+$menus['fish'] = MenuSelection::where('menu_category', 'fish')->first()->menus()->where('status', 'active')->get();
+$menus['seafood'] = MenuSelection::where('menu_category', 'seafood')->first()->menus()->where('status', 'active')->get();
+$menus['pasta'] = MenuSelection::where('menu_category', 'pasta')->first()->menus()->where('status', 'active')->get();
+$menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first()->menus()->where('status', 'active')->get();
+$menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus()->where('status', 'active')->get();
+$menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
         return $menus;
     }
