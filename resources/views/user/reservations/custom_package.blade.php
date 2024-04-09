@@ -7,7 +7,7 @@
 
       
 <div class="container custom-container">
- <h1 class="display-2 m-5" style=" font-family: 'Playfair Display', serif;">Customize your own package</h1>
+ <h1 class="display-3 m-5" style=" font-family: 'Playfair Display', serif;">Customize your own package</h1>
  <ul>
   <p class="h4 text-decoration-underline">Amazing Deals</p>
   <li class="h4">Make your reservation within 7 days for preparation</li>

@@ -33,7 +33,7 @@
         </div>
         <div class="d-flex justify-content-center"><a href="../Index.html" class="btn btn-lg btn-primary m-5">Continue</a></div> -->
         <div class="w-50 mb-5">
-          Dear <b class="fw-semibold">{{ $userName }}</b>
+          Dear <b class="fw-semibold">{{ $userName }},</b>
         </div>
         <div class="w-50 mb-5" style="text-align: justify;">
             I hope this email finds you well. I am writing to inform you that your reservation request for catering services has been approved.        </div>

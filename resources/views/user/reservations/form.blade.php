@@ -10,7 +10,7 @@
       {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
   
       <p class="">
-          Reservation package is applicable for <b>{{ number_format(floor(session('budget') / 350)) }}</b> guest. The package you choose already includes the following:
+          Reservation package is applicable for <b>{{ number_format((session('pax'))) }}</b> guest. The package you choose already includes the following:
       </p>
      
       
@@ -88,7 +88,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
                 <select class="form-select" name="celebrant_gender" aria-label="Default select example">
-                <option value="" disabled>Select Gender</option>
+                <option value="" selected disabled>Select Gender</option>
 
                 <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
                 <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
@@ -113,6 +113,18 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Time of the event</span>
                 <input type="time" class="form-control"  name="event_time" value="{{ old('event_time') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+              </div>
+            </td>
+            
+          </tr>
+          <tr>
+            <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Added Services</span>
+                <select class="form-select" name="celebrant_gender" aria-label="Default select example">
+                <option value="" selected disabled>Select Added Service</option>
+                <option value="">1</option>
+            </select>
               </div>
             </td>
             
@@ -450,7 +462,7 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
 
         // Set the minimum date to 7 days from today
         var sevenDaysLater = new Date();
-        sevenDaysLater.setDate(sevenDaysLater.getDate() + 7);
+        sevenDaysLater.setDate(sevenDaysLater.getDate() + 4);
         var minDate = sevenDaysLater.toISOString().split('T')[0];
         eventDateInput.setAttribute('min', minDate);
 

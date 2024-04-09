@@ -152,7 +152,7 @@
                                     Pax:
                                 </th>
                                 <td>
-                                {{ number_format(floor($reservation->reservationCustomize->price / 350)) }}
+                                {{ number_format($reservation->reservationCustomize->pax) }}
                                 </td>
                             </tr>
                             <tr>

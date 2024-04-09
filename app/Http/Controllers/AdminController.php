@@ -66,7 +66,7 @@ class AdminController extends Controller
                     ? $reservation->premades->servicePackage->pax
                     : null,
                 'customize_pax' => optional($reservation->reservationCustomize)->price
-                    ? number_format(floor($reservation->reservationCustomize->price / 350))
+                    ? number_format($reservation->reservationCustomize->pax)
                     : null,
                 'premade_price' => optional($reservation->premades)->servicePackage
                 ? $reservation->premades->servicePackage->price

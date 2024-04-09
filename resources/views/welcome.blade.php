@@ -72,7 +72,7 @@
         
     </div>
     <!-- Calendar -->
-    <div class="calendar-Date">
+    <div class="calendar-Date" sty>
 
          {{-- <div>
             <h1>Mark your Dates</h1>
@@ -82,9 +82,48 @@
         <p><b id="red">Red</b> means it's Occupied</p>
         </div>  --}}
         
-        <div id="calendar" class=" text-capitalize"></div>
-        </div>       
-   
+        <div id="calendar" ></div>
+        </div> 
+              {{-- calendar design  --}}
+   <style>
+    .calendar-Date{
+      background-color: gainsboro;
+    }
+    #calendar{
+      /* background:rgb(199, 199, 199); */
+    }
+    #calendar td{
+    border: solid 1px black;
+    }
+    #calendar th{
+    border: solid 1px black;
+    background-color: forestgreen;
+    
+    }
+    #calendar th a{
+  color: snow;
+  text-shadow: -1px 4px 8px black;
+    
+    }
+    .fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom:0;
+    text-shadow: 0px 1px 3px black;
+}
+.fc .fc-toolbar.fc-header-toolbar h2{
+  margin-left: 1em;
+}
+    .fc-h-event{
+      background: rgba(255, 0, 0, 0.589);
+    }
+    #calendar a{
+      color: black;
+      text-decoration: none;
+      text-shadow: 0px 1px 3px black;
+    }
+    #calendar button{
+      text-transform: capitalize
+    }
+   </style>
 
         <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -93,8 +132,8 @@
     var calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
       events: @json($futureEvents),
-      height: '90vh', // Set the height of the calendar
-      width: '80%',   // Set the width of the calendar to 100% of the container
+      height: '92vh', // Set the height of the calendar
+      width: '100%',   // Set the width of the calendar to 100% of the container
       eventRender: function(info) {
         var availability = info.event.extendedProps.availability;
 

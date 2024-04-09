@@ -186,5 +186,6 @@
         <button class="btn btn-primary" onclick="window.location='{{ url('/generate-summary-pdf/' . $reservations->id) }}'">Download PDF File</button>
         </div>
         <div class="fs-5 mb-3 fst-italic">Disclaimer: For any changes please contact the catering.</div>
+        <!-- <div class="fs-5 mb-3 fst-italic w-75">Your reservation will be reviewed within 24hours thank you for considering Mihanz Catering as your event's caterer</div> -->
       </div>
 @endsection
