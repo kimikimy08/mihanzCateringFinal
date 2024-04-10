@@ -172,7 +172,19 @@
                       <option value="{{ $menu->id}}" @if($event['drink_menu']==$menu->name) selected @endif>{{ $menu->name }}</option>
                       @endforeach
                     </select>
-                  </td>
+                    </td>
+                      <th scope="row" >Additonal Services</th> 
+            
+                      <td><select name="additional" class="form-select">
+                     <option value="">None</option>
+                     <option value="">Cake</option>
+                     <option value="">Cupcake</option>
+                     <option value="">Chocolate Fountain with Marshmallows </option>
+                     <option value="">Fruits</option>
+                    </select></td>
+
+                    </td>
+                  
 
                 </tr>
 
@@ -187,6 +199,7 @@
 
                       <option value="Decline" @if($event['reservation_status']=="Decline" ) selected @endif>Decline</option>
                     </select></td>
+                    
                     </tr>
 
               </tbody>

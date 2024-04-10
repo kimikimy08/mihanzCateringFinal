@@ -33,7 +33,7 @@ class Menu extends Model
         ->orWhere('seafood_menu_id', $this->id)
         ->orWhere('dessert_menu_id', $this->id)
         ->orWhere('drink_menu_id', $this->id);
-        // ->orWhere('additional_services_menu_id', $this->id);
+       
         
 }
     

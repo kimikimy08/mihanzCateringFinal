@@ -124,17 +124,8 @@
                 </tr>
           
                 <!-- ... other package information fields ... -->
-                <tr>
-                  <td class="fw-bolder"> Budget:</td>
-            <td>
-            {{  number_format($reservations->reservationCustomize->price) }}
-            </td>
-            <td class="fw-bolder">Theme: </td>
-            <td>{{ $reservations->event_theme }}</td>
-            
-
-              </tr>
-
+                @endif
+              
           </table>
         <hr>
         <!-- Celebrants detail -->
@@ -200,6 +191,11 @@
             <tr>
               <td class="fw-bolder">Pasta: </td>
               <td>{{ $reservations->getMenuName('pastaMenu') }}</td>
+              <td class="fw-bolder">Additonal Services: </td>
+              <td>
+                {{$reservations->additional}}
+                </td>
+
             </tr>
         </table>
 
