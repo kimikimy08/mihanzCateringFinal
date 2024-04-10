@@ -9,10 +9,12 @@
       </h1>
       {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
   
-      <p class="">
-          Reservation package is applicable for <b>{{ number_format((session('pax'))) }}</b> guest. The package you choose already includes the following:
+      <p class=" " style="width: 60%">
+          {{-- Reservation package is applicable for <b>{{ number_format((session('pax'))) }}</b> guest. The package you choose already includes the following: --}}
+          The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(ceil (session('budget')/350)) }}</b> guest is recommended for your given budget,
+           additional charge will be <b>{{ number_format(( floor(session('pax') - session('budget') / 350) *350 )) }}</b>. The total amount will be <b>{{ number_format(( ceil(floor(session('pax') - session('budget') / 350) *350)+ session('budget') )) }}</b>.
       </p>
-     
+
       
       </div>
       <div class="form-container">
@@ -268,11 +270,13 @@
                 <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Additional Services</span>
                 <select class="form-select" name="additional" aria-label="Default select example">
-                <option value="None" {{ old('additional') == 'None' ? 'selected' : '' }} selected >None</option>
-                <option value="Cake" {{ old('additional') == 'Cake' ? 'selected' : '' }}>Cake</option>
-                  <option value="Cupcake" {{ old('additional') == 'Cupcake' ? 'selected' : '' }}>Cupcake</option>
-                  <option value="Chocolate" {{ old('additional') == 'Chocolate' ? 'selected' : '' }}>Chocolate Fountain with Marshmallows</option>
-                  <option value="Fruits" {{ old('additional') == 'Fruits' ? 'selected' : '' }}>Fruits</option>
+                  <option value="None" {{ old('additional') == 'None' ? 'selected' : '' }} selected >None</option>
+                  <option value="PartyEntertainers" {{ old('additional') == 'PartyEntertainers' ? 'selected' : '' }}>Party Entertainers</option>
+                    <option value="PhotoBooth" {{ old('additional') == 'PhotoBooth' ? 'selected' : '' }}>Photo Booth</option>
+                    <option value="Chocolate" {{ old('additional') == 'Chocolate' ? 'selected' : '' }}>Chocolate Fountain Booth</option>
+                    <option value="Painting" {{ old('additional') == 'Painting' ? 'selected' : '' }}>Face Painting Booth</option>
+                    <option value="Cupcake" {{ old('additional') == 'Cupcake' ? 'selected' : '' }}>Cupcake Tower Booth</option>
+                    <option value="Fruits" {{ old('additional') == 'Fruits' ? 'selected' : '' }}>Fruits Booth</option>
               </select>
                 </div>
                 

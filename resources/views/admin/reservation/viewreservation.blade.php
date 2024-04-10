@@ -102,11 +102,14 @@
                     <tr>
                       <th scope="row">Drink:</th>
                       <td>{{ $event['drink_menu'] }}</td>
+                      <th scope="row">Additonal Services</th>
+                      {{-- <td>{{ $event['additional'] }}</td> --}}
                     </tr>
                     
                     <tr class="mt-10">
                       <th scope="row"  class="fs-6 ">Reservation Status</th> 
                       <th scope="row"  class="fs-6 ">{{ $event['reservation_status'] }}</th>
+                      
                     </tr>
 
                     <tr>
