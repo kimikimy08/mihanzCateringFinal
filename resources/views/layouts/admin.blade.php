@@ -56,6 +56,10 @@
                     <a class="nav-link {{ Request::is('admin/theme') ? 'active' : '' }} " href="{{ url('/admin/theme') }}">Themes</a>
                   </li>
                   <li class="nav-item">
+                    {{-- Additional Services --}}
+                    <a class="nav-link {{ Request::is('admin/additional') ? 'active' : '' }} " href="{{ url('/admin/additional') }}">Addditional Services</a>
+                  </li>
+                  <li class="nav-item">
                     <a class="nav-link nav-link {{ Request::is('admin/user') ? 'active' : '' }}" href="{{ url('/admin/user') }}">User</a>
                   </li>
                   <li class="nav-item">
