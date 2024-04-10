@@ -242,23 +242,55 @@
                 </select>
               </td>
             </tr>
-            <tr>
+            <table>
+              <tr>
               <td>
-                <div class="fs-6 d-flex justify-content-start text-danger"> <i>*Additional Service will have additional charge</i></div>
-                <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Additional Services</span>
-                <select class="form-select" name="additional" aria-label="Default select example">
-                <option value="None" {{ old('additional') == 'None' ? 'selected' : '' }} selected >None</option>
-                <option value="Cake" {{ old('additional') == 'Cake' ? 'selected' : '' }}>Cake</option>
-                  <option value="Cupcake" {{ old('additional') == 'Cupcake' ? 'selected' : '' }}>Cupcake</option>
-                  <option value="Chocolate" {{ old('additional') == 'Chocolate' ? 'selected' : '' }}>Chocolate Fountain with Marshmallows</option>
-                  <option value="Fruits" {{ old('additional') == 'Fruits' ? 'selected' : '' }}>Fruits</option>
-              </select>
+                <div>
+                  <div class="fs-2">Additional Services</div>
+                  <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
                 </div>
+                </td>
+                <td></td>
                 
-              </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
+                  </div>
+                </td>
+                
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
+                  </div>
+                </td>
+                
+              </tr>
               
-            </tr>
+              
+              <table>
+                <tr>
+                  <td class="fs-6 text-danger"><i>*additional services will have additional charges, for more information, you may contact the Mihanz Catering.</i></td>
+                </tr>
+              </table>
+            </table>
 
         
 

@@ -133,7 +133,7 @@ class ReservationController extends Controller
     public function showCustomizeStore(Request $request)
     {
         $request->validate([
-            'budget' => ['required', 'numeric', 'min:18000', 'max:130000'],
+            'budget' => ['required', 'numeric', 'min:17650', 'max:122500'],
             'pax' => ['required', 'numeric', 'min:50', 'max:350'],
 
         ]);

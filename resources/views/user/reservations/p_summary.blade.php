@@ -106,12 +106,12 @@
                   {{-- Recommended Guest--}}
                   <tr>
                     <td class="fw-bolder">Recommended Guest:</td>
-                    <td>{{ number_format(floor($reservations->reservationCustomize->price /350)  )  }}</td>
+                    <td>{{ number_format(round($reservations->reservationCustomize->price /350)  )  }}</td>
                   </tr>
                   {{-- Additional Charge --}}
                   <tr>
-                    <td class="fw-bolder">Additional Charge:</td>
-                    <td>{{ number_format(floor(( $reservations->reservationCustomize->pax - floor($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
+                    <td class="fw-bolder"> Charge:</td>
+                    <td>{{ number_format(round(( $reservations->reservationCustomize->pax - round($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
                   </tr>
                    {{-- Budget --}}
                    <tr>
@@ -191,14 +191,30 @@
             <tr>
               <td class="fw-bolder">Pasta: </td>
               <td>{{ $reservations->getMenuName('pastaMenu') }}</td>
-              <td class="fw-bolder">Additonal Services: </td>
-              <td>
-                {{$reservations->additional}}
-                </td>
+              
 
             </tr>
+            
         </table>
-
+        <table>
+          
+          <tr>
+           
+            <td class="fw-bolder">Additonal Services: </td>
+            <td>
+              {{$reservations->additional}}
+              </td>
+             
+              
+          </tr>
+          <tr>
+            <td>
+              <div class="fs-6 d-flex justify-content-start text-danger w-75"> <i>*Additional Service will have additional charge</i></div>
+            </td>
+          </tr>
+          
+        </table>
+        
         <div class="btn-position justify-content-center m-5">
             <a href="{{ route('generate.pdf',$reservations->id) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download PDF File</a>
         </div>

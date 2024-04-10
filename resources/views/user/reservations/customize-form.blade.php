@@ -35,15 +35,15 @@
                     <tr>
                         <th scope="row">Budget</th>
                         <td>
-                            <input type="number" class="form-control" name="budget" placeholder="Minimum of 18,000" aria-label="Budget" aria-describedby="basic-addon1"
-                                min="18000" value="{{ old('budget', session('budget')) }}">
+                            <input type="number" class="form-control" name="budget" placeholder="Minimum of 17,650" aria-label="Budget" aria-describedby="basic-addon1"
+                                min="17650" value="{{ old('budget', session('budget')) }}">
                         </td>
                     </tr>
 
                 </tbody>
             </table>
             <div id="guestMessageContainer">
-                <p id="guestMessage" class="fs-4 mb-5 text-center"></p>
+                <p id="guestMessage" class="fs-4 mb-5 text-center"> </p>
             </div>
             <div style="display: flex; justify-content: flex-end;">
                 <button type="button" class="btn btn-primary m-5" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Proceed</button>
@@ -81,8 +81,8 @@
                 budgetInput.addEventListener('input', function () {
                     const budget = parseFloat(budgetInput.value) || 0;
 
-                    if (budget >= 18000) {
-                        const additionalGuests = Math.ceil((budget - 18000) / 350 );
+                    if (budget >= 17650) {
+                        const additionalGuests = Math.ceil((budget - 17650) / 350 );
                         const totalGuests = 50 + additionalGuests;
                         guestMessage.innerHTML = `Your budget is applicable for ${totalGuests} guests. <br> Additional guests will be charged 350 pesos per head, <br>Prices will be subject to change.`;
                         guestMessageContainer.style.display = 'block';
