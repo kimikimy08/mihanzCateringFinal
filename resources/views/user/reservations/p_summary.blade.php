@@ -87,31 +87,46 @@
             @elseif ($reservations->reservationSelection->choice == 'customize')
                 <!-- Customize Reservation Section -->
               
+                  <tr>
                     <td class="fw-bolder">Package Type:</td>
                     <td>Customized</td>
+                  </tr>
              
-                <tr>
-                    <td class="fw-bolder">Pax:</td>
+                    <tr>
+                      <td class="fw-bolder">Theme: </td>
+                      <td>{{ $reservations->event_theme }}</td>
+                      
+                      
+                  </tr>
+                  {{-- Guest Package --}}
+                  <tr>
+                    <td class="fw-bolder">Package Guest:</td>
                     <td>{{ number_format($reservations->reservationCustomize->pax  )  }}</td>
+                  </tr>
+                  {{-- Recommended Guest--}}
+                  <tr>
+                    <td class="fw-bolder">Recommended Guest:</td>
+                    <td>{{ number_format(floor($reservations->reservationCustomize->price /350)  )  }}</td>
+                  </tr>
+                  {{-- Additional Charge --}}
+                  <tr>
                     <td class="fw-bolder">Additional Charge:</td>
                     <td>{{ number_format(floor(( $reservations->reservationCustomize->pax - floor($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
-                    
+                  </tr>
+                   {{-- Budget --}}
+                   <tr>
+                    <td class="fw-bolder"> Total Amount:</td>
+                    <td>{{  number_format(floor(( $reservations->reservationCustomize->pax - floor($reservations->reservationCustomize->price / 350 ))*350  )+floor($reservations->reservationCustomize->price ) )}}</td>
                 </tr>
-                <tr>
+                  
+
                     <!-- ... other customize reservation fields ... -->
                 </tr>
             @endif
                 <!-- ... other package information fields ... -->
-                <tr>
-                  <td class="fw-bolder"> Budget:</td>
-            <td>
-            {{  number_format($reservations->reservationCustomize->price) }}
-            </td>
-            <td class="fw-bolder">Theme: </td>
-            <td>{{ $reservations->event_theme }}</td>
-            
+                
 
-          </tr>
+              </tr>
 
           </table>
         <hr>

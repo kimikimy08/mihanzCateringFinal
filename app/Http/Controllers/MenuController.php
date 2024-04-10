@@ -38,7 +38,7 @@ class MenuController extends Controller
     public function mostOrderedMenuPerCategory()
 {
     $menuCategories = ['pork', 'beef', 'pasta', 'chicken', 'veggies', 'fish', 'seafood', 'dessert', 'drink'];
-
+    // , 'additional_services'
     $result = collect();
 
     foreach ($menuCategories as $category) {
