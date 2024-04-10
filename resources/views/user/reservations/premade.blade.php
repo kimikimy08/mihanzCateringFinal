@@ -242,6 +242,23 @@
                 </select>
               </td>
             </tr>
+            <tr>
+              <td>
+                <div class="fs-6 d-flex justify-content-start text-danger"> <i>*Additional Service will have additional charge</i></div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Additional Services</span>
+                  <select class="form-select" name="addedServices" aria-label="Default select example">
+                  <option value="" selected >None</option>
+                  <option value="">Cake</option>
+                  <option value="">Cupcake</option>
+                  <option value="">Chocolate Fountain with Marshmallows</option>
+                  <option value="">Fruits</option>
+              </select>
+                </div>
+                
+              </td>
+              
+            </tr>
 
           </table>
         </div>

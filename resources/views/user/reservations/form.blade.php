@@ -43,7 +43,7 @@
           <tr>
             <td>
               <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Venue Address</span>
+                <span class="input-group-text" id="inputGroup-sizing-default">Event Address</span>
                 <input type="text" class="form-control"  name="venue_address" value="{{ old('venue_address') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
               </div>
             </td>
@@ -117,18 +117,7 @@
             </td>
             
           </tr>
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Added Services</span>
-                <select class="form-select" name="celebrant_gender" aria-label="Default select example">
-                <option value="" selected disabled>Select Added Service</option>
-                <option value="">1</option>
-            </select>
-              </div>
-            </td>
-            
-          </tr>
+          
           
         </table>
         <hr>
@@ -272,6 +261,23 @@
                 @endforeach
                 </select>
               </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="fs-6 d-flex justify-content-start text-danger"> <i>*Additional Service will have additional charge</i></div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Additional Services</span>
+                  <select class="form-select" name="addedServices" aria-label="Default select example">
+                  <option value="" selected >None</option>
+                  <option value="">Cake</option>
+                  <option value="">Cupcake</option>
+                  <option value="">Chocolate Fountain with Marshmallows</option>
+                  <option value="">Fruits</option>
+              </select>
+                </div>
+                
+              </td>
+              
             </tr>
 
           </table>
@@ -462,7 +468,7 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
 
         // Set the minimum date to 7 days from today
         var sevenDaysLater = new Date();
-        sevenDaysLater.setDate(sevenDaysLater.getDate() + 4);
+        sevenDaysLater.setDate(sevenDaysLater.getDate() + 5);
         var minDate = sevenDaysLater.toISOString().split('T')[0];
         eventDateInput.setAttribute('min', minDate);
 
