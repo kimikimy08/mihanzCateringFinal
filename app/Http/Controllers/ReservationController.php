@@ -65,7 +65,7 @@ class ReservationController extends Controller
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|accepted',
-
+            'additional' => 'required|in:None,Cake,Cupcake,Chocolate,Fruits',
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -93,6 +93,7 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
+            'additional' => $request->input('additional'),
 
         ]);
 
@@ -195,7 +196,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|accepted',
-
+            'additional' => 'required|in:None,Cake,Cupcake,Chocolate,Fruits',
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -223,7 +224,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-
+            'additional' => $request->input('additional'),
         ]);
 
         $reservation->selections()->create([

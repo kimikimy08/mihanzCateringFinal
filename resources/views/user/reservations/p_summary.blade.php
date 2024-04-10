@@ -122,9 +122,16 @@
 
                     <!-- ... other customize reservation fields ... -->
                 </tr>
-            @endif
+          
                 <!-- ... other package information fields ... -->
-                
+                <tr>
+                  <td class="fw-bolder"> Budget:</td>
+            <td>
+            {{  number_format($reservations->reservationCustomize->price) }}
+            </td>
+            <td class="fw-bolder">Theme: </td>
+            <td>{{ $reservations->event_theme }}</td>
+            
 
               </tr>
 
