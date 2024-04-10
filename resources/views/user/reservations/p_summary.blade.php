@@ -92,9 +92,9 @@
              
                 <tr>
                     <td class="fw-bolder">Pax:</td>
-                    <td>{{ number_format($reservations->reservationCustomize->pax) }}</td>
-                    <td class="fw-bolder">Penalty:</td>
-                    <td>{{ number_format(ceil(( $reservations->reservationCustomize->pax - $reservations->reservationCustomize->price / 350 )*350  )) }}</td>
+                    <td>{{ number_format($reservations->reservationCustomize->pax  )  }}</td>
+                    <td class="fw-bolder">Additional Charge:</td>
+                    <td>{{ number_format(floor(( $reservations->reservationCustomize->pax - floor($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
                     
                 </tr>
                 <tr>
@@ -103,9 +103,9 @@
             @endif
                 <!-- ... other package information fields ... -->
                 <tr>
-                  <td class="fw-bolder"> Price:</td>
+                  <td class="fw-bolder"> Budget:</td>
             <td>
-            {{ $reservations->reservationCustomize->price }}
+            {{  number_format($reservations->reservationCustomize->price) }}
             </td>
             <td class="fw-bolder">Theme: </td>
             <td>{{ $reservations->event_theme }}</td>
