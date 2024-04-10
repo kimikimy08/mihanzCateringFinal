@@ -243,46 +243,37 @@
               </td>
             </tr>
             <table>
-              <tr>
-              <td>
-                <div>
-                  <div class="fs-2">Additional Services</div>
-                  <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
-                </div>
-                </td>
-                <td></td>
-                
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
-                  </div>
-                </td>
-                
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label fs-5" for="inlineCheckbox1">Chocolate Fountain Booth</label>
-                  </div>
-                </td>
-                
-              </tr>
+
+
+
+              <div class="input-group mb-3">
+              <div class="fs-2">Additional Services</div>
+    <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="partyEntertainers" name="additional[]" value="PartyEntertainers" {{ is_array(old('additional')) && in_array('PartyEntertainers', old('additional')) ? 'checked' : '' }}>
+        <label class="form-check-label fs-5" for="partyEntertainers">Party Entertainers</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
+        <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
+        <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
+        <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
+        <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="fruits" name="additional[]" value="Fruits" {{ is_array(old('additional')) && in_array('Fruits', old('additional')) ? 'checked' : '' }}>
+        <label  class="form-check-label fs-5" for="fruits">Fruits Booth</label>
+    </div>
+</div>
               
               
               <table>

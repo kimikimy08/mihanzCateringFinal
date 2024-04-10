@@ -65,7 +65,8 @@ class ReservationController extends Controller
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|accepted',
-            'additional' => 'required|in:None,Cake,Cupcake,Chocolate,Fruits',
+            'additional' => 'array',
+            'additional.*' => Rule::in(['PartyEntertainers', 'PhotoBooth', 'Chocolate', 'Painting', 'Cupcake', 'Fruits']),
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -74,6 +75,7 @@ class ReservationController extends Controller
         ]);
 
         $packageId = $request->input('selected_package');
+        $additionalServices = implode(',', $request->input('additional'));
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -93,7 +95,7 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-            'additional' => $request->input('additional'),
+            'additional' => $additionalServices,
 
         ]);
 
@@ -196,7 +198,8 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|accepted',
-            'additional' => 'required|in:None,Cake,Cupcake,Chocolate,Fruits',
+            'additional' => 'array',
+            'additional.*' => Rule::in(['PartyEntertainers', 'PhotoBooth', 'Chocolate', 'Painting', 'Cupcake', 'Fruits']),
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -205,6 +208,8 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'agree_terms.accepted' => 'Please check the terms and conditions.',
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
+
+        $additionalServices = implode(',', $request->input('additional'));
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -224,7 +229,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-            'additional' => $request->input('additional'),
+            'additional' => $additionalServices,
         ]);
 
         $reservation->selections()->create([

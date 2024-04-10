@@ -114,6 +114,7 @@
                     <td>{{ number_format(round(( $reservations->reservationCustomize->pax - round($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
                   </tr>
                    {{-- Budget --}}
+                   
                    <tr>
                     <td class="fw-bolder"> Total Amount:</td>
                     <td>{{  number_format(floor(( $reservations->reservationCustomize->pax - floor($reservations->reservationCustomize->price / 350 ))*350  )+floor($reservations->reservationCustomize->price ) )}}</td>
