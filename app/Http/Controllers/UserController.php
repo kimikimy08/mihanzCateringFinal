@@ -63,7 +63,7 @@ class UserController extends Controller
         ->get();
 
         $latestReservations = $user->reservations()
-        ->where('event_date', '>=', Carbon::now()->subDays(7)->toDateString()) // within the last 7 days
+        ->where('event_date', '>=', Carbon::now()->subDays(4)->toDateString()) // within the last 7 days
         ->orderBy('event_date', 'desc') // order by event_date in descending order
         ->get();
 
@@ -112,7 +112,7 @@ class UserController extends Controller
                     ? $reservation->premades->servicePackage->pax
                     : null,
                 'customize_pax' => optional($reservation->reservationCustomize)->price
-                    ? number_format(floor($reservation->reservationCustomize->price / 350))
+                    ? number_format($reservation->reservationCustomize->pax)
                     : null,
                 'premade_price' => optional($reservation->premades)->servicePackage
                     ? $reservation->premades->servicePackage->price

@@ -162,7 +162,62 @@
     </div>
   </div>
 </div>
-
+<style>
+  .calendar-Date{
+    /* background-color: gainsboro; */
+  }
+  #calendar{
+    background:rgb(199, 199, 199);
+  }
+  .fc-daygrid-day-number {
+    color: #000 !important;
+    background:rgba(199, 199, 199, 0) !important;
+    text-shadow: 0px 1px 3px black;
+}
+  .fc-media-screen {
+    width: 90%;
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+  #calendar td{
+  border: solid 1px black;
+  }
+  #calendar th{
+  border: solid 1px black;
+  background-color: forestgreen;
+  
+  }
+  #calendar th a{
+    color: snow;
+  text-shadow: -1px 4px 8px black;
+  
+  }
+  .fc-col-header-cell-cushion{
+    color: snow !important;
+  text-shadow: -1px 4px 8px black !important;
+  background-color: forestgreen !important;
+  }
+  .fc .fc-toolbar.fc-header-toolbar {
+  margin-bottom:0;
+  text-shadow: 0px 1px 3px black;
+}
+.fc .fc-toolbar.fc-header-toolbar h2{
+margin-left: 1em;
+}
+  .fc-h-event{
+    background: rgba(255, 0, 0, 0.589) !important;
+  }
+  #calendar a{
+    color: black;
+    text-decoration: none;
+    text-shadow: 0px 1px 3px black;
+  }
+  #calendar button{
+    text-transform: capitalize
+  }
+ </style>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
@@ -201,5 +256,6 @@
     $('#modalTheme').text(eventDetails.event_theme); // Example: Add this line for each property
     // ... Populate other modal elements similarly
   }
+  
 </script>
 @endsection

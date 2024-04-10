@@ -4,8 +4,12 @@
 <link rel="stylesheet" href="{{ asset('css/Services.css') }}">
 <div class="filter">
     <div class="customization">
-        <div class="display-2 m-5" style="font-family: 'Playfair Display', serif;">Reservation Form</div>
-
+        <div class="display-2 mt-5 mb-2" style="font-family: 'Playfair Display', serif;">Reservation Form</div>
+        <div id="paxMessageContainer" class=" mb-5">
+            <p class=" text-center fs-5">
+                If below 50 pax, it is recommended to avail the "Special Paluto Service", <br>for more information, please Contact Mihanz Catering.
+            </p>
+        </div>
         <form action="{{ route('user.reservations.store') }}" method="post">
             @csrf
             <div class="input-container">
@@ -20,7 +24,7 @@
                             </ul>
                         </div>
                     @endif
-
+                        
                     <tr>
                         <th scope="row">No. of Guest</th>
                         <td>
@@ -55,6 +59,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="display-6 fs-3 fw-semibold"> Do you want to proceed?</div>
+                            
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Yes</button>
@@ -77,9 +82,9 @@
                     const budget = parseFloat(budgetInput.value) || 0;
 
                     if (budget >= 18000) {
-                        const additionalGuests = Math.floor((budget - 18000) / 350);
+                        const additionalGuests = Math.floor((budget - 18000) / 350 );
                         const totalGuests = 50 + additionalGuests;
-                        guestMessage.innerHTML =  `Additional guests will be charged 350 pesos per head, <br>Prices will be subject to change.`;
+                        guestMessage.innerHTML = `Your budget is applicable for ${totalGuests} guests. <br> Additional guests will be charged 350 pesos per head, <br>Prices will be subject to change.`;
                         guestMessageContainer.style.display = 'block';
                     } else {
                         guestMessage.innerHTML = `Additional guests will be charged 350 pesos per head, <br>Prices will be subject to change.`;
@@ -87,6 +92,7 @@
                     }
                 });
             });
+
 
         </script>
 

@@ -48,7 +48,7 @@ class ReservationController extends Controller
             'event_date' => [
                 'required',
                 'date',
-                'after_or_equal:' . now()->addDays(7)->toDateString(),
+                'after_or_equal:' . now()->addDays(3)->toDateString(),
                 Rule::unique('reservations')->where(function ($query) use ($request) {
                     return $query->where('event_date', $request->input('event_date'));
                 })],
@@ -178,7 +178,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'event_date' => [
                 'required',
                 'date',
-                'after_or_equal:' . now()->addDays(7)->toDateString(),
+                'after_or_equal:' . now()->addDays(4)->toDateString(),
                 Rule::unique('reservations')->where(function ($query) use ($request) {
                     return $query->where('event_date', $request->input('event_date'));
                 })],

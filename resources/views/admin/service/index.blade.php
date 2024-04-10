@@ -75,7 +75,7 @@
                       </td>
                       <th scope="col">Category</th>
                       <td>
-                                    <input type="text" name="services_category" class="form-control" placeholder="Dish Name">
+                                    <input type="text" name="services_category" class="form-control" placeholder="Category">
                       </td>
                       
                     </tr>

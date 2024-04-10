@@ -17,17 +17,18 @@
                         @foreach ($serviceSelection->themeSelections as $key => $themeItem)
                             <div class="carousel-item {{ $key === 0 ? 'active' : '' }}" data-bs-interval="10000">
                                 <img src="{{ $themeItem->theme_image }}" class="d-block w-100" alt="...">
-                                <div class="carousel-caption d-none d-md-block">
-                                    <p>{{ $themeItem->theme_name }}</p>
+                                <div class="carousel-caption d-none d-md-block ">
+                                    <p class=" display-4 fw-semibold" style="    color: white;
+                                    text-shadow: 1px 1px 20px black; font-family: 'Playfair Display', serif;" >{{ $themeItem->theme_name }}</p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carousel{{ ucfirst($serviceSelection->services_category) }}" data-bs-slide="prev">
+                    <button class="carousel-control-prev " style="backdrop-filter: blur(10px); width: 5%;" type="button" data-bs-target="#carousel{{ ucfirst($serviceSelection->services_category) }}" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carousel{{ ucfirst($serviceSelection->services_category) }}" data-bs-slide="next">
+                    <button class="carousel-control-next" style="backdrop-filter: blur(10px); width: 5%;" type="button" data-bs-target="#carousel{{ ucfirst($serviceSelection->services_category) }}" data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>

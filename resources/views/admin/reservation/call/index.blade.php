@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('css/Admin.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 <h1 class="display-1">Client Status</h1>
         <div class="btn-position-status"><button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-primary">Add</button></div>
         <div class="status-container">

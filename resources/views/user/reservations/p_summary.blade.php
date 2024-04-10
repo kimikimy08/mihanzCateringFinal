@@ -92,11 +92,10 @@
              
                 <tr>
                     <td class="fw-bolder">Pax:</td>
-                    <td>{{ number_format(floor($reservations->reservationCustomize->price / 350)) }}</td>
-                    <td class="fw-bolder"> Price:</td>
-            <td>
-            {{ $reservations->reservationCustomize->price }}
-            </td>
+                    <td>{{ number_format($reservations->reservationCustomize->pax) }}</td>
+                    <td class="fw-bolder">Penalty:</td>
+                    <td>{{ number_format(ceil(( $reservations->reservationCustomize->pax - $reservations->reservationCustomize->price / 350 )*350  )) }}</td>
+                    
                 </tr>
                 <tr>
                     <!-- ... other customize reservation fields ... -->
@@ -104,6 +103,10 @@
             @endif
                 <!-- ... other package information fields ... -->
                 <tr>
+                  <td class="fw-bolder"> Price:</td>
+            <td>
+            {{ $reservations->reservationCustomize->price }}
+            </td>
             <td class="fw-bolder">Theme: </td>
             <td>{{ $reservations->event_theme }}</td>
             
@@ -181,6 +184,8 @@
         <div class="btn-position justify-content-center m-5">
             <a href="{{ route('generate.pdf',$reservations->id) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download PDF File</a>
         </div>
+       
+        <div class="fs-5 mb-4 fst-italic w-75 justify-content-center" style="text-align: center"><p>Your reservation will be reviewed within <b class=" text-success" >24hours</b>, thank you for considering Mihanz Catering as your event's caterer</p></div>
         <div class="fs-5 mb-3 fst-italic">Disclaimer: For any changes please contact the catering.</div>
     </div>
 @endsection

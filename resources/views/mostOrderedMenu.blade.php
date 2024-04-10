@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <link rel="stylesheet" href="{{ asset('css/Services.css') }}">
+<link rel="stylesheet" href="{{ asset('css/services.css') }}">
 
     <!-- Info -->
-    <section class="info mb-5">
+    <section class="info mb-">
         <div class="info-container">
             <div>
                 <div class="display-2 p-3 text-center" style="font-family: 'Playfair Display', serif;">Top foods per category!</div>
                 <div class="display-6 text-center">Are you not sure what to pick for your reservation?</div>
-                <div class="display-6 text-center mb-5">Come and take a look at client's favorites</div>
+                <div class="display-6 text-center mb-4">Come and take a look at client's favorites</div>
                 <div class="btn-pos"><a href="{{ url('/menus') }}"><button type="button" class="btn btn-primary btn-lg">Check Our Menu</button></a></div>
             </div>
         </div>
     </section>
 
-    <div class="display-1 mb-5" style="font-family: 'Playfair Display', serif;">Most Ordered Menu</div>
+    <div class="display-1" style="font-family: 'Playfair Display', serif; margin-bottom:100px;">Most Ordered Menu</div>
     <section class="most-ordered-menu w-100 mb-5">
         @isset($result)
             @php
@@ -27,7 +27,7 @@
                     @if ($currentCategory !== null)
                         </ul>
                     @endif
-                    <div class="display-3 m-5" style="border-bottom: solid; text-align: center;">{{ $menuItem->category_name }}:</div>
+                    <div class="display-3 m-5"  style="border-bottom: solid; text-align: center; font-family: 'Playfair Display', serif;">{{ $menuItem->category_name }}:</div>
                     
                     <ul class="list-unstyled d-flex justify-content-around flex-wrap">
                 @endif

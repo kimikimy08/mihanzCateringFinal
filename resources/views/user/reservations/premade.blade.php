@@ -435,7 +435,7 @@
 
         // Set the minimum date to 7 days from today
         var sevenDaysLater = new Date();
-        sevenDaysLater.setDate(sevenDaysLater.getDate() + 7);
+        sevenDaysLater.setDate(sevenDaysLater.getDate() + 4);
         var minDate = sevenDaysLater.toISOString().split('T')[0];
         eventDateInput.setAttribute('min', minDate);
 

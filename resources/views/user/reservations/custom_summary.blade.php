@@ -70,7 +70,7 @@
             <tr>
               <td class="fw-bolder"> Pax:</td>
             <td>
-            {{ number_format(floor($reservations->reservationCustomize->price / 350)) }}
+            {{ number_format(($reservations->reservationCustomize->pax )) }}
             </td>
             <td class="fw-bolder"> Price:</td>
             <td>
@@ -181,6 +181,7 @@
           <button class="btn btn-primary">Download PDF File</button>
         </div>
         <div class="fs-5 mb-3 fst-italic">Disclaimer: For any changes please contact the catering.</div>
+        <div class="fs-5 mb-5 fst-italic w-75 justify-content-center"><p>Your reservation will be reviewed within <b class=" text-success">24hours</b>, thank you for considering Mihanz Catering as your event's caterer</p></div>
       </div>
 
 @endsection
