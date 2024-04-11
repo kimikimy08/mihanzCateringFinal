@@ -29,7 +29,6 @@ class Reservations extends Migration
             $table->string('venue_address');
             $table->boolean('agree_terms');
             $table->enum('reservation_status', ['Pending', 'Approved', 'Decline']);
-            $table->text('additional')->nullable();
 
             $table->unsignedBigInteger('pork_menu_id')->nullable();
             $table->unsignedBigInteger('beef_menu_id')->nullable();
@@ -50,6 +49,23 @@ class Reservations extends Migration
             $table->foreign('seafood_menu_id')->references('id')->on('menus');
             $table->foreign('drink_menu_id')->references('id')->on('menus');
             $table->foreign('dessert_menu_id')->references('id')->on('menus');
+
+            $table->unsignedBigInteger('pe_menu_id')->nullable();
+            $table->unsignedBigInteger('pb_menu_id')->nullable();
+            $table->unsignedBigInteger('cf_menu_id')->nullable();
+            $table->unsignedBigInteger('fp_menu_id')->nullable();
+            $table->unsignedBigInteger('ct_menu_id')->nullable();
+            $table->unsignedBigInteger('f_menu_id')->nullable();
+
+
+            $table->foreign('pe_menu_id')->references('id')->on('additionals');
+            $table->foreign('pb_menu_id')->references('id')->on('additionals');
+            $table->foreign('cf_menu_id')->references('id')->on('additionals');
+            $table->foreign('fp_menu_id')->references('id')->on('additionals');
+            $table->foreign('ct_menu_id')->references('id')->on('additionals');
+            $table->foreign('f_menu_id')->references('id')->on('additionals');
+
+
             $table->timestamps();
         });
     }

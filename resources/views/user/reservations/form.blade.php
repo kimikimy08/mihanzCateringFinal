@@ -290,12 +290,88 @@
                 </td>
               </tr>
             </tr>
+
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Party Entertainers</span>
+                <select class="form-select" name="pe_menu" aria-label="Default select example">
+                <option value="" selected disabled>Select Party Entertainers</option>
+                @foreach($additionalSelections['pe'] as $additional)
+                <option value="{{ $additional->id }}" {{ old('pe_menu') == $additional->id ? 'selected' : '' }}>{{ $additional->name }}</option>
+                @endforeach
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Photo Booth</span>
+                <select class="form-select" name="pb_menu" aria-label="Default select example">
+                <option value="" selected disabled>Select Photo Booth</option>
+                @foreach($additionalSelections['pb'] as $additional)
+                <option value="{{ $additional->id }}" {{ old('pb_menu') == $additional->id ? 'selected' : '' }}>{{ $additional->name }}</option>
+                @endforeach
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Chocolate Fountain Booth</span>
+                <select class="form-select" name="cf_menu" aria-label="Default select example">
+                <option value="" selected disabled>Select Chocolate Fountain</option>
+                @foreach($additionalSelections['cf'] as $additional)
+                <option value="{{ $additional->id }}" {{ old('cf_menu') == $additional->id ? 'selected' : '' }}>{{ $additional->name }}</option>
+                @endforeach
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Face Painting Booth</span>
+                <select class="form-select" name="fp_menu" aria-label="Default select example">
+                <option value="" selected disabled>Select Face Painting Booth</option>
+                @foreach($additionalSelections['fp'] as $additional)
+                <option value="{{ $additional->id }}" {{ old('fp_menu') == $additional->id ? 'selected' : '' }}>{{ $additional->name }}</option>
+                @endforeach
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Cupcake Tower Booth</span>
+                <select class="form-select" name="ct_menu" aria-label="Default select example">
+                <option value="" selected disabled>Select Cupcake Tower Booth</option>
+                @foreach($additionalSelections['ct'] as $additional)
+                <option value="{{ $additional->id }}" {{ old('ct_menu') == $additional->id ? 'selected' : '' }}>{{ $additional->name }}</option>
+                @endforeach
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Fruits Booth</span>
+                <select class="form-select" name="f_menu" aria-label="Default select example">
+                <option value="" selected disabled>Select Fruits Booth</option>
+                @foreach($additionalSelections['f'] as $additional)
+                <option value="{{ $additional->id }}" {{ old('f_menu') == $additional->id ? 'selected' : '' }}>{{ $additional->name }}</option>
+                @endforeach
+                </select>
+              </td>
+            </tr>
+<!--             
     <tr>
       <td>
-        {{-- <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="partyEntertainers" name="additional[]" value="PartyEntertainers" {{ is_array(old('additional')) && in_array('PartyEntertainers', old('additional')) ? 'checked' : '' }}>
-          <label class="form-check-label fs-5" for="partyEntertainers">Party Entertainers</label>
-      </div> --}}
+      
       <div class="input-group mb-3">
         <span class="input-group-text" id="inputGroup-sizing-default">Party Entertainers</span>
         <select class="form-select" name="" aria-label="Default select example">
@@ -459,7 +535,7 @@
       </option>
       </select>
     </td>
-   </tr>
+   </tr> -->
 
               
               

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Menu;
+use App\Models\Additional;
 use App\Models\MenuSelection;
+use App\Models\AdditionalSelection;
 use App\Models\ThemeSelection;
 use App\Models\Reservation;
 use App\Models\ReservationCustomize;
@@ -30,10 +32,21 @@ class ReservationController extends Controller
 
         ];
 
+        $additionalSelections = [
+            'pe' => Additional::where('additional_selection_id', 1)->get(),
+            'pb' => Additional::where('additional_selection_id', 2)->get(),
+            'cf' => Additional::where('additional_selection_id', 3)->get(),
+            'fp' => Additional::where('additional_selection_id', 4)->get(),
+            'ct' => Additional::where('additional_selection_id', 5)->get(),
+            'f' => Additional::where('additional_selection_id', 6)->get(),
+          
+
+        ];
+
         $specificPackage = ServicePackage::findOrFail($packageId);
         $themeSelections = ThemeSelection::all();
 
-        return view('user.reservations.premade', compact('menuSelections', 'specificPackage', 'themeSelections'));
+        return view('user.reservations.premade', compact('menuSelections', 'specificPackage', 'themeSelections', 'additionalSelections'));
     }
 
     public function submitForm(Request $request)
@@ -64,9 +77,16 @@ class ReservationController extends Controller
             'dessert_menu' => 'required|exists:menus,id',
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
+            
+            'pe_menu' => 'nullable|exists:additionals,id',
+            'pb_menu' => 'nullable|exists:additionals,id',
+            'cf_menu' => 'nullable|exists:additionals,id',
+            'fp_menu' => 'nullable|exists:additionals,id',
+            'ct_menu' => 'nullable|exists:additionals,id',
+            'f_menu' => 'nullable|exists:additionals,id',
+
             'agree_terms' => 'required|accepted',
-            'additional' => 'array',
-            'additional.*' => Rule::in(['PartyEntertainers', 'PhotoBooth', 'Chocolate', 'Painting', 'Cupcake', 'Fruits']),
+
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -75,7 +95,6 @@ class ReservationController extends Controller
         ]);
 
         $packageId = $request->input('selected_package');
-        $additionalServices = implode(',', $request->input('additional'));
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -95,7 +114,13 @@ class ReservationController extends Controller
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-            'additional' => $additionalServices,
+            
+            'pe_menu_id' => $request->input('pe_menu'),
+            'pb_menu_id' => $request->input('pb_menu'),
+            'cf_menu_id' => $request->input('cf_menu'),
+            'fp_menu_id' => $request->input('fp_menu'),
+            'ct_menu_id' => $request->input('ct_menu'),
+            'f_menu_id' => $request->input('f_menu'),
 
         ]);
 
@@ -140,6 +165,17 @@ class ReservationController extends Controller
 
         ]);
 
+        $additionalSelections = [
+            'pe' => Additional::where('additional_selection_id', 1)->get(),
+            'pb' => Additional::where('additional_selection_id', 2)->get(),
+            'cf' => Additional::where('additional_selection_id', 3)->get(),
+            'fp' => Additional::where('additional_selection_id', 4)->get(),
+            'ct' => Additional::where('additional_selection_id', 5)->get(),
+            'f' => Additional::where('additional_selection_id', 6)->get(),
+          
+        
+        ];
+
         $themeSelections = ThemeSelection::all();
     
         session()->put('budget', $request->input('budget'));
@@ -156,7 +192,10 @@ $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first
 $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus()->where('status', 'active')->get();
 $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
-        return view('user.reservations.form', compact('menus', 'themeSelections'));
+
+
+
+        return view('user.reservations.form', compact('menus', 'themeSelections', 'additionalSelections'));
     }
 
     public function showCustomizeForm(Request $request)

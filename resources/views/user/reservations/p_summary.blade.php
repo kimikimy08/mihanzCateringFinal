@@ -228,7 +228,7 @@
           </tr>
           <tr>
             <td class=" fs-5">
-              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+              <p class=" m-3">{{ $reservations->getAdditionalName('peMenu') }} - {{ $reservations->getAdditionalPrice('peMenu') }} </p>
             </td>
           </tr>
           <tr>
@@ -238,7 +238,7 @@
           </tr>
           <tr>
             <td class=" fs-5">
-              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+              <p class=" m-3">{{ $reservations->getAdditionalName('pbMenu') }} - {{ $reservations->getAdditionalPrice('pbMenu') }}</p>
             </td>
           </tr>
           <tr>
@@ -248,7 +248,7 @@
           </tr>
           <tr>
             <td class=" fs-5">
-              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+              <p class=" m-3">{{ $reservations->getAdditionalName('cfMenu') }} - {{ $reservations->getAdditionalPrice('cfMenu') }}</p>
             </td>
           </tr>
           <tr>
@@ -258,7 +258,7 @@
           </tr>
           <tr>
             <td class=" fs-5">
-              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+              <p class=" m-3">{{ $reservations->getAdditionalName('fpMenu') }} - {{ $reservations->getAdditionalPrice('fpMenu') }}</p>
             </td>
           </tr>
          
@@ -269,7 +269,7 @@
           </tr>
           <tr>
             <td class=" fs-5">
-              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+              <p class=" m-3">{{ $reservations->getAdditionalName('ctMenu') }} - {{ $reservations->getAdditionalPrice('ctMenu') }}</p>
             </td>
           </tr>
           <tr>
@@ -280,7 +280,7 @@
           </tr>
           <tr>
             <td class=" fs-5">
-              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+              <p class=" m-3">{{ $reservations->getAdditionalName('fMenu') }} - {{ $reservations->getAdditionalPrice('fMenu') }}</p>
             </td>
           </tr>
           <tr>
