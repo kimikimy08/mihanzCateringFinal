@@ -18,7 +18,7 @@ class ReservationCustomizes extends Migration
             $table->unsignedBigInteger('reservation_id');
             $table->unsignedBigInteger('pax');
             $table->decimal('price', 8, 2);
-            $table->enum('option', ['option 1', 'option 2']);
+            $table->string('option');
             $table->timestamps();
 
             $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('cascade');

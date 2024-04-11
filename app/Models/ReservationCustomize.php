@@ -12,6 +12,7 @@ class ReservationCustomize extends Model
     protected $fillable = [
         'pax', // Add this line
         'price',
+        'option',
         // other fields...
     ];
 

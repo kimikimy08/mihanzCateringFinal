@@ -108,7 +108,7 @@
                     {{-- Options --}}
                     <td class="fw-bolder">Option Selected</td>
                     <td>
-                      Option 1
+                    {{ $reservations->reservationCustomize->option }}
                     </td>
                   </tr>
                   {{-- Guest Package --}}

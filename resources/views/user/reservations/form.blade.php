@@ -8,26 +8,27 @@
          Customization Form
       </h1>
       {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
-      <div class=" w-75">
-        <p class=" " style="width: 60%">
-          <div class="form-check fs-5 mb-5 fw-semibold">
-            <div class="h5">Option 1</div>
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Option 1" checked>
-            <label class="form-check-label" for="flexRadioDefault1">
-              The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor (session('budget')/350)) }}</b> guest is recommended for your given budget,
-              The buffer for additional guest is  <b>10</b>, The total amount will be <b>{{ number_format(( session('budget') )) }}</b>.
-            </label>
-          </div>
-          <div class="form-check fs-5 fw-semibold">
-            <div class="h5">Option 2</div>
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Option 2">
-            <label class="form-check-label" for="flexRadioDefault2">
-              The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor (session('budget')/350)) }}</b> guest is recommended for your given budget,
-             additional charge will be <b>{{ number_format(( (session('pax') - floor(session('budget') / 350)) *350 )) }}</b>. The buffer for additional guest is  <b>10</b>, The total amount will be <b>{{ number_format(( ceil((session('pax') - floor(session('budget') / 350)) *350)+ session('budget') )) }}</b>.
-            </label>
-          </div>
+      <div class="form-check fs-5 mb-5 fw-semibold">
+    <div class="h5">Option 1</div>
+   <label for="">Option 1</label>
+    <label class="form-check-label" for="option1">
+        The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor(session('budget') / 350)) }}</b> guest is recommended for your given budget,
+        The buffer for additional guests is <b>10</b>. The total amount will be <b>{{ number_format((session('budget'))) }}</b>.
+    </label>
+</div>
+<div class="form-check fs-5 fw-semibold">
+    <div class="h5">Option 2</div>
+    <label for="">Option 2</label>
+    <label class="form-check-label" for="option2">
+        The package is for <b>{{ number_format((session('pax'))) }}</b> guests, <b>{{ number_format(floor(session('budget') / 350)) }}</b> guests are recommended for your given budget,
+        additional charges will be <b>{{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}</b>. The buffer for additional guests is <b>10</b>. The total amount will be <b>{{ number_format((ceil((session('pax') - floor(session('budget') / 350)) * 350) + session('budget'))) }}</b>.
+    </label>
+</div>
 
-          <input type="hidden" name="selected_option" id="selectedOptionInput" value="Option 2">
+<!-- Hidden input for selected_option -->
+
+
+
         </p>
       </div>
       </div>
@@ -36,6 +37,20 @@
         <h1 class="display-3 text-center mb-5"> More details</h1>
         <form action="{{ route('reservation.customize.submit') }}" method="post">
         @csrf
+
+        <td>
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Option</span>
+                <select class="form-select" name="option" aria-label="Default select example">
+                <option value="" selected disabled>Select Option</option>
+
+                <option value="Option 1" {{ old('option') == 'Option 1' ? 'selected' : '' }}>Option 1</option>
+                <option value="Option 2" {{ old('option') == 'Option 2' ? 'selected' : '' }}>Option 2</option>
+            </select>
+              </div>
+            </td>
+
+            
         <h1 class="text-start">Celebrant Information</h1>
         <table>
         @if ($errors->any())
@@ -795,18 +810,5 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
     }
 </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Set the initial value of the hidden input field based on the default checked radio button
-        var selectedOption = document.querySelector('input[name="flexRadioDefault"]:checked').value;
-        document.getElementById('selectedOptionInput').value = selectedOption;
-        
-        // Add event listeners to update the hidden input field when the radio buttons are clicked
-        document.querySelectorAll('input[name="flexRadioDefault"]').forEach(function(radio) {
-            radio.addEventListener('change', function () {
-                document.getElementById('selectedOptionInput').value = this.value;
-            });
-        });
-    });
-</script>
+
 @endsection
