@@ -82,6 +82,12 @@
             <td>
             {{ $reservations->premades->servicePackage->price }}
             </td>
+            <tr>
+              <td class="fw-bolder">Theme: </td>
+              <td>{{ $reservations->event_theme }}</td>
+              
+              
+          </tr>
 
           </tr>
             @elseif ($reservations->reservationSelection->choice == 'customize')
@@ -107,6 +113,11 @@
                   <tr>
                     <td class="fw-bolder">Recommended Guest:</td>
                     <td>{{ number_format(round($reservations->reservationCustomize->price /350)  )  }}</td>
+                  </tr>
+                  {{-- Buffer --}}
+                  <tr>
+                    <td class="fw-bolder">Buffer:</td>
+                    <td>10</td>
                   </tr>
                   {{-- Additional Charge --}}
                   <tr>
@@ -201,12 +212,12 @@
           
           <tr>
            
-            <td class="fw-bolder">Additonal Services: </td>
+            <td class="fw-bolder">Additonal services: </td>    
+          </tr>
+          <tr>
             <td>
               {{$reservations->additional}}
-              </td>
-             
-              
+            </td>
           </tr>
           <tr>
             <td>
@@ -215,6 +226,7 @@
           </tr>
           
         </table>
+        
         
         <div class="btn-position justify-content-center m-5">
             <a href="{{ route('generate.pdf',$reservations->id) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download PDF File</a>

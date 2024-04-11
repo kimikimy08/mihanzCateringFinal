@@ -173,15 +173,7 @@
                       @endforeach
                     </select>
                     </td>
-                      <th scope="row" >Additonal Services</th> 
-            
-                      <td><select name="additional" class="form-select">
-                     <option value="">None</option>
-                     <option value="">Cake</option>
-                     <option value="">Cupcake</option>
-                     <option value="">Chocolate Fountain with Marshmallows </option>
-                     <option value="">Fruits</option>
-                    </select></td>
+                     
 
                     </td>
                   
@@ -201,6 +193,73 @@
                     </select></td>
                     
                     </tr>
+                    <tr>
+                      
+                    </tr>
+                    <table>
+                      <tr>
+                        <td>
+                          <div class="input-group mb-3">
+                            <div class="fs-2">Additional services</div>
+                  <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
+                        </td>
+                      </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="partyEntertainers" name="additional[]" value="PartyEntertainers" {{ is_array(old('additional')) && in_array('PartyEntertainers', old('additional')) ? 'checked' : '' }}>
+                    <label class="form-check-label fs-5" for="partyEntertainers">Party Entertainers</label>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
+                    <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+          
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
+                    <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
+                    <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
+                </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
+                    <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
+                  </div>
+                </td>
+              </tr>
+              
+             <tr>
+              <td>
+                <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="checkbox" id="fruits" name="additional[]" value="Fruits" {{ is_array(old('additional')) && in_array('Fruits', old('additional')) ? 'checked' : '' }}>
+                  <label  class="form-check-label fs-5" for="fruits">Fruits Booth</label>
+              </div>
+              </td>
+             </tr>
+          </div>
+                        
+                        
+          </table>
 
               </tbody>
             </table>

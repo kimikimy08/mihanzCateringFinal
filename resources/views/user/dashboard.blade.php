@@ -285,8 +285,13 @@
                     <tr>
                       <th scope="row">Drink:</th>
                       <td>{{ $event['drink_menu'] }}</td>
-                      <th scope="row">Additional Services:</th>
-                      {{-- <td>{{ $event['additional'] }}</td> --}}
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">Additional services:</th>
+                      {{-- <td>
+                        {{ $event['additional'] }}
+                      </td> --}}
                     </tr>
                   </tbody>
                 </table>

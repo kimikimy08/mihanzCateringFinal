@@ -102,8 +102,7 @@
                     <tr>
                       <th scope="row">Drink:</th>
                       <td>{{ $event['drink_menu'] }}</td>
-                      <th scope="row">Additonal Services</th>
-                      {{-- <td>{{ $event['additional'] }}</td> --}}
+                      
                     </tr>
                     
                     <tr class="mt-10">
@@ -113,6 +112,8 @@
                     </tr>
 
                     <tr>
+                      <th scope="row">Additonal Services</th>
+                      {{-- <td>{{ $event['additional'] }}</td> --}}
                       
                     </tr>
 

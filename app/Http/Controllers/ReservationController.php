@@ -209,7 +209,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
 
-        $additionalServices = implode(',', $request->input('additional'));
+        $additionalServices = implode(' , ', $request->input('additional'));
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
