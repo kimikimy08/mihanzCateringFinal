@@ -40,7 +40,7 @@
                         <th>
                             Email:
                         </th>
-                        <td colspan="3">
+                        <td colspan="">
                         {{$reservation->user->email}}
                         </td>
                 </tr>
@@ -49,7 +49,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th colspan="4">
+                                <th colspan="">
                                     Event details
                                 </th>
                             </tr>
@@ -161,7 +161,7 @@
                                     Price:
                                 </th>
                                 <td>
-                                {{ $reservation->reservationCustomize->price }}
+                                {{number_format( $reservation->reservationCustomize->price) }}
                                 </td>
                                 <!-- Theme -->
                                 <th>
@@ -300,6 +300,73 @@
                                 </td>
                             </tr>
                         </tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="fw-bolder">Additonal services: </td>    
+                          </tr>
+                          <tr>
+                            <td class="fw-bolder">
+                              Party Entertainers
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">
+                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bolder">
+                              Photo Booth
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">
+                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bolder">
+                              Chocolate Fountain Booth
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">
+                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bolder">
+                              Face Painting Booth
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">
+                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                            </td>
+                          </tr>
+                         
+                          <tr>
+                            <td class="fw-bolder">
+                              Cupcake Tower Booth
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="">
+                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="fw-bolder">
+                              Fruits Booths
+                            </td>
+                           
+                          </tr>
+                          <tr>
+                            <td class="">
+                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                            </td>
+                          </tr>
                     </table>
                 </tr>
                 

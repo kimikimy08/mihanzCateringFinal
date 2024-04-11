@@ -82,6 +82,12 @@
             <td>
             {{ $reservations->premades->servicePackage->price }}
             </td>
+            <tr>
+              <td class="fw-bolder">Theme: </td>
+              <td>{{ $reservations->event_theme }}</td>
+              
+              
+          </tr>
 
           </tr>
             @elseif ($reservations->reservationSelection->choice == 'customize')
@@ -98,6 +104,13 @@
                       
                       
                   </tr>
+                  <tr>
+                    {{-- Options --}}
+                    <td class="fw-bolder">Option Selected</td>
+                    <td>
+                      Option 1
+                    </td>
+                  </tr>
                   {{-- Guest Package --}}
                   <tr>
                     <td class="fw-bolder">Package Guest:</td>
@@ -107,6 +120,11 @@
                   <tr>
                     <td class="fw-bolder">Recommended Guest:</td>
                     <td>{{ number_format(round($reservations->reservationCustomize->price /350)  )  }}</td>
+                  </tr>
+                  {{-- Buffer --}}
+                  <tr>
+                    <td class="fw-bolder">Buffer:</td>
+                    <td>10</td>
                   </tr>
                   {{-- Additional Charge --}}
                   <tr>
@@ -201,12 +219,69 @@
           
           <tr>
            
-            <td class="fw-bolder">Additonal Services: </td>
-            <td>
-              {{$reservations->additional}}
-              </td>
-             
-              
+            <td class="fw-bolder">Additonal services: </td>    
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Party Entertainers
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Photo Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Chocolate Fountain Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Face Painting Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+         
+          <tr>
+            <td class="fw-bolder">
+              Cupcake Tower Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Fruits Booths
+            </td>
+           
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
           </tr>
           <tr>
             <td>
@@ -215,6 +290,7 @@
           </tr>
           
         </table>
+        
         
         <div class="btn-position justify-content-center m-5">
             <a href="{{ route('generate.pdf',$reservations->id) }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Download PDF File</a>

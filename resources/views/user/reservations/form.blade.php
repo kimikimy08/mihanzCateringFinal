@@ -8,14 +8,26 @@
          Customization Form
       </h1>
       {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
-  
-      <p class=" " style="width: 60%">
-          {{-- Reservation package is applicable for <b>{{ number_format((session('pax'))) }}</b> guest. The package you choose already includes the following: --}}
-          The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(ceil (session('budget')/350)) }}</b> guest is recommended for your given budget,
-           additional charge will be <b>{{ number_format(( floor(session('pax') - session('budget') / 350) *350 )) }}</b>. The total amount will be <b>{{ number_format(( ceil(floor(session('pax') - session('budget') / 350) *350)+ session('budget') )) }}</b>.
-      </p>
-
-      
+      <div class=" w-75">
+        <p class=" " style="width: 60%">
+          <div class="form-check fs-5 mb-5 fw-semibold">
+            <div class="h5">Option 1</div>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor (session('budget')/350)) }}</b> guest is recommended for your given budget,
+              The buffer for additional guest is  <b>10</b>, The total amount will be <b>{{ number_format(( session('budget') )) }}</b>.
+            </label>
+          </div>
+          <div class="form-check fs-5 fw-semibold">
+            <div class="h5">Option 2</div>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor (session('budget')/350)) }}</b> guest is recommended for your given budget,
+             additional charge will be <b>{{ number_format(( (session('pax') - floor(session('budget') / 350)) *350 )) }}</b>. The buffer for additional guest is  <b>10</b>, The total amount will be <b>{{ number_format(( ceil((session('pax') - floor(session('budget') / 350)) *350)+ session('budget') )) }}</b>.
+            </label>
+          </div>
+        </p>
+      </div>
       </div>
       <div class="form-container">
         <!-- Celebrants detail -->
@@ -258,6 +270,7 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">Drink</span>
                 <select class="form-select" name="drink_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Drink Menu</option>
+
                 @foreach($menus['drink'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('drink_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
                 @endforeach
@@ -265,37 +278,192 @@
               </td>
             </tr>
             <table>
-            <div class="input-group mb-3">
-              <div class="fs-2">Additional Services</div>
-    <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="partyEntertainers" name="additional[]" value="PartyEntertainers" {{ is_array(old('additional')) && in_array('PartyEntertainers', old('additional')) ? 'checked' : '' }}>
-        <label class="form-check-label fs-5" for="partyEntertainers">Party Entertainers</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
-        <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
-        <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
-        <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
-        <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
-    </div>
-    <div class="form-check form-check-inline">
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <div class="fs-2">Additional services</div>
+                </div>
+              </td>
+              <tr>
+                <td>
+                  <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
+                </td>
+              </tr>
+            </tr>
+    <tr>
+      <td>
+        {{-- <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="partyEntertainers" name="additional[]" value="PartyEntertainers" {{ is_array(old('additional')) && in_array('PartyEntertainers', old('additional')) ? 'checked' : '' }}>
+          <label class="form-check-label fs-5" for="partyEntertainers">Party Entertainers</label>
+      </div> --}}
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Party Entertainers</span>
+        <select class="form-select" name="" aria-label="Default select example">
+        <option value="" selected>Select</option>
+        <option value="" >
+          <div>
+            2 Clowns with funny hosting, game handler and magic show - 1,350
+         </div>
+        </option>
+        <option value="" >
+          <div>
+            1 Clown with funny hosting, game handler. magic show, <br>1 puppeteer and unlimited show for 2 hrs. - 2,050 
+          </div>
+        </option>
+        <option value="">
+          <div>
+            2 Clowns with funny hosting, game handler, magic show and giant bubble show with tricks - 2,450 
+          </div>
+        </option>
+        </select>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>
+        {{-- <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
+          <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
+        </div> --}}
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Photo Booth</span>
+          <select class="form-select" name="" aria-label="Default select example">
+          <option value="" selected>Select</option>
+          <option value="" >
+            <div>
+              Unlimited picture for 2 hours with frame and customized template - 2,000
+           </div>
+          </option>
+          <option value="" >
+            <div>
+              Unlimited picture for 3 hours with frame and customized template - 3,000
+            </div>
+          </option>
+          <option value="">
+            <div>
+              Unlimited picture for 4 hours with frame and customized template - 4,000
+            </div>
+          </option>
+          </select>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{-- <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
+          <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
+      </div> --}}
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Chocolate Fountain Booth</span>
+        <select class="form-select" name="" aria-label="Default select example">
+        <option value="" selected>Select</option>
+        <option value="" >
+          <div>
+            Chocolate fountain only - 200  
+         </div>
+        </option>
+        <option value="" >
+          <div>
+            Chocolate fountain with biscuits - 500  
+          </div>
+        </option>
+        <option value="">
+          <div>
+            Chocolate fountain, biscuits with fruits – 600
+          </div>
+        </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{-- <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
+          <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
+      </div> --}}
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Face Painting Booth</span>
+        <select class="form-select" name="" aria-label="Default select example">
+        <option value="" selected>Select</option>
+        <option value="" >
+          <div>
+            1 Face Painter + Unlimited Paint for 2 hrs with your chosen design - 500
+         </div>
+        </option>
+        <option value="" >
+          <div>
+            2 Face Painter + Unlimited Painter for 2 hrs with your chosen design – 1,000
+          </div>
+        </option>
+        <option value="">
+          <div>
+            2 Face Painter + Unlimited Painter for 3 hrs with your chosen design - 2,000
+          </div>
+        </option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {{-- <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
+          <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
+        </div> --}}
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Cupcake Tower Booth</span>
+          <select class="form-select" name="" aria-label="Default select example">
+          <option value="" selected>Select</option>
+          <option value="" >
+            <div>
+              Plain Chocolate Moist Cupcake - 3,000 
+           </div>
+          </option>
+          <option value="" >
+            <div>
+              Plain Sprinkled Mocha Moist Cupcake - 3,000
+            </div>
+          </option>
+          <option value="">
+            <div>
+              Assorted Flavors Moist Cupcake - 3,000
+            </div>
+          </option>
+          </select>
+      </td>
+    </tr>
+   <tr>
+    <td>
+      {{-- <div class="form-check form-check-inline">
         <input class="form-check-input" type="checkbox" id="fruits" name="additional[]" value="Fruits" {{ is_array(old('additional')) && in_array('Fruits', old('additional')) ? 'checked' : '' }}>
         <label  class="form-check-label fs-5" for="fruits">Fruits Booth</label>
-    </div>
-</div>
+    </div> --}}
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Fruits Booth</span>
+      <select class="form-select" name="" aria-label="Default select example">
+      <option value="" selected>Select</option>
+      <option value="" >
+        <div>
+          Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500
+       </div>
+      </option>
+      <option value="" >
+        <div>
+          Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango - 1500
+        </div>
+      </option>
+      <option value="">
+        <div>
+          Blueberry, Strawberries, Pineapples, Peach, Raspberry and Apple - 1500
+        </div>
+      </option>
+      </select>
+    </td>
+   </tr>
+
               
               
-              <table>
+</table>
 
           </table>
         </div>

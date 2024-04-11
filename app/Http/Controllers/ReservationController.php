@@ -56,7 +56,7 @@ class ReservationController extends Controller
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',
             'pork_menu' => 'required_without_all:beef_menu|exists:menus,id',
-    'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
+            'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
             'chicken_menu' => 'required|exists:menus,id',
             'fish_menu' => 'required|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
@@ -209,7 +209,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
 
-        $additionalServices = implode(',', $request->input('additional'));
+        $additionalServices = implode(' , ', $request->input('additional'));
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
