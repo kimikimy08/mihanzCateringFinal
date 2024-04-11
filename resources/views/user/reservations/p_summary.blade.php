@@ -104,6 +104,13 @@
                       
                       
                   </tr>
+                  <tr>
+                    {{-- Options --}}
+                    <td class="fw-bolder">Option Selected</td>
+                    <td>
+                      Option 1
+                    </td>
+                  </tr>
                   {{-- Guest Package --}}
                   <tr>
                     <td class="fw-bolder">Package Guest:</td>
@@ -215,8 +222,65 @@
             <td class="fw-bolder">Additonal services: </td>    
           </tr>
           <tr>
-            <td>
-              {{$reservations->additional}}
+            <td class="fw-bolder">
+              Party Entertainers
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Photo Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Chocolate Fountain Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Face Painting Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+         
+          <tr>
+            <td class="fw-bolder">
+              Cupcake Tower Booth
+            </td>
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="fw-bolder">
+              Fruits Booths
+            </td>
+           
+          </tr>
+          <tr>
+            <td class=" fs-5">
+              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
             </td>
           </tr>
           <tr>

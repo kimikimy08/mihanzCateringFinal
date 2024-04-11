@@ -56,7 +56,7 @@ class ReservationController extends Controller
             'venue_address' => 'required|string',
             'agree_terms' => 'required|boolean',
             'pork_menu' => 'required_without_all:beef_menu|exists:menus,id',
-    'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
+            'beef_menu' => 'required_without_all:pork_menu|exists:menus,id',
             'chicken_menu' => 'required|exists:menus,id',
             'fish_menu' => 'required|exists:menus,id',
             'seafood_menu' => 'required|exists:menus,id',
