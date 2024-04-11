@@ -239,7 +239,7 @@ $additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted 
             'fp_menu' => 'nullable|exists:additionals,id',
             'ct_menu' => 'nullable|exists:additionals,id',
             'f_menu' => 'nullable|exists:additionals,id',
-            'option' => 'required'
+            'selected_option' => 'required'
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -247,7 +247,7 @@ $additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted 
             'fish_menu.required_without_all' => 'The fish menu field is required ',
             'agree_terms.accepted' => 'Please check the terms and conditions.',
             'agree_terms.required' => 'Please check the terms and conditions.',
-            'option.required' => 'Please select an option.',
+            'selected_option.required' => 'Please select an option.',
         ]);
 
 
@@ -282,12 +282,12 @@ $additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted 
             'choice' => 'customize',
         ]);
 
-        $option = $request->input('option');
+        $selectedOption = $request->input('selected_option');
 
         $reservationCustomize = new ReservationCustomize([
             'pax' => session('pax'),
             'price' => session('budget'),
-            'option' => $option,
+            'option' => $selectedOption,
         ]);
 
         $reservation->reservationCustomize()->save($reservationCustomize);
