@@ -12,7 +12,7 @@
         <p class=" " style="width: 60%">
           <div class="form-check fs-5 mb-5 fw-semibold">
             <div class="h5">Option 1</div>
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Option 1" checked>
             <label class="form-check-label" for="flexRadioDefault1">
               The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor (session('budget')/350)) }}</b> guest is recommended for your given budget,
               The buffer for additional guest is  <b>10</b>, The total amount will be <b>{{ number_format(( session('budget') )) }}</b>.
@@ -20,12 +20,14 @@
           </div>
           <div class="form-check fs-5 fw-semibold">
             <div class="h5">Option 2</div>
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Option 2">
             <label class="form-check-label" for="flexRadioDefault2">
               The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor (session('budget')/350)) }}</b> guest is recommended for your given budget,
              additional charge will be <b>{{ number_format(( (session('pax') - floor(session('budget') / 350)) *350 )) }}</b>. The buffer for additional guest is  <b>10</b>, The total amount will be <b>{{ number_format(( ceil((session('pax') - floor(session('budget') / 350)) *350)+ session('budget') )) }}</b>.
             </label>
           </div>
+
+          <input type="hidden" name="selected_option" id="selectedOptionInput" value="Option 2">
         </p>
       </div>
       </div>
@@ -791,5 +793,20 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
             otherThemeInput.value = select.value;
         }
     }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Set the initial value of the hidden input field based on the default checked radio button
+        var selectedOption = document.querySelector('input[name="flexRadioDefault"]:checked').value;
+        document.getElementById('selectedOptionInput').value = selectedOption;
+        
+        // Add event listeners to update the hidden input field when the radio buttons are clicked
+        document.querySelectorAll('input[name="flexRadioDefault"]').forEach(function(radio) {
+            radio.addEventListener('change', function () {
+                document.getElementById('selectedOptionInput').value = this.value;
+            });
+        });
+    });
 </script>
 @endsection

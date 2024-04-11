@@ -181,8 +181,16 @@ $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first
 $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus()->where('status', 'active')->get();
 $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
+$additionals = [];
+$additionals['pe'] = AdditionalSelection::where('additional_category', 'Party Entertainers')->first()->additionals()->get();
+$additionals['pb'] = AdditionalSelection::where('additional_category', 'Photo booth')->first()->additionals()->get();
+$additionals['cf'] = AdditionalSelection::where('additional_category', 'Chocolate Fountain')->first()->additionals()->get();
+$additionals['fp'] = AdditionalSelection::where('additional_category', 'Face Painting Booth')->first()->additionals()->get();
+$additionals['ct'] = AdditionalSelection::where('additional_category', 'Cupcake tower booth ')->first()->additionals()->get();
+$additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted Fruits Booth')->first()->additionals()->get();
 
-        return view('user.reservations.form', compact('menus', 'themeSelections'));
+
+        return view('user.reservations.form', compact('menus', 'themeSelections', 'additionals'));
     }
 
     public function showCustomizeForm(Request $request)
@@ -265,6 +273,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'fp_menu_id' => $request->input('fp_menu'),
             'ct_menu_id' => $request->input('ct_menu'),
             'f_menu_id' => $request->input('f_menu'),
+            'option' => $request->input('selected_option'),
         ]);
 
         $reservation->selections()->create([
@@ -275,6 +284,7 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
         $reservationCustomize = new ReservationCustomize([
             'pax' => session('pax'),
             'price' => session('budget'),
+            
         ]);
 
         $reservation->reservationCustomize()->save($reservationCustomize);
