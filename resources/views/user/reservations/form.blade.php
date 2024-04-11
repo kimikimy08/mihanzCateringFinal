@@ -50,7 +50,7 @@
               </div>
             </td>
 
-            
+
         <h1 class="text-start">Celebrant Information</h1>
         <table>
         @if ($errors->any())
@@ -315,7 +315,7 @@
                 <select class="form-select" name="pe_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Party Entertainers</option>
                 @foreach($additionals['pe'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('pe_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('pe_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
                 </select>
               </td>
@@ -328,7 +328,7 @@
                 <select class="form-select" name="pb_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Photo Booth</option>
                 @foreach($additionals['pb'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('pb_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('pb_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
                 </select>
               </td>
@@ -340,7 +340,7 @@
                 <select class="form-select" name="cf_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Chocolate Fountain Booth</option>
                 @foreach($additionals['cf'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('cf_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('cf_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
                 </select>
               </td>
@@ -353,7 +353,7 @@
                 <select class="form-select" name="fp_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Face Painting Booth</option>
                 @foreach($additionals['fp'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('fp_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('fp_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
                 </select>
               </td>
@@ -366,7 +366,7 @@
                 <select class="form-select" name="ct_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Cupcake Tower Booth</option>
                 @foreach($additionals['ct'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('ct_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('ct_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
                 </select>
               </td>
@@ -379,7 +379,7 @@
                 <select class="form-select" name="f_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Fruits Booth</option>
                 @foreach($additionals['f'] as $menu)
-                <option value="{{ $menu->id }}" {{ old('f_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
+                <option value="{{ $menu->id }}" {{ old('f_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
                 </select>
               </td>
