@@ -312,7 +312,7 @@
                           </tr>
                           <tr>
                             <td class="">
-                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                              <p class=" m-3">{{ $reservation->getAdditionalName('peMenu') }} - {{ $reservation->getAdditionalPrice('peMenu') }}</p>
                             </td>
                           </tr>
                           <tr>
@@ -322,7 +322,7 @@
                           </tr>
                           <tr>
                             <td class="">
-                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                              <p class=" m-3">{{ $reservation->getAdditionalName('pbMenu') }} - {{ $reservation->getAdditionalPrice('pbMenu') }}</p>
                             </td>
                           </tr>
                           <tr>
@@ -332,7 +332,7 @@
                           </tr>
                           <tr>
                             <td class="">
-                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                              <p class=" m-3">{{ $reservation->getAdditionalName('cfMenu') }} - {{ $reservation->getAdditionalPrice('cfMenu') }}</p>
                             </td>
                           </tr>
                           <tr>
@@ -342,7 +342,7 @@
                           </tr>
                           <tr>
                             <td class="">
-                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                              <p class=" m-3">{{ $reservation->getAdditionalName('fpMenu') }} - {{ $reservation->getAdditionalPrice('fpMenu') }}</p>
                             </td>
                           </tr>
                          
@@ -353,7 +353,7 @@
                           </tr>
                           <tr>
                             <td class="">
-                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                              <p class=" m-3">{{ $reservation->getAdditionalName('ctMenu') }} - {{ $reservation->getAdditionalPrice('ctMenu') }}</p>
                             </td>
                           </tr>
                           <tr>
@@ -364,7 +364,7 @@
                           </tr>
                           <tr>
                             <td class="">
-                              <p class=" m-3">Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500</p>
+                              <p class=" m-3">{{ $reservation->getAdditionalName('fMenu') }} - {{ $reservation->getAdditionalPrice('fMenu') }}</p>
                             </td>
                           </tr>
                     </table>

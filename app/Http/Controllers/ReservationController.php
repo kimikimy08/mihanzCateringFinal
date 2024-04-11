@@ -165,17 +165,6 @@ class ReservationController extends Controller
 
         ]);
 
-        $additionalSelections = [
-            'pe' => Additional::where('additional_selection_id', 1)->get(),
-            'pb' => Additional::where('additional_selection_id', 2)->get(),
-            'cf' => Additional::where('additional_selection_id', 3)->get(),
-            'fp' => Additional::where('additional_selection_id', 4)->get(),
-            'ct' => Additional::where('additional_selection_id', 5)->get(),
-            'f' => Additional::where('additional_selection_id', 6)->get(),
-          
-        
-        ];
-
         $themeSelections = ThemeSelection::all();
     
         session()->put('budget', $request->input('budget'));
@@ -193,9 +182,7 @@ $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->
 $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
 
-
-
-        return view('user.reservations.form', compact('menus', 'themeSelections', 'additionalSelections'));
+        return view('user.reservations.form', compact('menus', 'themeSelections'));
     }
 
     public function showCustomizeForm(Request $request)
