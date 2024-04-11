@@ -188,12 +188,13 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
     public function showCustomizeForm(Request $request)
     {
         $menus = $this->getMenus();
+        $additionals = $this->getAdditionals();
         $pax = session('pax'); // Providing a default value of 0 if 'pax' is not set
     $budget = session('budget'); // Providing a default value of 0 if 'budget' is not set
 
     $themeSelections = ThemeSelection::all();
     
-        return view('user.reservations.form', compact('menus', 'pax', 'budget', 'themeSelections'));
+        return view('user.reservations.form', compact('menus', 'pax', 'budget', 'themeSelections', 'additionals'));
     }
 
     public function submitCustomizeForm(Request $request)
@@ -224,8 +225,12 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
             'agree_terms' => 'required|accepted',
-            'additional' => 'array',
-            'additional.*' => Rule::in(['PartyEntertainers', 'PhotoBooth', 'Chocolate', 'Painting', 'Cupcake', 'Fruits']),
+            'pe_menu' => 'nullable|exists:additionals,id',
+            'pb_menu' => 'nullable|exists:additionals,id',
+            'cf_menu' => 'nullable|exists:additionals,id',
+            'fp_menu' => 'nullable|exists:additionals,id',
+            'ct_menu' => 'nullable|exists:additionals,id',
+            'f_menu' => 'nullable|exists:additionals,id',
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -235,7 +240,6 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
 
-        $additionalServices = implode(' , ', $request->input('additional'));
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -255,7 +259,12 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'dessert_menu_id' => $request->input('dessert_menu'),
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
-            'additional' => $additionalServices,
+            'pe_menu_id' => $request->input('pe_menu'),
+            'pb_menu_id' => $request->input('pb_menu'),
+            'cf_menu_id' => $request->input('cf_menu'),
+            'fp_menu_id' => $request->input('fp_menu'),
+            'ct_menu_id' => $request->input('ct_menu'),
+            'f_menu_id' => $request->input('f_menu'),
         ]);
 
         $reservation->selections()->create([
@@ -297,6 +306,20 @@ $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->
 $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
         return $menus;
+    }
+
+    private function getAdditionals()
+    {
+        $additionals = [];
+        $additionals['pe'] = AdditionalSelection::where('additional_category', 'Party Entertainers')->first()->additionals()->get();
+$additionals['pb'] = AdditionalSelection::where('additional_category', 'Photo booth')->first()->additionals()->get();
+$additionals['cf'] = AdditionalSelection::where('additional_category', 'Chocolate Fountain')->first()->additionals()->get();
+$additionals['fp'] = AdditionalSelection::where('additional_category', 'Face Painting Booth')->first()->additionals()->get();
+$additionals['ct'] = AdditionalSelection::where('additional_category', 'Cupcake tower booth ')->first()->additionals()->get();
+$additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted Fruits Booth')->first()->additionals()->get();
+
+
+        return $additionals;
     }
 
     public function checkDateAvailability(Request $request)
