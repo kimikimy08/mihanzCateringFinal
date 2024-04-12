@@ -22,110 +22,165 @@
       
       <div class="form-container">
         <!-- Celebrants detail -->
-        <h1 class="display-3 text-center mb-5"> More detail</h1>
         <form action="{{ route('reservation.submit', ['packageId' => $specificPackage->id]) }}" method="post">
         @csrf
-        <h1 class="text-start">Celebrant Information</h1>
-        <p>Selected Package: {{ $specificPackage->name }}</p>
+       
+       
 
     <input type="hidden" name="selected_package" value="{{ $specificPackage->id }}">
-        <table>
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-                <input type="text" class="form-control"  name="celebrant_name" value="{{ old('celebrant_name') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
-          </tr>
-
-            <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Event Address</span>
-                <input type="text" class="form-control"  name="venue_address" value="{{ old('venue_address') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
-            
-          </tr>
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
-                <input type="number" class="form-control"  name="celebrant_age" value="{{ old('celebrant_age') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" min="0" required>
-              </div>
-            </td>
-            
-          </tr>
-          <tr>
-    <td>
+<div class=" d-flex align-items-center flex-column">
+  <table>
+    <tr>
+      <td>
         <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
-            <select class="form-select" name="event_theme" id="eventThemeSelect" onchange="handleThemeSelection(this)">
-                <option value="" disabled selected>Select Event Theme</option>
-                @foreach($themeSelections as $theme)
-                    <option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
-                @endforeach
-                <option value="other">Other</option>
-            </select>
+          <div class="fs-2">Celebrant details</div>
         </div>
-    </td>
+      </td>
+    </tr>
+    <tr>
+      <div>
+        Selected Package: {{ $specificPackage->name }}
+      </div>
+    </tr>
+    @if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+            <input type="text" class="form-control"  name="celebrant_name" value="{{ old('celebrant_name') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+          </div>
+        </td>
+      </tr>
+
+        
+        
+      </tr>
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+            <input type="number" class="form-control"  name="celebrant_age" value="{{ old('celebrant_age') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" min="0" required>
+          </div>
+        </td>
+        
+      </tr>
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
+            <select class="form-select" name="celebrant_gender" aria-label="Default select example">
+            <option value="" selected disabled>Select Gender</option>
+            <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
+            <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
+        </select>
+          </div>
+        </td>
+        
+      </tr>
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <div class="fs-2">Event</div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+<td>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
+        <select class="form-select" name="event_theme" id="eventThemeSelect" onchange="handleThemeSelection(this)">
+            <option value="" disabled selected>Select Event Theme</option>
+            @foreach($themeSelections as $theme)
+                <option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
+            @endforeach
+            <option value="other">Other</option>
+        </select>
+    </div>
+</td>
 </tr>
+<tr>
+  <td>
+    <div class="input-group mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-default">Event Address</span>
+      <input type="text" class="form-control"  name="venue_address" value="{{ old('venue_address') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+  </td>
 
 <tr id="otherThemeRow" style="display: none;">
-    <td>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
-            <input type="text" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </td>
+<td>
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
+        <input type="text" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+    </div>
+</td>
 </tr>
 
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
-                <select class="form-select" name="celebrant_gender" aria-label="Default select example">
-                <option value="" disabled>Select Gender</option>
-                <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
-            </select>
-              </div>
-            </td>
-            
-          </tr>
-          <tr>
-            <td>
-            <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
-            <input type="date" class="form-control" id="event_date" name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-        </div>
-        <span id="availability-message" style="color:red; font-size:12px;"></span>
-            </td>
-            
-          </tr>
+      
+      <tr>
+        <td>
+        <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
+        <input type="date" class="form-control" id="event_date" name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+    </div>
+    <span id="availability-message" style="color:red; font-size:12px;"></span>
+        </td>
+        
+      </tr>
 
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Time of the event</span>
-                <input type="time" class="form-control"  name="event_time" value="{{ old('event_time') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
-            
-          </tr>
-          
-        </table>
-        <hr>
+      <tr>
+        <td>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Time of the event</span>
+            <input type="time" class="form-control"  name="event_time" value="{{ old('event_time') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+          </div>
+        </td>
+        
+      </tr>
+    </tr>
+    <tr>
+      <td>
+        <div class="input-group mb-3">
+          <div class="fs-2">Other details</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Allergies <i class="fs-6">(Optional)</i></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify allergies."></textarea>
+        </div>
+      </td>
+    </tr>
+  </tr>
+  <tr>
+    <td>
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Special request <i class="fs-6">(Optional)</i></label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify special request"></textarea>
+      </div>
+    </td>
+  </tr>
+    <tr>
+      <td>
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Other concern <i class="fs-6">(Optional)</i></label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify other concern."></textarea>
+        </div>
+      </td>
+    </tr>
+      
+</table>
+</div>
+       
 <!-- Menu -->
         <div class="menu-selection">
           <h1 class="text-start">Menu</h1>
@@ -334,180 +389,6 @@
               </td>
             </tr>
 
-
-
-
-      <!-- <tr>
-        <td>
-
-
-
-
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Party Entertainers</span>
-          <select class="form-select" name="" aria-label="Default select example">
-          <option value="" selected>Select</option>
-          <option value="" >
-            <div>
-              2 Clowns with funny hosting, game handler and magic show - 1,350
-           </div>
-          </option>
-          <option value="" >
-            <div>
-              1 Clown with funny hosting, game handler. magic show, <br>1 puppeteer and unlimited show for 2 hrs. - 2,050 
-            </div>
-          </option>
-          <option value="">
-            <div>
-              2 Clowns with funny hosting, game handler, magic show and giant bubble show with tricks - 2,450 
-            </div>
-          </option>
-          </select>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>
-          {{-- <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
-            <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
-          </div> --}}
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Photo Booth</span>
-            <select class="form-select" name="" aria-label="Default select example">
-            <option value="" selected>Select</option>
-            <option value="" >
-              <div>
-                Unlimited picture for 2 hours with frame and customized template - 2,000
-             </div>
-            </option>
-            <option value="" >
-              <div>
-                Unlimited picture for 3 hours with frame and customized template - 3,000
-              </div>
-            </option>
-            <option value="">
-              <div>
-                Unlimited picture for 4 hours with frame and customized template - 4,000
-              </div>
-            </option>
-            </select>
-  
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{-- <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
-            <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
-        </div> --}}
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Chocolate Fountain Booth</span>
-          <select class="form-select" name="" aria-label="Default select example">
-          <option value="" selected>Select</option>
-          <option value="" >
-            <div>
-              Chocolate fountain only - 200  
-           </div>
-          </option>
-          <option value="" >
-            <div>
-              Chocolate fountain with biscuits - 500  
-            </div>
-          </option>
-          <option value="">
-            <div>
-              Chocolate fountain, biscuits with fruits – 600
-            </div>
-          </option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{-- <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
-            <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
-        </div> --}}
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Face Painting Booth</span>
-          <select class="form-select" name="" aria-label="Default select example">
-          <option value="" selected>Select</option>
-          <option value="" >
-            <div>
-              1 Face Painter + Unlimited Paint for 2 hrs with your chosen design - 500
-           </div>
-          </option>
-          <option value="" >
-            <div>
-              2 Face Painter + Unlimited Painter for 2 hrs with your chosen design – 1,000
-            </div>
-          </option>
-          <option value="">
-            <div>
-              2 Face Painter + Unlimited Painter for 3 hrs with your chosen design - 2,000
-            </div>
-          </option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          {{-- <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
-            <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
-          </div> --}}
-          <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Cupcake Tower Booth</span>
-            <select class="form-select" name="" aria-label="Default select example">
-            <option value="" selected>Select</option>
-            <option value="" >
-              <div>
-                Plain Chocolate Moist Cupcake - 3,000 
-             </div>
-            </option>
-            <option value="" >
-              <div>
-                Plain Sprinkled Mocha Moist Cupcake - 3,000
-              </div>
-            </option>
-            <option value="">
-              <div>
-                Assorted Flavors Moist Cupcake - 3,000
-              </div>
-            </option>
-            </select>
-        </td>
-      </tr>
-     <tr>
-      <td>
-        {{-- <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="fruits" name="additional[]" value="Fruits" {{ is_array(old('additional')) && in_array('Fruits', old('additional')) ? 'checked' : '' }}>
-          <label  class="form-check-label fs-5" for="fruits">Fruits Booth</label>
-      </div> --}}
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Fruits Booth</span>
-        <select class="form-select" name="" aria-label="Default select example">
-        <option value="" selected>Select</option>
-        <option value="" >
-          <div>
-            Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500
-         </div>
-        </option>
-        <option value="" >
-          <div>
-            Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango - 1500
-          </div>
-        </option>
-        <option value="">
-          <div>
-            Blueberry, Strawberries, Pineapples, Peach, Raspberry and Apple - 1500
-          </div>
-        </option>
-        </select>
-      </td>
-     </tr> -->
-  
                 
                 
   </table>
@@ -526,21 +407,354 @@
           </div>
         </div>
         <div class="btn-position justify-content-center mb-5">
+          <div class="btn-position justify-content-center mb-3">
             <!-- Remove the modal and use a regular submit button -->
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Submit">Submit</button>
         </div>
-
+      </div>
+      <div class="stickytotal">
+        <div class=" m-5">
+          Total Amount:<a class=""  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            {{ number_format((session('budget'))) }}
+          </a>
+        </div>
+        <div>
+          
+        </div>
+      </div>
+        
+        <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">RECEIPT</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <div>
+              <table  class="table">
+                <tr>
+                  <th>
+                    <p>Package type:</p>
+                  </th>
+                  <td>Premade</td>
+                </tr>
+                
+                <tr>
+                  <th>
+                    <p>Number of guest:</p>
+                  </th>
+                  <td>{{$specificPackage->pax}}</td>
+                </tr>
+                <tr>
+                  <th>
+                    <p>
+                      Buffer:
+                    </p>
+                  </th>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <th>
+                   <p> Budget:</p>
+                  </th>
+                  <td>
+                   35,000
+                  </td>
+                </tr>
+                
+                <tr>
+                  <th>
+                    Additional Servces:
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>
+                    <p>Party Entertainers</p>
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td >
+                    <div class=" w-75" >
+                     <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
+                    </div>
+                  </td>
+                  <td>
+                    1350.00
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                   <p> Photo Booth</p>
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="w-75">
+                     <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
+                    </div>
+                  </td>
+                  <td>
+                    2000.00
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <p>Chocolate Fountain Booth</p>
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="w-75">
+                      <p class=" fs-6">Chocolate fountain only </p>
+                    </div>
+                   
+                  </td>
+                  <td>
+                    200.00
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    Face Painting Booth
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                   <div class="w-75">
+                    <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
+                   </div>
+                  </td>
+                  <td>
+                    500.00
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    Cupcake Tower Booth
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                   <div class="w-75">
+                    <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
+                   </div>
+                  </td>
+                  <td>
+                    3000.00
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    Fruits Booth
+                  </th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="w-75">
+                      <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
+                    </div>
+                  </td>
+                  <td>
+                    100.00
+                  </td>
+                </tr>
+                <tr class="mb-1">
+                  <th>
+                    Total Additional Services:
+                  </th>
+                  <td class=" text-decoration-underline">100000</td>
+                </tr>
+              </table>
+            </div>
+            
+          </div>
+          <div class=" position-sticky bottom-0 d-flex justify-content-center fs-4" style="background: white; height:200px" >
+            Total Amount:
+            
+              {{ number_format((session('budget'))) }}
+              
+          </div>
+        </div>
         <!-- Submit -->
 <div class="modal fade" id="Submit" tabindex="-1" aria-labelledby="SubmitLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class=" fs-4 fw-semibold text-center">
-          Are you sure to submit this form?
+        <div class=" fs-4 fw-semibold">
+          
+          <table  class="table">
+            <tr>
+              <th>
+                <p>Package type:</p>
+              </th>
+              <td>Cuztomize</td>
+            </tr>
+            <tr>
+              <th>
+                <p>Option Selected:</p>
+              </th>
+              <td>
+                Option 1
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Number of guest:</p>
+              </th>
+              <td>{{number_format((session('pax')))}}</td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  Buffer:
+                </p>
+              </th>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th>
+               <p> Budget:</p>
+              </th>
+              <td>
+                {{ number_format((session('budget'))) }}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Charge:</p>
+              </th>
+              <td>
+                {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Additional Servces:
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>
+                <p>Party Entertainers</p>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td >
+                <div class=" w-50">
+                 <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
+                </div>
+              </td>
+              <td>
+                1350.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+               <p> Photo Booth</p>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="w-50">
+                 <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
+                </div>
+              </td>
+              <td>
+                2000.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Chocolate Fountain Booth</p>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="w-50">
+                  <p class=" fs-6">Chocolate fountain only </p>
+                </div>
+               
+              </td>
+              <td>
+                200.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Face Painting Booth
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+               <div class="w-50">
+                <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
+               </div>
+              </td>
+              <td>
+                500.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Cupcake Tower Booth
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+               <div class="w-50">
+                <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
+               </div>
+              </td>
+              <td>
+                3000.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Fruits Booth
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="w-50">
+                  <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
+                </div>
+              </td>
+              <td>
+                100.00
+              </td>
+            </tr>
+            <tr class="mb-1">
+              <th>
+                Total Additional Services:
+              </th>
+              <td class=" text-decoration-underline">100000</td>
+            </tr>
+            <tr>
+              <th>
+                Total amount
+              </th>
+            </tr>
+          </table>
+          <div>
+            Are you sure to submit this form?
+          </div>
         </div>
       </div>
       <div class="modal-footer">

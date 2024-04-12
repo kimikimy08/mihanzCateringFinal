@@ -23,7 +23,8 @@
         <form action="{{ route('reservation.customize.submit') }}" method="post">
         @csrf
 
-        <div class="form-check fs-5 mb-5 fw-semibold">
+<div class=" w-100  d-flex flex-column align-items-center mb-5">
+  <div class="form-check fs-5 mb-5 fw-semibold w-75 " style="text-align: justify">
     <div class="h5">Option 1</div>
     <input class="form-check-input" type="radio" name="selected_option" id="option1" value="option 1" checked>
     <label class="form-check-label" for="option1">
@@ -31,7 +32,7 @@
         The buffer for additional guests is <b>10</b>. The total amount will be <b>{{ number_format((session('budget'))) }}</b>.
     </label>
 </div>
-<div class="form-check fs-5 fw-semibold">
+<div class="form-check fs-5 fw-semibold w-75" style="text-align: justify">
     <div class="h5">Option 2</div>
     <input class="form-check-input" type="radio" name="selected_option" id="option2" value="option 2">
     <label class="form-check-label" for="option2">
@@ -39,119 +40,179 @@
         additional charges will be <b>{{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}</b>. The buffer for additional guests is <b>10</b>. The total amount will be <b>{{ number_format((ceil((session('pax') - floor(session('budget') / 350)) * 350) + session('budget'))) }}</b>.
     </label>
 </div>
+</div>
 
 <!-- Hidden input for selected_option -->
 <input type="hidden" name="selected_option" id="selected_option" value="">
 
 <!-- Celebrants detail -->
-        <h1 class="text-start">Celebrant Information</h1>
-<table>
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-<tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
-                <input type="text" class="form-control"  name="celebrant_name" value="{{ old('celebrant_name') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
-          </tr>
-
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Event Address</span>
-                <input type="text" class="form-control"  name="venue_address" value="{{ old('venue_address') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
-            
-          </tr>
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
-                <input type="number" class="form-control"  name="celebrant_age" value="{{ old('celebrant_age') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" min="0" required>
-              </div>
-            </td>
-            
-          </tr>
-          <tr>
-    <td>
+<div class=" d-flex align-items-center flex-column">
+  <table>
+    <tr>
+      <td>
         <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
-            <select class="form-select" name="event_theme" id="eventThemeSelect" onchange="handleThemeSelection(this)">
-            <option value="" disabled selected>Select Event Theme</option>
-@if($themeSelections)
-@foreach($themeSelections ?? '' as $theme)
-<option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
-@endforeach
-@endif
-<option value="other">Other</option>
-            </select>
+          <div class="fs-2">Celebrant details</div>
         </div>
-    </td>
-</tr>
+      </td>
+    </tr>
+          @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+  @endif
+  <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                  <input type="text" class="form-control"  name="celebrant_name" value="{{ old('celebrant_name') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              </td>
+            </tr>
+  
+            
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Age</span>
+                  <input type="number" class="form-control"  name="celebrant_age" value="{{ old('celebrant_age') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" min="0" required>
+                </div>
+              </td>
+              
+            </tr>
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
+                  <select class="form-select" name="celebrant_gender" aria-label="Default select example">
+                  <option value="" selected disabled>Select Gender</option>
+  
+                  <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                  <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
+              </select>
+                </div>
+              </td>
+              
+            </tr>
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <div class="fs-2">Event details</div>
+                </div>
 
-<tr id="otherThemeRow" style="display: none;">
-    <td>
-        <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
-            <input type="text" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-        </div>
-    </td>
-</tr>
+              </td>
+            </tr>
+            <tr>
+      <td>
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Event Theme</span>
+              <select class="form-select" name="event_theme" id="eventThemeSelect" onchange="handleThemeSelection(this)">
+              <option value="" disabled selected>Select Event Theme</option>
+  @if($themeSelections)
+  @foreach($themeSelections ?? '' as $theme)
+  <option value="{{ $theme->theme_name }}" {{ old('event_theme') == $theme->theme_name ? 'selected' : '' }}>{{ $theme->theme_name }}</option>
+  @endforeach
+  @endif
+  <option value="other">Other</option>
+              </select>
+          </div>
+      </td>
+  </tr>
+  
+  <tr id="otherThemeRow" style="display: none;">
+      <td>
+          <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
+              <input type="text" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+          </div>
+      </td>
+  </tr>
+            
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Event Address</span>
+                  <input type="text" class="form-control"  name="venue_address" value="{{ old('venue_address') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              </td>
+              
+            </tr>
+            <tr>
+              <td>
+              <div class="input-group mb-3">
+              <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
+              <input type="date" class="form-control" id="event_date" name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+          </div>
+          <span id="availability-message" style="color:red; font-size:12px;"></span>
+              </td>
+              
+            </tr>
+  
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Time of the event</span>
+                  <input type="time" class="form-control"  name="event_time" value="{{ old('event_time') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+                </div>
+              </td>
+              
+            </tr>
+            <tr>
+              <td>
+                <div class="input-group mb-3">
+                  <div class="fs-2">Other details</div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Allergies <i class="fs-6">(Optional)</i></label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify allergies."></textarea>
+                </div>
+              </td>
+            </tr>
+          </tr>
           <tr>
             <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Celebrant Gender</span>
-                <select class="form-select" name="celebrant_gender" aria-label="Default select example">
-                <option value="" selected disabled>Select Gender</option>
-
-                <option value="Male" {{ old('celebrant_gender') == 'Male' ? 'selected' : '' }}>Male</option>
-                <option value="Female" {{ old('celebrant_gender') == 'Female' ? 'selected' : '' }}>Female</option>
-            </select>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Special request <i class="fs-6">(Optional)</i></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify special request"></textarea>
               </div>
             </td>
-            
           </tr>
-          <tr>
-            <td>
-            <div class="input-group mb-3">
-            <span class="input-group-text" id="inputGroup-sizing-default">Date of the event</span>
-            <input type="date" class="form-control" id="event_date" name="event_date" value="{{ old('event_date') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-        </div>
-        <span id="availability-message" style="color:red; font-size:12px;"></span>
-            </td>
+            <tr>
+              <td>
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Other concern <i class="fs-6">(Optional)</i></label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify other concern."></textarea>
+                </div>
+              </td>
+            </tr>
             
-          </tr>
-
-          <tr>
-            <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Time of the event</span>
-                <input type="time" class="form-control"  name="event_time" value="{{ old('event_time') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
-              </div>
-            </td>
             
-          </tr>
-          
-          
-        </table>
-        <hr>
+          </table>
+</div>
 <!-- Menu -->
         <div class="menu-selection">
-          <h1 class="text-start">Menu</h1>
+
           <table>
+            <tr>
+              <div class="input-group mb-3" style="width: 90%">
+                <div class="fs-2">Menu</div>
+              </div>
+            </tr>
             <tr>
               <td>
                 <div class="fs-5">Please choose only one (Pork or Beef)</div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                
               <div class="input-group mb-3">
                 
               <select id="menuCategory" name="menu_category" class="input-group-text" aria-label="Default select example" required>
@@ -409,16 +470,16 @@
       </div>
       <div class="offcanvas-body">
         <div>
-          <table>
+          <table  class="table">
             <tr>
               <th>
-                Package type:
+                <p>Package type:</p>
               </th>
               <td>Cuztomize</td>
             </tr>
             <tr>
               <th>
-                Option Selected:
+                <p>Option Selected:</p>
               </th>
               <td>
                 Option 1
@@ -426,17 +487,21 @@
             </tr>
             <tr>
               <th>
-                Number of guest:
+                <p>Number of guest:</p>
               </th>
               <td>{{number_format((session('pax')))}}</td>
             </tr>
             <tr>
-              <th>Buffer:</th>
+              <th>
+                <p>
+                  Buffer:
+                </p>
+              </th>
               <td>10</td>
             </tr>
             <tr>
               <th>
-                Budget:
+               <p> Budget:</p>
               </th>
               <td>
                 {{ number_format((session('budget'))) }}
@@ -444,7 +509,7 @@
             </tr>
             <tr>
               <th>
-                Charge:
+                <p>Charge:</p>
               </th>
               <td>
                 {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
@@ -454,15 +519,19 @@
               <th>
                 Additional Servces:
               </th>
+              <td></td>
             </tr>
             <tr>
               <th>
-                Party Entertainers
+                <p>Party Entertainers</p>
               </th>
+              <td></td>
             </tr>
             <tr>
-              <td>
-                2 Clowns with funny hosting, game handler and magic show 
+              <td >
+                <div class=" w-75" >
+                 <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
+                </div>
               </td>
               <td>
                 1350.00
@@ -470,12 +539,15 @@
             </tr>
             <tr>
               <th>
-                Photo Booth
+               <p> Photo Booth</p>
               </th>
+              <td></td>
             </tr>
             <tr>
               <td>
-                Unlimited picture for 2 hours with frame and customized template 
+                <div class="w-75">
+                 <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
+                </div>
               </td>
               <td>
                 2000.00
@@ -483,12 +555,16 @@
             </tr>
             <tr>
               <th>
-                Chocolate Fountain Booth
+                <p>Chocolate Fountain Booth</p>
               </th>
+              <td></td>
             </tr>
             <tr>
               <td>
-                Chocolate fountain only 
+                <div class="w-75">
+                  <p class=" fs-6">Chocolate fountain only </p>
+                </div>
+               
               </td>
               <td>
                 200.00
@@ -498,10 +574,13 @@
               <th>
                 Face Painting Booth
               </th>
+              <td></td>
             </tr>
             <tr>
               <td>
-                1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  
+               <div class="w-75">
+                <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
+               </div>
               </td>
               <td>
                 500.00
@@ -511,10 +590,13 @@
               <th>
                 Cupcake Tower Booth
               </th>
+              <td></td>
             </tr>
             <tr>
               <td>
-                Plain Chocolate Moist Cupcake  
+               <div class="w-75">
+                <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
+               </div>
               </td>
               <td>
                 3000.00
@@ -524,10 +606,13 @@
               <th>
                 Fruits Booth
               </th>
+              <td></td>
             </tr>
             <tr>
               <td>
-                Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango 
+                <div class="w-75">
+                  <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
+                </div>
               </td>
               <td>
                 100.00
@@ -543,7 +628,7 @@
         </div>
         
       </div>
-      <div class=" position-sticky bottom-0 d-flex justify-content-center fs-4" style="background: white; height:100px" >
+      <div class=" position-sticky bottom-0 d-flex justify-content-center fs-4" style="background: white; height:200px" >
         Total Amount:
         
           {{ number_format((session('budget'))) }}
@@ -552,14 +637,174 @@
     </div>
         <!-- Submit -->
 <div class="modal fade" id="Submit" tabindex="-1" aria-labelledby="SubmitLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h1></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class=" fs-4 fw-semibold text-center">
+        <div class=" fs-5 fw-semibold">
+          <table  class="table">
+            <tr>
+              <th>
+                <p>Package type:</p>
+              </th>
+              <td>Cuztomize</td>
+            </tr>
+            <tr>
+              <th>
+                <p>Option Selected:</p>
+              </th>
+              <td>
+                Option 1
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Number of guest:</p>
+              </th>
+              <td>{{number_format((session('pax')))}}</td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  Buffer:
+                </p>
+              </th>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th>
+               <p> Budget:</p>
+              </th>
+              <td>
+                {{ number_format((session('budget'))) }}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Charge:</p>
+              </th>
+              <td>
+                {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Additional Servces:
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>
+                <p>Party Entertainers</p>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td >
+                <div class=" w-50">
+                 <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
+                </div>
+              </td>
+              <td>
+                1350.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+               <p> Photo Booth</p>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="w-50">
+                 <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
+                </div>
+              </td>
+              <td>
+                2000.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>Chocolate Fountain Booth</p>
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="w-50">
+                  <p class=" fs-6">Chocolate fountain only </p>
+                </div>
+               
+              </td>
+              <td>
+                200.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Face Painting Booth
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+               <div class="w-50">
+                <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
+               </div>
+              </td>
+              <td>
+                500.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Cupcake Tower Booth
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+               <div class="w-50">
+                <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
+               </div>
+              </td>
+              <td>
+                3000.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Fruits Booth
+              </th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <div class="w-50">
+                  <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
+                </div>
+              </td>
+              <td>
+                100.00
+              </td>
+            </tr>
+            <tr class="mb-1">
+              <th>
+                Total Additional Services:
+              </th>
+              <td class=" text-decoration-underline">100000</td>
+            </tr>
+            <tr>
+              <th>
+                Total amount
+              </th>
+            </tr>
+          </table>
           Are you sure to submit this form?
         </div>
       </div>
