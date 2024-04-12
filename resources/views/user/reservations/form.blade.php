@@ -7,23 +7,8 @@
         <h1 class="display-1 mb-5" style=" font-family: 'Playfair Display', serif;">
          Customization Form
       </h1>
-      {{-- <h2 class="display-6 text-start">PLEASE READ FIRST</h2> --}}
-      <!-- <div class="form-check fs-5 mb-5 fw-semibold">
-    <div class="h5">Option 1</div>
-   <label for="">Option 1</label>
-    <label class="form-check-label" for="option1">
-        The package is for <b>{{ number_format((session('pax'))) }}</b> guest, <b>{{ number_format(floor(session('budget') / 350)) }}</b> guest is recommended for your given budget,
-        The buffer for additional guests is <b>10</b>. The total amount will be <b>{{ number_format((session('budget'))) }}</b>.
-    </label>
-</div>
-<div class="form-check fs-5 fw-semibold">
-    <div class="h5">Option 2</div>
-    <label for="">Option 2</label>
-    <label class="form-check-label" for="option2">
-        The package is for <b>{{ number_format((session('pax'))) }}</b> guests, <b>{{ number_format(floor(session('budget') / 350)) }}</b> guests are recommended for your given budget,
-        additional charges will be <b>{{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}</b>. The buffer for additional guests is <b>10</b>. The total amount will be <b>{{ number_format((ceil((session('pax') - floor(session('budget') / 350)) * 350) + session('budget'))) }}</b>.
-    </label>
-</div> -->
+      
+      
 
 <!-- Hidden input for selected_option -->
 
@@ -33,7 +18,7 @@
       </div>
       </div>
       <div class="form-container">
-        <!-- Celebrants detail -->
+        
         <h1 class="display-3 text-center mb-5"> More details</h1>
         <form action="{{ route('reservation.customize.submit') }}" method="post">
         @csrf
@@ -58,9 +43,9 @@
 <!-- Hidden input for selected_option -->
 <input type="hidden" name="selected_option" id="selected_option" value="">
 
-
+<!-- Celebrants detail -->
         <h1 class="text-start">Celebrant Information</h1>
-        <table>
+<table>
         @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -242,17 +227,7 @@
                 </select>
               </td>
             </tr>
-            <!-- <tr>
-              <td>
-              <div class="input-group mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-default">Fish</span>
-                <select class="form-select" aria-label="Default select example">
-                  <option selected></option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                </select>
-              </td>
-            </tr> -->
+           
             <tr>
               <td>
               <div class="input-group mb-3">
@@ -302,7 +277,10 @@
                 </select>
               </td>
             </tr>
-            <table>
+      
+
+          </table>
+          <table>
             <tr>
               <td>
                 <div class="input-group mb-3">
@@ -392,193 +370,186 @@
                 </select>
               </td>
             </tr>
-<!--             
-    <tr>
-      <td>
-      
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Party Entertainers</span>
-        <select class="form-select" name="" aria-label="Default select example">
-        <option value="" selected>Select</option>
-        <option value="" >
-          <div>
-            2 Clowns with funny hosting, game handler and magic show - 1,350
-         </div>
-        </option>
-        <option value="" >
-          <div>
-            1 Clown with funny hosting, game handler. magic show, <br>1 puppeteer and unlimited show for 2 hrs. - 2,050 
-          </div>
-        </option>
-        <option value="">
-          <div>
-            2 Clowns with funny hosting, game handler, magic show and giant bubble show with tricks - 2,450 
-          </div>
-        </option>
-        </select>
-      </td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>
-        {{-- <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
-          <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
-        </div> --}}
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Photo Booth</span>
-          <select class="form-select" name="" aria-label="Default select example">
-          <option value="" selected>Select</option>
-          <option value="" >
-            <div>
-              Unlimited picture for 2 hours with frame and customized template - 2,000
-           </div>
-          </option>
-          <option value="" >
-            <div>
-              Unlimited picture for 3 hours with frame and customized template - 3,000
-            </div>
-          </option>
-          <option value="">
-            <div>
-              Unlimited picture for 4 hours with frame and customized template - 4,000
-            </div>
-          </option>
-          </select>
 
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{-- <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
-          <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
-      </div> --}}
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Chocolate Fountain Booth</span>
-        <select class="form-select" name="" aria-label="Default select example">
-        <option value="" selected>Select</option>
-        <option value="" >
-          <div>
-            Chocolate fountain only - 200  
-         </div>
-        </option>
-        <option value="" >
-          <div>
-            Chocolate fountain with biscuits - 500  
-          </div>
-        </option>
-        <option value="">
-          <div>
-            Chocolate fountain, biscuits with fruits – 600
-          </div>
-        </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{-- <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
-          <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
-      </div> --}}
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Face Painting Booth</span>
-        <select class="form-select" name="" aria-label="Default select example">
-        <option value="" selected>Select</option>
-        <option value="" >
-          <div>
-            1 Face Painter + Unlimited Paint for 2 hrs with your chosen design - 500
-         </div>
-        </option>
-        <option value="" >
-          <div>
-            2 Face Painter + Unlimited Painter for 2 hrs with your chosen design – 1,000
-          </div>
-        </option>
-        <option value="">
-          <div>
-            2 Face Painter + Unlimited Painter for 3 hrs with your chosen design - 2,000
-          </div>
-        </option>
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        {{-- <div class="form-check form-check-inline">
-          <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
-          <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
-        </div> --}}
-        <div class="input-group mb-3">
-          <span class="input-group-text" id="inputGroup-sizing-default">Cupcake Tower Booth</span>
-          <select class="form-select" name="" aria-label="Default select example">
-          <option value="" selected>Select</option>
-          <option value="" >
-            <div>
-              Plain Chocolate Moist Cupcake - 3,000 
-           </div>
-          </option>
-          <option value="" >
-            <div>
-              Plain Sprinkled Mocha Moist Cupcake - 3,000
-            </div>
-          </option>
-          <option value="">
-            <div>
-              Assorted Flavors Moist Cupcake - 3,000
-            </div>
-          </option>
-          </select>
-      </td>
-    </tr>
-   <tr>
-    <td>
-      {{-- <div class="form-check form-check-inline">
-        <input class="form-check-input" type="checkbox" id="fruits" name="additional[]" value="Fruits" {{ is_array(old('additional')) && in_array('Fruits', old('additional')) ? 'checked' : '' }}>
-        <label  class="form-check-label fs-5" for="fruits">Fruits Booth</label>
-    </div> --}}
-    <div class="input-group mb-3">
-      <span class="input-group-text" id="inputGroup-sizing-default">Fruits Booth</span>
-      <select class="form-select" name="" aria-label="Default select example">
-      <option value="" selected>Select</option>
-      <option value="" >
-        <div>
-          Banana, Strawberries, Grapes, Green Grapes, Watermelons and Dragon fruit - 1500
-       </div>
-      </option>
-      <option value="" >
-        <div>
-          Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango - 1500
-        </div>
-      </option>
-      <option value="">
-        <div>
-          Blueberry, Strawberries, Pineapples, Peach, Raspberry and Apple - 1500
-        </div>
-      </option>
-      </select>
-    </td>
-   </tr> -->
 
               
               
 </table>
-
-          </table>
-        </div>
-        <div class="fs-5  start-100 mb-5" style="width: 90%;">
+  
+        
+        <div class="fs-5  start-100 mb-2" style="width: 90%;" style="margin-bottom: 100px">
             <div class="input-group justify-content-center"> 
             <input type="checkbox" name="agree_terms" value="1" {{ old('agree_terms') ? 'checked' : '' }}>
             
                <p class=" ms-1 mx-1"> I have read and agree to the</p><a href="" data-bs-toggle="modal" data-bs-target="#Termsandcondition" style="color: blue;"  class=" "> Terms and Condition </a> <p class="ms-1">  of Mihanz Catering</p>
           </div>
         </div>
-        <div class="btn-position justify-content-center mb-5">
+        <div class="btn-position justify-content-center mb-3">
             <!-- Remove the modal and use a regular submit button -->
             <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#Submit">Submit</button>
         </div>
-
+      </div>
+      <div class="stickytotal">
+        <div class=" m-5">
+          Total Amount:<a class=""  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+            {{ number_format((session('budget'))) }}
+          </a>
+        </div>
+        <div>
+          
+        </div>
+      </div>
+      
+      
+    {{-- Off CANVAS RECEIPT --}}
+    <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">RECEIPT</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div>
+          <table>
+            <tr>
+              <th>
+                Package type:
+              </th>
+              <td>Cuztomize</td>
+            </tr>
+            <tr>
+              <th>
+                Option Selected:
+              </th>
+              <td>
+                Option 1
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Number of guest:
+              </th>
+              <td>{{number_format((session('pax')))}}</td>
+            </tr>
+            <tr>
+              <th>Buffer:</th>
+              <td>10</td>
+            </tr>
+            <tr>
+              <th>
+                Budget:
+              </th>
+              <td>
+                {{ number_format((session('budget'))) }}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Charge:
+              </th>
+              <td>
+                {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Additional Servces:
+              </th>
+            </tr>
+            <tr>
+              <th>
+                Party Entertainers
+              </th>
+            </tr>
+            <tr>
+              <td>
+                2 Clowns with funny hosting, game handler and magic show 
+              </td>
+              <td>
+                1350.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Photo Booth
+              </th>
+            </tr>
+            <tr>
+              <td>
+                Unlimited picture for 2 hours with frame and customized template 
+              </td>
+              <td>
+                2000.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Chocolate Fountain Booth
+              </th>
+            </tr>
+            <tr>
+              <td>
+                Chocolate fountain only 
+              </td>
+              <td>
+                200.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Face Painting Booth
+              </th>
+            </tr>
+            <tr>
+              <td>
+                1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  
+              </td>
+              <td>
+                500.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Cupcake Tower Booth
+              </th>
+            </tr>
+            <tr>
+              <td>
+                Plain Chocolate Moist Cupcake  
+              </td>
+              <td>
+                3000.00
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Fruits Booth
+              </th>
+            </tr>
+            <tr>
+              <td>
+                Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango 
+              </td>
+              <td>
+                100.00
+              </td>
+            </tr>
+            <tr class="mb-1">
+              <th>
+                Total Additional Services:
+              </th>
+              <td class=" text-decoration-underline">100000</td>
+            </tr>
+          </table>
+        </div>
+        
+      </div>
+      <div class=" position-sticky bottom-0 d-flex justify-content-center fs-4" style="background: white; height:100px" >
+        Total Amount:
+        
+          {{ number_format((session('budget'))) }}
+          
+      </div>
+    </div>
         <!-- Submit -->
 <div class="modal fade" id="Submit" tabindex="-1" aria-labelledby="SubmitLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">

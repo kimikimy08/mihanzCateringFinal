@@ -173,8 +173,26 @@ box-shadow: 14px 14px 11px black ;
     font-size: 1.5rem;
     margin-top: 50px;
 }
-
-
+.offcanvas-body table td{
+    font-size: 15px;
+    font-weight: 500;
+}
+.stickytotal{
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    height: 50px;
+    align-items: center;
+    font-weight: 500;
+    font-size: 24px;
+    flex-direction: row-reverse;
+}
+.stickytotal a{
+    text-decoration: underline !important;
+    color: black !important;
+}
 /* form */
 .form-container a{
     color: white;
@@ -195,7 +213,7 @@ box-shadow: 14px 14px 11px black ;
 }
 .form-container input{
     font-size: 20px;
-    width: 50vh;
+    
 }
 .form-container td{
 
