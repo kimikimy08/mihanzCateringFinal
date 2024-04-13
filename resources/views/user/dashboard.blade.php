@@ -196,24 +196,47 @@
                     <tr>
                       <th scope="row">Name:</th>
                       <td id="modalName">{{ $event['name'] }}</td>
-                      <th scope="row">Date:</th>
-                      <td id="modalDate">{{ $event['event_date'] }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th scope="row">Email:</th>
                       <td>{{ $event['email'] }}</td>
-                      <th scope="row">Time:</th>
-                      <td>{{ $event['event_time'] }}</td>
+                      <td></td>
+                      <td></td>
+                      
                     </tr>
-                    <tr>
-                      <th scope="row">Event Location:</th>
-                      <td colspan="4">{{ $event['venue_address'] }}</td>
-                    </tr>
+                      
+                    
+                    
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row" colspan="4" class=" fs-2">Details</th>
+                      <th scope="row" colspan="4" class=" fs-1" style="font-weight: 500;">Celebrant Details</th>
                     </tr>
+                    <tr>
+                      <th scope="row"> Name:</th>
+                      <td>{{ $event['celebrant_name'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row"> Age:</th>
+                      <td>{{ $event['celebrant_age'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Celebrant Gender:</th>
+                      <td>{{ $event['celebrant_gender'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    {{-- Event Details --}}
+                    <tr>
+                      <th scope="row" colspan="4" class=" fs-1" style="font-weight: 500;">Event Details</th>
+                    </tr>
+                    
                     <tr>
                       <th scope="row">Event:</th>
                       <td>@if ($event['choice'] == 'premade' && $event['service_category'])
@@ -222,8 +245,33 @@
                         {{ $event['category_name'] }}
                         @endif
                       </td>
+                      <td></td>
+                      <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <th scope="row">Event Location:</th>
+                      <td colspan="">{{ $event['venue_address'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Time:</th>
+                      <td>{{ $event['event_time'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">Date:</th>
+                      <td id="modalDate">{{ $event['event_date'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <th scope="row">Theme</th>
                       <td>{{ $event['event_theme'] }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th scope="row">Pax:</th>
@@ -232,67 +280,260 @@
                         @elseif ($event['choice'] == 'customize' && $event['customize_pax'])
                         {{ $event['customize_pax'] }}
                         @endif</td>
+                        <td></td>
+                        <td></td>
+                     
+                    </tr>
+                    <tr>
+                      <th>Buffer:</th>
+                      <td>10</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <th scope="row">Budget:</th>
                       <td>@if ($event['choice'] == 'premade' && $event['premade_price'])
                         {{ $event['premade_price'] }}
                         @elseif ($event['choice'] == 'customize' && $event['customize_price'])
                         {{ $event['customize_price'] }}
                         @endif</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                      <th scope="row">Celebrant Name:</th>
-                      <td>{{ $event['celebrant_name'] }}</td>
-                      <th scope="row">Celebrant Age:</th>
-                      <td>{{ $event['celebrant_age'] }}</td>
+                      <th>
+                        Charge:
+                      </th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
-                      <th scope="row">Celebrant Gender:</th>
-                      <td>{{ $event['celebrant_gender'] }}</td>
+                      <th>
+                        Total Amount:
+                      </th>
+                      <td>10000000</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    
+                    <tr>
+                     
                       <th scope="row">Package Type:</th>
                       <td>@if ($event['choice'] == 'premade' && $event['premade_package'])
                         {{ $event['premade_package'] }}
                         @elseif ($event['choice'] == 'customize')
                         Customized
-                        @endif</td>
+                        @endif
+                      </td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
-                      <th scope="row" colspan="4" class="fs-2 ">Menu</th>
+                      <th scope="row" colspan="4" class="fs-1 " style="font-weight: 500;">Other Details</th>
+                    </tr>
+                    <tr>
+                      <th>
+                        Allergies:
+                      </th>
+                      <td>
+                        <p>
+                          
+                        </p>
+                      </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>
+                        Special Request:
+                      </th>
+                      <td>
+                        <p>
+                          
+                        </p>
+                      </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>
+                        Other Concern
+                      </th>
+                      <td>
+                        <p>
+
+                        </p>
+                      </td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    {{-- Menu --}}
+                    <tr>
+                      <th scope="row" colspan="4" class="fs-1 " style="font-weight: 500;">Menu</th>
                     </tr>
                     <tr>
                       <th scope="row">Pork:</th>
                       <td>{{ $event['pork_menu'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <th scope="row">Beef:</th>
                       <td>{{ $event['beef_menu'] }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th scope="row">Chicken:</th>
                       <td>{{ $event['chicken_menu'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <th scope="row">Fish:</th>
                       <td>{{ $event['fish_menu'] }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th scope="row">Seafood:</th>
                       <td>{{ $event['seafood_menu'] }}</td>
+                      
+                    </tr>
+                    <tr>
                       <th scope="row">Vegetables:</th>
                       <td>{{ $event['vegetable_menu'] }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th scope="row">Pasta:</th>
                       <td>{{ $event['pasta_menu'] }}</td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <th scope="row">Dessert:</th>
                       <td>{{ $event['dessert_menu'] }}</td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
                       <th scope="row">Drink:</th>
                       <td>{{ $event['drink_menu'] }}</td>
+                      <td></td>
+                      <td></td>
                       
                     </tr>
                     <tr>
-                      <th scope="row">Additional services:</th>
-                      {{-- <td>
-                        {{ $event['additional'] }}
-                      </td> --}}
+                      <th scope="row" class=" fs-1" style="font-weight: 500;">Additional services</th>
+                      <td scope="row" class=" fs-3" style="font-weight: 500;"></td>
+                      <td></td>
+                      <td scope="row" class=" fs-3" style="font-weight: 500;"> Price</td>
                     </tr>
+                    <tr>
+                      <th>
+                        Party Entertainers:
+                      </th>
+                   
+                      <td>
+                        2 Clowns with funny hosting, game handler and magic show
+                      </td>
+                      <td></td>
+                      <td>1350.00</td>
+                   
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Photo Booth:
+                      </th>
+                      <td>
+                        Unlimited picture for 2 hours with frame and customized template
+                      </td>
+                      <td></td>
+                      <td>1350.00</td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Chocolate Fountain Booth:
+                      </th>
+                      <td>
+                        Chocolate fountain only
+                      </td>
+                    <td></td>
+                    <td>1350.00</td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Face Painting Booth:
+                      </th>
+                      <td>
+                        1 Face Painter + Unlimited Paint for 2 hrs with your chosen design
+                      </td>
+                    <td></td>
+                    <td>1350.00</td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Cupcake Tower Booth:
+                      </th>
+                      <td>
+                        Plain Chocolate Moist Cupcake
+                      </td>
+                    <td></td>
+                    <td>3000.00</td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Fruits Booth:
+                      </th>
+                      <td>
+                        Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango
+                      </td>
+                    <td></td>
+                    <td>100.00</td>
+                    </tr>
+                    {{-- TOTAL AMOUNT --}}
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <th>Total Additional Services:</th>
+                      <td>100.00</td>
+                      <td></td>
+                      </tr>
+                      <tr>
+                      
+                        <td></td>
+                        <th>Budget:</th>
+                        <td>100.00</td>
+                        <td></td>
+                        </tr>
+                        <tr>
+                         
+                          <td></td>
+                          <th class=" border-black">Charge:</th>
+                          <td class=" border-black">100.00</td>
+                          <td></td>
+                          </tr>
+                          <tr>
+                        
+                            <td></td>
+                            <th >Total Amount:</th>
+                            <td >100.00</td>
+                            <td></td>
+                            </tr>
+                    
                   </tbody>
                 </table>
               </div>

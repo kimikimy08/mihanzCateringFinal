@@ -106,6 +106,14 @@
     </div>
 </td>
 </tr>
+<tr id="otherThemeRow" style="display: none;">
+  <td>
+      <div class="input-group mb-3">
+          <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
+          <input type="text" placeholder="" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+      </div>
+  </td>
+  </tr>
 <tr>
   <td>
     <div class="input-group mb-3">
@@ -114,14 +122,7 @@
     </div>
   </td>
 
-<tr id="otherThemeRow" style="display: none;">
-<td>
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">Other Theme</span>
-        <input type="text" class="form-control" name="event_theme" id="otherThemeInput" value="{{ old('event_theme') }}" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-    </div>
-</td>
-</tr>
+
 
       
       <tr>
@@ -597,13 +598,13 @@
               <th>
                 <p>Package type:</p>
               </th>
-              <td>Cuztomize</td>
+              <td class="fs-5">Cuztomize</td>
             </tr>
             <tr>
               <th>
                 <p>Option Selected:</p>
               </th>
-              <td>
+              <td class="fs-5">
                 Option 1
               </td>
             </tr>
@@ -611,7 +612,7 @@
               <th>
                 <p>Number of guest:</p>
               </th>
-              <td>{{number_format((session('pax')))}}</td>
+              <td class="fs-5">{{number_format((session('pax')))}}</td>
             </tr>
             <tr>
               <th>
@@ -619,13 +620,13 @@
                   Buffer:
                 </p>
               </th>
-              <td>10</td>
+              <td class="fs-5">10</td>
             </tr>
             <tr>
               <th>
                <p> Budget:</p>
               </th>
-              <td>
+              <td class="fs-5">
                 {{ number_format((session('budget'))) }}
               </td>
             </tr>
@@ -633,7 +634,7 @@
               <th>
                 <p>Charge:</p>
               </th>
-              <td>
+              <td class="fs-5">
                 {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
               </td>
             </tr>
@@ -655,7 +656,7 @@
                  <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
                 </div>
               </td>
-              <td>
+              <td class="fs-5">
                 1350.00
               </td>
             </tr>
@@ -671,7 +672,7 @@
                  <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
                 </div>
               </td>
-              <td>
+              <td class="fs-5">
                 2000.00
               </td>
             </tr>
@@ -688,7 +689,7 @@
                 </div>
                
               </td>
-              <td>
+              <td class="fs-5">
                 200.00
               </td>
             </tr>
@@ -704,7 +705,7 @@
                 <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
                </div>
               </td>
-              <td>
+              <td class="fs-5">
                 500.00
               </td>
             </tr>
@@ -720,7 +721,7 @@
                 <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
                </div>
               </td>
-              <td>
+              <td class="fs-5">
                 3000.00
               </td>
             </tr>
@@ -736,7 +737,7 @@
                   <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
                 </div>
               </td>
-              <td>
+              <td class="fs-5">
                 100.00
               </td>
             </tr>
@@ -744,22 +745,25 @@
               <th>
                 Total Additional Services:
               </th>
-              <td class=" text-decoration-underline">100000</td>
+              <td class=" fs-5">100000</td>
             </tr>
             <tr>
               <th>
                 Total amount
               </th>
+              <td class="fs-5">
+                
+              </td>
             </tr>
           </table>
-          <div>
+          {{-- <div>
             Are you sure to submit this form?
-          </div>
+          </div> --}}
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-        <button type="submit" class="btn btn-primary">Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button type="submit" class="btn btn-primary">Continue</button>
       </div>
     </div>
   </div>

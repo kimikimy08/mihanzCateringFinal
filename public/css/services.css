@@ -156,7 +156,7 @@ box-shadow: 14px 14px 11px black ;
     align-items: center;
     width: 100%;
     height: auto;
-    padding-top: 50px;
+    /* padding-top: 50px; */
 }
 .premade-form ul{
     width: 80%;
