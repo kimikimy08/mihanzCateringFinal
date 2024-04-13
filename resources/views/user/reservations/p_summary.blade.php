@@ -345,13 +345,6 @@
         </table>
         <div class=" w-50 total-table " >
           <table class="table table-bordered ">
-             <tr>
-              <td class="fw-semibold">
-                Total Additional Services:
-              </td>
-              <td>1000</td>
-             
-            </tr>
             <tr>
               <td class="fw-semibold">
                 Budget:
@@ -359,6 +352,14 @@
               <td>1000</td>
              
             </tr>
+             <tr>
+              <td class="fw-semibold">
+                Total Additional Services:
+              </td>
+              <td>1000</td>
+             
+            </tr>
+           
             <tr>
               <td class="fw-semibold">
                Charge:

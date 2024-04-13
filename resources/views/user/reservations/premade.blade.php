@@ -455,7 +455,7 @@
                 </tr>
                 <tr>
                   <th>
-                   <p> Budget:</p>
+                   <p> Price:</p>
                   </th>
                   <td>
                    35,000
@@ -464,13 +464,13 @@
                 
                 <tr>
                   <th>
-                    Additional Servces:
+                    Additional Servces
                   </th>
                   <td></td>
                 </tr>
                 <tr>
                   <th>
-                    <p>Party Entertainers</p>
+                    <p>Party Entertainers:</p>
                   </th>
                   <td></td>
                 </tr>
@@ -486,7 +486,7 @@
                 </tr>
                 <tr>
                   <th>
-                   <p> Photo Booth</p>
+                   <p> Photo Booth:</p>
                   </th>
                   <td></td>
                 </tr>
@@ -502,7 +502,7 @@
                 </tr>
                 <tr>
                   <th>
-                    <p>Chocolate Fountain Booth</p>
+                    <p>Chocolate Fountain Booth:</p>
                   </th>
                   <td></td>
                 </tr>
@@ -519,7 +519,7 @@
                 </tr>
                 <tr>
                   <th>
-                    Face Painting Booth
+                    Face Painting Booth:
                   </th>
                   <td></td>
                 </tr>
@@ -535,7 +535,7 @@
                 </tr>
                 <tr>
                   <th>
-                    Cupcake Tower Booth
+                    Cupcake Tower Booth:
                   </th>
                   <td></td>
                 </tr>
@@ -551,7 +551,7 @@
                 </tr>
                 <tr>
                   <th>
-                    Fruits Booth
+                    Fruits Booth:
                   </th>
                   <td></td>
                 </tr>
