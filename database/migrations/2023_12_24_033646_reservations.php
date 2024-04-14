@@ -27,6 +27,9 @@ class Reservations extends Migration
             $table->date('event_date');
             $table->time('event_time');
             $table->string('venue_address');
+            $table->text('allergies')->nullable();
+            $table->text('special')->nullable();
+            $table->text('other')->nullable();
             $table->boolean('agree_terms');
             $table->enum('reservation_status', ['Pending', 'Approved', 'Decline']);
 
@@ -64,6 +67,8 @@ class Reservations extends Migration
             $table->foreign('fp_menu_id')->references('id')->on('additionals');
             $table->foreign('ct_menu_id')->references('id')->on('additionals');
             $table->foreign('f_menu_id')->references('id')->on('additionals');
+
+            $table->decimal('total_amount', 10, 2)->default(0);
 
 
             $table->timestamps();

@@ -280,7 +280,7 @@
               <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Seafood</span>
-                <select class="form-select" name="seafood_menu" aria-label="Default select example">
+                <select id="seafoodMenuOptions" class="form-select" name="seafood_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Seafood Menu</option>
                 @foreach($menus['seafood'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('seafood_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
@@ -293,7 +293,7 @@
               <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Vegetable</span>
-                <select class="form-select" name="vegetable_menu" aria-label="Default select example">
+                <select id="vegetablesMenuOptions" class="form-select" name="vegetable_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Vegetable Menu</option>
                 @foreach($menus['vegetable'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('vegetable_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
@@ -305,7 +305,7 @@
               <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Pasta</span>
-                <select class="form-select" name="pasta_menu" aria-label="Default select example">
+                <select id="pastaMenuOptions" class="form-select" name="pasta_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Pasta Menu</option>
                 @foreach($menus['pasta'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('pasta_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
@@ -317,7 +317,7 @@
               <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Dessert</span>
-                <select class="form-select" name="dessert_menu" aria-label="Default select example">
+                <select id="dessertMenuOptions" class="form-select" name="dessert_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Dessert Menu</option>
                 @foreach($menus['dessert'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('dessert_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }}</option>
@@ -329,7 +329,7 @@
               <td>
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Drink</span>
-                <select class="form-select" name="drink_menu" aria-label="Default select example">
+                <select id="drinkMenuOptions" class="form-select" name="drink_menu" aria-label="Default select example">
                 <option value="" selected disabled>Select Drink Menu</option>
 
                 @foreach($menus['drink'] as $menu)
@@ -451,11 +451,11 @@
         </div>
       </div>
       <div class="stickytotal">
-        <div class=" m-5">
-          Total Amount:<a class=""  data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+      <div class="m-5" >
+        Total Amount: <a class="" id="totalAmountDisplay" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
             {{ number_format((session('budget'))) }}
-          </a>
-        </div>
+        </a>
+    </div>
         <div>
           
         </div>
@@ -478,13 +478,13 @@
               <td>Cuztomize</td>
             </tr>
             <tr>
-              <th>
-                <p>Option Selected:</p>
-              </th>
-              <td>
-                Option 1
-              </td>
-            </tr>
+    <th>
+        <p>Option Selected:</p>
+    </th>
+    <td id="selectedOptionDisplay">
+        Option 1
+    </td>
+</tr>
             <tr>
               <th>
                 <p>Number of guest:</p>
@@ -515,114 +515,30 @@
                 {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
               </td>
             </tr>
+
             <tr>
-              <th>
-                Additional Servces:
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>
-                <p>Party Entertainers</p>
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td >
-                <div class=" w-75" >
-                 <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
-                </div>
-              </td>
-              <td>
-                1350.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-               <p> Photo Booth</p>
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="w-75">
-                 <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
-                </div>
-              </td>
-              <td>
-                2000.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p>Chocolate Fountain Booth</p>
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="w-75">
-                  <p class=" fs-6">Chocolate fountain only </p>
-                </div>
-               
-              </td>
-              <td>
-                200.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Face Painting Booth
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-               <div class="w-75">
-                <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
-               </div>
-              </td>
-              <td>
-                500.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Cupcake Tower Booth
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-               <div class="w-75">
-                <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
-               </div>
-              </td>
-              <td>
-                3000.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Fruits Booth
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="w-75">
-                  <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
-                </div>
-              </td>
-              <td>
-                100.00
-              </td>
-            </tr>
+                  <th>
+                    Menu
+                  </th>
+                  <td>
+        <!-- Empty div to display selected menu items -->
+        <div id="selectedMenuItems"></div>
+    </td>
+                </tr>
+
+                
+                <tr>
+                  <th>
+                    Additional Servces
+                  </th>
+                  <td><div id="selectedServices"></div> </td>
+                </tr>
+
             <tr class="mb-1">
               <th>
                 Total Additional Services:
               </th>
-              <td class=" text-decoration-underline">100000</td>
+            <td class=" text-decoration-underline"><div id="totalAdditionalServices">Total Additional Services: $0.00</div></td>
             </tr>
           </table>
         </div>
@@ -631,7 +547,7 @@
       <div class=" position-sticky bottom-0 d-flex justify-content-center fs-4" style="background: white; height:200px" >
         Total Amount:
         
-          {{ number_format((session('budget'))) }}
+        <div id="totalAmount">Total Amount: $0.00</div>
           
       </div>
     </div>
@@ -653,13 +569,13 @@
               <td>Cuztomize</td>
             </tr>
             <tr>
-              <th>
-                <p>Option Selected:</p>
-              </th>
-              <td>
-                Option 1
-              </td>
-            </tr>
+    <th>
+        <p>Option Selected:</p>
+    </th>
+    <td id="selectedOptionDisplay_summary">
+        Option 1
+    </td>
+</tr>
             <tr>
               <th>
                 <p>Number of guest:</p>
@@ -690,119 +606,37 @@
                 {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
               </td>
             </tr>
+
             <tr>
-              <th>
-                Additional Servces:
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>
-                <p>Party Entertainers</p>
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td >
-                <div class=" w-50">
-                 <p class="fs-6"> 2 Clowns with funny hosting, game handler and magic show </p>
-                </div>
-              </td>
-              <td>
-                1350.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-               <p> Photo Booth</p>
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="w-50">
-                 <p class=" fs-6"> Unlimited picture for 2 hours with frame and customized template </p>
-                </div>
-              </td>
-              <td>
-                2000.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                <p>Chocolate Fountain Booth</p>
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="w-50">
-                  <p class=" fs-6">Chocolate fountain only </p>
-                </div>
-               
-              </td>
-              <td>
-                200.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Face Painting Booth
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-               <div class="w-50">
-                <p class=" fs-6">1 Face Painter + Unlimited Paint for 2 hrs with your chosen design  </p>
-               </div>
-              </td>
-              <td>
-                500.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Cupcake Tower Booth
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-               <div class="w-50">
-                <p class=" fs-6">Plain Chocolate Moist Cupcake  </p>
-               </div>
-              </td>
-              <td>
-                3000.00
-              </td>
-            </tr>
-            <tr>
-              <th>
-                Fruits Booth
-              </th>
-              <td></td>
-            </tr>
-            <tr>
-              <td>
-                <div class="w-50">
-                  <p class=" fs-6">Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango </p>
-                </div>
-              </td>
-              <td>
-                100.00
-              </td>
-            </tr>
+                  <th>
+                    Menu
+                  </th>
+                  <td>
+        <!-- Empty div to display selected menu items -->
+        <div id="selectedMenuItems_summary"></div>
+    </td>
+                </tr>
+
+
+                <tr>
+                  <th>
+                    Additional Servces
+                  </th>
+                  <td><div id="selectedServices_summary"></div> </td>
+                </tr>
+
             <tr class="mb-1">
               <th>
                 Total Additional Services:
               </th>
-              <td class=" text-decoration-underline">100000</td>
+            <td class=" text-decoration-underline"><div id="totalAdditionalServices_summary">Total Additional Services: $0.00</div></td>
             </tr>
+
             <tr>
               <th>
                 Total amount
               </th>
+              <td class=" text-decoration-underline"><div id="totalAmount_summary">Total Amount: $0.00</div></td>
             </tr>
           </table>
           Are you sure to submit this form?
@@ -1050,4 +884,175 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
 </script>
 
 
+<script>
+  function updateSelectedMenu() {
+    var selectedMenu = "";
+
+    // Get selected values and text from dropdowns
+    var porkMenuValue = $("#porkMenuOptions").val();
+    var beefMenuValue = $("#beefMenuOptions").val();
+    var chickenMenuValue = $("#chickenMenuOptions").val();
+    var seafoodMenuValue = $("#seafoodMenuOptions").val();
+    var fishMenuValue = $("#fishMenuOptions").val();
+    var vegetablesMenuValue = $("#vegetablesMenuOptions").val();
+    var pastaMenuValue = $("#pastaMenuOptions").val();
+    var dessertMenuValue = $("#dessertMenuOptions").val();
+    var drinkMenuValue = $("#drinkMenuOptions").val();
+
+    // Check if a menu is selected in each category before adding it to the selected menu string
+    if (porkMenuValue && porkMenuValue !== "") {
+        selectedMenu += "Pork: " + $("#porkMenuOptions option:selected").text() + "<br>";
+    }
+    if (beefMenuValue && beefMenuValue !== "") {
+        selectedMenu += "Beef: " + $("#beefMenuOptions option:selected").text() + "<br>";
+    }
+    if (chickenMenuValue && chickenMenuValue !== "") {
+        selectedMenu += "Chicken: " + $("#chickenMenuOptions option:selected").text() + "<br>";
+    }
+    if (seafoodMenuValue && seafoodMenuValue !== "") {
+        selectedMenu += "Seafood: " + $("#seafoodMenuOptions option:selected").text() + "<br>";
+    }
+    if (fishMenuValue && fishMenuValue !== "") {
+        selectedMenu += "Fish: " + $("#fishMenuOptions option:selected").text() + "<br>";
+    }
+    if (vegetablesMenuValue && vegetablesMenuValue !== "") {
+        selectedMenu += "Vegetables: " + $("#vegetablesMenuOptions option:selected").text() + "<br>";
+    }
+    if (pastaMenuValue && pastaMenuValue !== "") {
+        selectedMenu += "Pasta: " + $("#pastaMenuOptions option:selected").text() + "<br>";
+    }
+    if (dessertMenuValue && dessertMenuValue !== "") {
+        selectedMenu += "Dessert: " + $("#dessertMenuOptions option:selected").text() + "<br>";
+    }
+    if (drinkMenuValue && drinkMenuValue !== "") {
+        selectedMenu += "Drink: " + $("#drinkMenuOptions option:selected").text() + "<br>";
+    }
+    // Append other menu items as needed
+
+    // Update the content of the selected menu div
+    $("#selectedMenuItems").html(selectedMenu);
+    $("#selectedMenuItems_summary").html(selectedMenu);
+}
+
+// Call the updateSelectedMenu function whenever a menu dropdown value changes
+$("#porkMenuOptions, #beefMenuOptions, #chickenMenuOptions, #seafoodMenuOptions, #fishMenuOptions, #vegetablesMenuOptions, #pastaMenuOptions, #dessertMenuOptions, #drinkMenuOptions").change(function () {
+    updateSelectedMenu();
+});
+
+// Call the function initially to display any pre-selected menu items
+updateSelectedMenu();
+
+</script>
+
+
+<script>
+ function updateSelectedServices() {
+    var selectedServices = "";
+
+    // Get selected values and text from additional service dropdowns
+    var partyEntertainersValue = $("select[name='pe_menu']").val();
+    var photoBoothValue = $("select[name='pb_menu']").val();
+    var chocolateFountainValue = $("select[name='cf_menu']").val();
+    var facePaintingValue = $("select[name='fp_menu']").val();
+    var cupcakeTowerValue = $("select[name='ct_menu']").val();
+    var fruitsValue = $("select[name='f_menu']").val();
+
+    // Append selected additional services to the string
+    if (partyEntertainersValue && partyEntertainersValue !== "") {
+        selectedServices += "Party Entertainers: " + $("select[name='pe_menu'] option:selected").text() + "<br>";
+    }
+    if (photoBoothValue && photoBoothValue !== "") {
+        selectedServices += "Photo Booth: " + $("select[name='pb_menu'] option:selected").text() + "<br>";
+    }
+    if (chocolateFountainValue && chocolateFountainValue !== "") {
+        selectedServices += "Chocolate Fountain: " + $("select[name='cf_menu'] option:selected").text() + "<br>";
+    }
+    if (facePaintingValue && facePaintingValue !== "") {
+        selectedServices += "Face Painting: " + $("select[name='fp_menu'] option:selected").text() + "<br>";
+    }
+    if (cupcakeTowerValue && cupcakeTowerValue !== "") {
+        selectedServices += "Cupcake Tower: " + $("select[name='ct_menu'] option:selected").text() + "<br>";
+    }
+    if (fruitsValue && fruitsValue !== "") {
+        selectedServices += "Fruits: " + $("select[name='f_menu'] option:selected").text() + "<br>";
+    }
+    // Append other additional services as needed
+
+    // Update the content of the selected services div
+    $("#selectedServices").html(selectedServices);
+    $("#selectedServices_summary").html(selectedServices);
+
+    // Calculate the total additional services price
+    var totalAdditionalServicesPrice = 0;
+    $('select[name^="pe_menu"], select[name^="pb_menu"], select[name^="cf_menu"], select[name^="fp_menu"], select[name^="ct_menu"], select[name^="f_menu"]').each(function () {
+        var optionText = $(this).find('option:selected').text();
+        var priceIndex = optionText.lastIndexOf('-'); // Find the position of the price in the option text
+        var priceText = optionText.slice(priceIndex + 1).trim(); // Extract the price part of the text
+        var price = parseFloat(priceText.replace(/[^\d.-]/g, '')); // Remove non-numeric characters except '.' and '-' and convert to float
+        if (!isNaN(price)) {
+            totalAdditionalServicesPrice += price;
+        }
+    });
+
+    // Update the total additional services display
+    $('#totalAdditionalServices').html('₱' + totalAdditionalServicesPrice.toFixed(2));
+    $('#totalAdditionalServices_summary').html('₱' + totalAdditionalServicesPrice.toFixed(2));
+
+    // Calculate the total amount including reservation amount and additional services
+    updateTotalAmount();
+}
+
+function updateTotalAmount() {
+    var selectedOption = $("input[name='selected_option']:checked").val();
+    var packagePrice = 0;
+
+    // Determine the package price based on the selected option
+    if (selectedOption === "option 1") {
+      packagePrice = parseFloat('{{ number_format(session("budget"), 2, '.', '') }}');
+    } else if (selectedOption === "option 2") {
+      packagePrice = parseFloat('{{ number_format(ceil((session("pax") - floor(session("budget") / 350)) * 350) + session("budget"), 2, '.', '') }}');
+    }
+    
+
+    // Calculate the total amount including reservation amount and additional services
+    var totalAdditionalServicesPrice = parseFloat($('#totalAdditionalServices').html().replace(/[^\d.-]/g, ''));
+
+    var totalAmount = packagePrice + totalAdditionalServicesPrice;
+
+    // Update the total amount in totalAmountDisplay and totalAmount
+    $('#totalAmount').html('₱' + totalAmount.toFixed(2));
+    $('#totalAmount_summary').html('₱' + totalAmount.toFixed(2));
+    $('#totalAmountDisplay').html('₱' + totalAmount.toFixed(2));
+}
+
+// Call the updateSelectedServices function whenever an additional service dropdown value changes
+$("select[name='pe_menu'], select[name='pb_menu'], select[name='cf_menu'], select[name='fp_menu'], select[name='ct_menu'], select[name='f_menu']").change(function () {
+    updateSelectedServices();
+});
+
+// Call the function initially to display any pre-selected additional services
+updateSelectedServices();
+
+// Call the updateTotalAmount function whenever the selected option changes
+$("input[name='selected_option']").change(function () {
+    updateTotalAmount();
+});
+
+</script>
+
+<script>
+  function updateSelectedOptionDisplay() {
+    var selectedOption = $("input[name='selected_option']:checked").val();
+    $("#selectedOptionDisplay").text(selectedOption);
+    $("#selectedOptionDisplay_summary").text(selectedOption);
+}
+
+// Call the updateSelectedOptionDisplay function whenever the selected option changes
+$("input[name='selected_option']").change(function () {
+    updateSelectedOptionDisplay();
+});
+
+// Call the function initially to display the default selected option
+updateSelectedOptionDisplay();
+</script>
 @endsection
