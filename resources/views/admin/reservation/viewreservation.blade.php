@@ -528,6 +528,50 @@
               <td></td>
               <td></td>
             </tr>
+            {{-- Other Information --}}
+            <tr>
+              <th scope="row" class=" fs-1" style="font-weight: 500;">Other Information</th>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr class="mt-10">
+              <th scope="row"  class="fs-6 ">Reservation Status:</th> 
+              <th scope="row"  class="fs-6 ">{{ $event['reservation_status'] }}</th>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th>Allergies:</th>
+              <td>
+                  {{-- Info goes here --}}
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th>Special Request:</th>
+              <td>
+                  {{-- Info goes here --}}
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th>
+                Other Concern
+              </th>
+              <td>
+                {{-- Info goes here --}}
+              </td>
+
+              <td></td>
+              <td></td>
+            </tr>
 {{-- Menu --}}
             <tr>
               <th scope="row" class=" fs-1" style="font-weight: 500;">Menu</th>
@@ -599,50 +643,7 @@
               <td></td>
               <td></td>
             </tr>
-{{-- Other Information --}}
-            <tr>
-              <th scope="row" class=" fs-1" style="font-weight: 500;">Other Information</th>
-              <td></td>
-              <td></td>
-              <td></td>
-            </tr>
 
-            <tr class="mt-10">
-              <th scope="row"  class="fs-6 ">Reservation Status:</th> 
-              <th scope="row"  class="fs-6 ">{{ $event['reservation_status'] }}</th>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <th>Allergies:</th>
-              <td>
-                  {{-- Info goes here --}}
-              </td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <th>Special Request:</th>
-              <td>
-                  {{-- Info goes here --}}
-              </td>
-              <td></td>
-              <td></td>
-            </tr>
-
-            <tr>
-              <th>
-                Other Concern
-              </th>
-              <td>
-                {{-- Info goes here --}}
-              </td>
-
-              <td></td>
-              <td></td>
-            </tr>
 {{-- Additional services --}}
             <tr>
               <th scope="row" class=" fs-1" style="font-weight: 500;">Additional services</th>
