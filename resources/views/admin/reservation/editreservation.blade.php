@@ -10,69 +10,59 @@
         @csrf
         @method('PUT')
         <div class="modal-body ">
+          {{-- start table --}}
           <div>
             <table class="table">
-              <thead>
+{{-- Client Information --}}
+                <tr>
+                  <th scope="row" class=" fs-1" style="font-weight: 500;">Client Information</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
                 <tr>
                   <th scope="row">Name:</th>
                   <td><input type="text" name="name" value="{{ $event['name'] }}" class="form-control" readonly></td>
-                  <th scope="row">Date:</th>
-                  <td><input type="date" name="event_date" value="{{ $event['event_date'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
                 </tr>
+                
                 <tr>
                   <th scope="row">Email:</th>
                   <td><input type="email" name="email" value="{{ $event['email'] }}" class="form-control" readonly></td>
-                  <th scope="row">Time:</th>
-                  <td><input type="time" name="event_time" value="{{ $event['event_time'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">Contact No.:</th>
+                  <td><input type="tel" name="contact" value="" class="form-control" readonly></td>
+                  <td></td>
+                  <td></td> 
+                </tr>
+               
+{{-- Celebrant Information  --}}
+                <tr>
+                  <th scope="row" class=" fs-1" style="font-weight: 500;">Celebrant Information</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <th scope="row">Event Location:</th>
-                  <td><input type="text" name="venue_address" value="{{ $event['venue_address'] }}" class="form-control"></td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td scope="row" colspan="4">
-                    <h1>Details</h1>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">Event:</th>
-                  <td><input type="text" name="event_theme" value="{{ $event['event_theme'] }}" class="input-group input-group-text"></td>
-                  <th scope="row">Package Type:</th>
-                  @if ($event['choice'] == 'premade' && $event['premade_package'])
-                  <td><input type="text" name="categoryName" value="{{ $event['premade_package'] }}" class="input-group input-group-text"></td>
-                        @elseif ($event['choice'] == 'customize')
-                        <td><input type="text" name="categoryName" value="Customized" class="input-group input-group-text"></td>
-                        @endif
+                  <th scope="row">Name:</th>
+                  <td><input type="text" name="celebrant_name" value="{{ $event['celebrant_name'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
                  
                 </tr>
                 <tr>
-                  <th scope="row">Pax:</th>
-                 @if ($event['choice'] == 'premade' && $event['premade_pax'])
-                  <td><input type="text" name="premade_pax" value="{{ $event['premade_pax'] }}" class="input-group input-group-text" disabled></td>
-                        @elseif ($event['choice'] == 'customize' && $event['customize_pax'])
-                        <td><input type="text" name="premade_pax" value="{{ $event['customize_pax'] }}" class="input-group input-group-text"></td>
-                        @endif
-                
-                  
-                  <th scope="row">Budget:</th>
-                  @if ($event['choice'] == 'premade' && $event['premade_price'])
-                  <td><input type="number" name="premade_price" value="{{ $event['premade_price'] }}" class="input-group input-group-text" disabled></td>
-                        @elseif ($event['choice'] == 'customize' && $event['customize_price'])
-                        <td><input type="number" name="premade_price" value="{{ $event['customize_price'] }}" class="input-group input-group-text"></td>
-                        @endif
-
-                
-                </tr>
-                <tr>
-                  <th scope="row">Celebrant Name:</th>
-                  <td><input type="text" name="celebrant_name" value="{{ $event['celebrant_name'] }}" class="form-control"></td>
-                  <th scope="row">Celebrant Age:</th>
+                  <th scope="row">Age:</th>
                   <td><input type="text" name="celebrant_age" value="{{ $event['celebrant_age'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <th scope="row">Celebrant Gender:</th>
+                  <th scope="row">Gender:</th>
                   <td>
                     <select name="celebrant_gender" class="form-select">
                       <option value="" @if($event['celebrant_gender']=="" ) selected @endif></option>
@@ -80,11 +70,126 @@
                       <option value="Female" @if($event['celebrant_gender']=="Female" ) selected @endif>Female</option>
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+{{-- Event Information --}}
+                <tr>
+                  <th scope="row" class=" fs-1" style="font-weight: 500;"> Event Information</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td scope="row" colspan="4">
-                    <h1>Menu</h1>
-                  </td>
+                  <th scope="row">Event Theme:</th>
+                  <td><input type="text" name="event_theme" value="{{ $event['event_theme'] }}" class="input-group input-group-text"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Event Location:</th>
+                  <td><input type="text" name="venue_address" value="{{ $event['venue_address'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Date:</th>
+                  <td><input type="date" name="event_date" value="{{ $event['event_date'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Time:</th>
+                  <td><input type="time" name="event_time" value="{{ $event['event_time'] }}" class="form-control"></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+                <tr>
+                  <th scope="row">Package Type:</th>
+                  @if ($event['choice'] == 'premade' && $event['premade_package'])
+                  <td>
+                    <input type="text" name="categoryName" value="{{ $event['premade_package'] }}" class="input-group input-group-text"></td>
+                    @elseif ($event['choice'] == 'customize')
+                  <td>
+                    <input type="text" name="categoryName" value="Customized" class="input-group input-group-text" readonly></td>
+                    @endif
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Pax:</th>
+                 @if ($event['choice'] == 'premade' && $event['premade_pax'])
+                  <td>
+                    <input type="text" name="premade_pax" value="{{ $event['premade_pax'] }}" class="input-group input-group-text" disabled></td>
+                    @elseif ($event['choice'] == 'customize' && $event['customize_pax'])
+                  <td><input type="text" name="premade_pax" value="{{ $event['customize_pax'] }}" class="input-group input-group-text"></td>
+                    @endif
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th scope="row">Budget:</th>
+                  @if ($event['choice'] == 'premade' && $event['premade_price'])
+                  <td>
+                    <input type="number" name="premade_price" value="{{ $event['premade_price'] }}" class="input-group input-group-text" disabled></td>
+                    @elseif ($event['choice'] == 'customize' && $event['customize_price'])
+                  <td>
+                    <input type="number" name="premade_price" value="{{ $event['customize_price'] }}" class="input-group input-group-text"></td>
+                    @endif
+                  <td></td>
+                  <td></td>
+                </tr>
+{{-- Other Information --}}
+
+                <tr>
+                  <th scope="row" class=" fs-1" style="font-weight: 500;"> Other Information</th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+              </tr>
+              <tr class="mt-10">
+                <th scope="row">Reservation Status</th> 
+                <td>
+                  <select name="reservation_status" class="form-select">
+
+                    <option value="" @if($event['reservation_status']=="" ) selected @endif></option>
+                    <option value="Pending" @if($event['reservation_status']=="Pending" ) selected @endif>Pending</option>
+                    <option value="Approved" @if($event['reservation_status']=="Approved" ) selected @endif>Approved</option>
+                    <option value="Decline" @if($event['reservation_status']=="Decline" ) selected @endif>Decline</option>
+
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Allergies <i class="fs-6">(Optional)</i></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify allergies."></textarea>
+                  </div>
+                </td>
+              </tr>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div class="mb-3">
+                  <label for="exampleFormControlTextarea1" class="form-label">Special request <i class="fs-6">(Optional)</i></label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify special request"></textarea>
+                </div>
+              </td>
+            </tr>
+              <tr>
+                <td colspan="3">
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Other concern <i class="fs-6">(Optional)</i></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify other concern."></textarea>
+                  </div>
+                </td>
+              </tr>
+                
+{{-- Menu --}}
+                <tr>        
+                    <th scope="row" class=" fs-1" style="font-weight: 500;">Menu</th>
                 </tr>
                 <tr>
                   <th scope="row">Pork:</th>
@@ -96,6 +201,11 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                
+                <tr>
                   <th scope="row">Beef:</th>
                   <td>
                     <select name="beef_menu" class="form-select">
@@ -105,10 +215,12 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
                 </tr>
+
                 <tr>
                   <th scope="row">Chicken:</th>
-
                   <td>
                     <select name="chicken_menu" class="form-select">
                       <option value="" @if($event['chicken_menu']==NULL) selected @endif></option>
@@ -117,8 +229,12 @@
                       @endforeach
                     </select>
                   </td>
-                  <th scope="row">Fish:</th>
+                  <td></td>
+                  <td></td>
+                </tr>
 
+                <tr>
+                  <th scope="row">Fish:</th>
                   <td>
                     <select name="fish_menu" class="form-select">
                       <option value="" @if($event['fish_menu']==NULL) selected @endif></option>
@@ -127,7 +243,10 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
                 </tr>
+
                 <tr>
                   <th scope="row">Seafood:</th>
                   <td>
@@ -137,6 +256,11 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+                <tr>
                   <th scope="row">Vegetables:</th>
                   <td>
                     <select name="vegetable_menu" class="form-select">
@@ -145,7 +269,10 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
                 </tr>
+
                 <tr>
                   <th scope="row">Pasta:</th>
                   <td>
@@ -155,6 +282,11 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+                <tr>
                   <th scope="row">Dessert:</th>
                   <td>
                     <select name="dessert_menu" class="form-select">
@@ -163,7 +295,10 @@
                       @endforeach
                     </select>
                   </td>
+                  <td></td>
+                  <td></td>
                 </tr>
+
                 <tr>
                   <th scope="row">Drink:</th>
                   <td>
@@ -172,99 +307,138 @@
                       <option value="{{ $menu->id}}" @if($event['drink_menu']==$menu->name) selected @endif>{{ $menu->name }}</option>
                       @endforeach
                     </select>
-                    </td>
-                     
-
-                    </td>
-                  
-
+                    </td>  
+                    <td></td>
+                    <td></td>
                 </tr>
 
-                <tr class="mt-10">
-                      <th scope="row"  class="fs-6 ">Reservation Status</th> 
-            
-                      <td><select name="reservation_status" class="form-select">
-                      <option value="" @if($event['reservation_status']=="" ) selected @endif></option>
-                      <option value="Pending" @if($event['reservation_status']=="Pending" ) selected @endif>Pending</option>
-
-                      <option value="Approved" @if($event['reservation_status']=="Approved" ) selected @endif>Approved</option>
-
-                      <option value="Decline" @if($event['reservation_status']=="Decline" ) selected @endif>Decline</option>
-                    </select></td>
-                    
+{{-- Additional Services --}}
+                    <tr>
+                      <th scope="row" class=" fs-1" style="font-weight: 500;">Additional services</th>
+                      <td scope="row" class=" fs-3" style="font-weight: 500;"></td>
+                      <td></td>
+                      <td scope="row" class=" fs-3" style="font-weight: 500;"></td>
                     </tr>
                     <tr>
+                      <th>
+                        Party Entertainers:
+                      </th>
+                      
+                      <td>
+                        <select name="" id="" class="form-select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                      </td>
+                      <td></td>
+                      <td></td>
+                   
                       
                     </tr>
-                    <table>
-                      <tr>
-                        <td>
-                          <div class="input-group mb-3">
-                            <div class="fs-2">Additional services</div>
-                  <div class="fs-6 fst-italic">Select your desire additional services (Optional): </div>
-                        </td>
-                      </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="partyEntertainers" name="additional[]" value="PartyEntertainers" {{ is_array(old('additional')) && in_array('PartyEntertainers', old('additional')) ? 'checked' : '' }}>
-                    <label class="form-check-label fs-5" for="partyEntertainers">Party Entertainers</label>
-                </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="photoBooth" name="additional[]" value="PhotoBooth" {{ is_array(old('additional')) && in_array('PhotoBooth', old('additional')) ? 'checked' : '' }}>
-                    <label  class="form-check-label fs-5" for="photoBooth">Photo Booth</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-          
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="chocolate" name="additional[]" value="Chocolate" {{ is_array(old('additional')) && in_array('Chocolate', old('additional')) ? 'checked' : '' }}>
-                    <label  class="form-check-label fs-5" for="chocolate">Chocolate Fountain Booth</label>
-                </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="painting" name="additional[]" value="Painting" {{ is_array(old('additional')) && in_array('Painting', old('additional')) ? 'checked' : '' }}>
-                    <label  class="form-check-label fs-5" for="painting">Face Painting Booth</label>
-                </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="cupcake" name="additional[]" value="Cupcake" {{ is_array(old('additional')) && in_array('Cupcake', old('additional')) ? 'checked' : '' }}>
-                    <label  class="form-check-label fs-5" for="cupcake">Cupcake Tower Booth</label>
-                  </div>
-                </td>
-              </tr>
-              
-             <tr>
-              <td>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="checkbox" id="fruits" name="additional[]" value="Fruits" {{ is_array(old('additional')) && in_array('Fruits', old('additional')) ? 'checked' : '' }}>
-                  <label  class="form-check-label fs-5" for="fruits">Fruits Booth</label>
-              </div>
-              </td>
-             </tr>
-          </div>
-                        
-                        
-          </table>
+                    <tr>
+                      <th>
+                        Photo Booth:
+                      </th>
+                      <td>
+                        <select name="" id="" class="form-select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                      </td>
+                      <td></td>
+                      <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Chocolate Fountain Booth:
+                      </th>
+                      <td>
+                        <select name="" id="" class="form-select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                      </td>
+                    <td></td>
+                    <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Face Painting Booth:
+                      </th>
+                      <td>
+                        <select name="" id="" class="form-select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                      </td>
+                    <td></td>
+                    <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Cupcake Tower Booth:
+                      </th>
+                      <td>
+                        <select name="" id="" class="form-select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                      </td>
+                    <td></td>
+                    <td></td>
+                      
+                    </tr>
+                    <tr>
+                      <th>
+                        Fruits Booth:
+                      </th>
+                      <td>
+                        <select name="" id="" class="form-select">
+                          <option value="" selected disabled>Select</option>
+                        </select>
+                      </td>
+                    <td></td>
+                    <td></td>
+                    </tr>
 
-              </tbody>
+{{-- Total Amount --}}
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <th>Total Additional Services:</th>
+                      <td>100.00</td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <th>Budget:</th>
+                      <td>100.00</td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <th class=" border-black">Charge:</th>
+                      <td class=" border-black">100.00</td>
+                      <td></td>
+                    </tr>
+
+                    <tr>
+                      <td></td>
+                      <th >Total Amount:</th>
+                      <td >100.00</td>
+                      <td></td>
+                    </tr>
+
             </table>
 
           </div>
+          {{-- end table --}}
         </div>
      
         <div class="modal-footer">
