@@ -43,14 +43,21 @@ class ReservationController extends Controller
 
         ];
 
+        $totalAdditionalServicesPrice = 0;
+
+        
+        
+
         $specificPackage = ServicePackage::findOrFail($packageId);
         $themeSelections = ThemeSelection::all();
 
-        return view('user.reservations.premade', compact('menuSelections', 'specificPackage', 'themeSelections', 'additionalSelections'));
+        return view('user.reservations.premade', compact('menuSelections', 'specificPackage', 'themeSelections', 'additionalSelections', 'totalAdditionalServicesPrice'));
     }
 
     public function submitForm(Request $request)
     {
+
+        
 
         $request->validate([
 
@@ -85,6 +92,10 @@ class ReservationController extends Controller
             'ct_menu' => 'nullable|exists:additionals,id',
             'f_menu' => 'nullable|exists:additionals,id',
 
+            'allergies' => 'nullable',
+            'special' => 'nullable',
+            'other' => 'nullable',
+
             'agree_terms' => 'required|accepted',
 
         ], [
@@ -94,7 +105,26 @@ class ReservationController extends Controller
             'agree_terms.required' => 'Please check the terms and conditions.',
         ]);
 
-        $packageId = $request->input('selected_package');
+// Find the additional items by their IDs
+$additionals = Additional::findMany($request->input('additionals'));
+
+// Create reservation
+$reservationData = $request->except(['_token', 'additionals', 'selected_package']);
+$reservationData['total_amount'] = 0; // Initialize total amount
+
+$reservation = Auth::user()->reservations()->create($reservationData);
+
+// Create intermediate records for the many-to-many relationship
+foreach ($additionals as $additional) {
+    $reservation->additionals()->attach($additional->id, ['additional_id' => $additional->id]);
+}
+
+// Calculate total based on package price, menu prices, and additional prices
+$packageId = $request->input('selected_package');
+$package = ServicePackage::find($packageId);
+$additionalTotal = $additionals->sum('price');
+$total = $package->price + $additionalTotal;
+
 
         $reservation = Auth::user()->reservations()->create([
             'celebrant_name' => $request->input('celebrant_name'),
@@ -121,6 +151,12 @@ class ReservationController extends Controller
             'fp_menu_id' => $request->input('fp_menu'),
             'ct_menu_id' => $request->input('ct_menu'),
             'f_menu_id' => $request->input('f_menu'),
+
+            'allergies' => $request->input('allergies'),
+            'special' => $request->input('special'),
+            'other' => $request->input('other'),
+
+            'total_amount' => $total
 
         ]);
 
@@ -239,7 +275,10 @@ $additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted 
             'fp_menu' => 'nullable|exists:additionals,id',
             'ct_menu' => 'nullable|exists:additionals,id',
             'f_menu' => 'nullable|exists:additionals,id',
-            'selected_option' => 'required'
+            'selected_option' => 'required',
+            'allergies' => 'nullable',
+            'special' => 'nullable',
+            'other' => 'nullable',
         ], [
             'pork_menu.required_without_all' => 'The pork menu field is required ',
             'beef_menu.required_without_all' => 'The beef menu field is required ',
@@ -249,6 +288,10 @@ $additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted 
             'agree_terms.required' => 'Please check the terms and conditions.',
             'selected_option.required' => 'Please select an option.',
         ]);
+
+        
+
+$total = 0;
 
 
         $reservation = Auth::user()->reservations()->create([
@@ -275,6 +318,13 @@ $additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted 
             'fp_menu_id' => $request->input('fp_menu'),
             'ct_menu_id' => $request->input('ct_menu'),
             'f_menu_id' => $request->input('f_menu'),
+
+            'allergies' => $request->input('allergies'),
+            'special' => $request->input('special'),
+            'other' => $request->input('other'),
+
+            'total_amount' => $total
+
         ]);
 
         $reservation->selections()->create([

@@ -242,19 +242,19 @@
           <tr>
             <td class=" fw-semibold">Allergies:</td>
             <td>
-              <p></p>
+              <p>{{ $reservations->allergies }}</p>
             </td>
           </tr>
           <tr>
             <td class=" fw-semibold">Special Request:</td>
             <td>
-              <p></p>
+              <p> {{ $reservations->special }}</p>
             </td>
           </tr>
           <tr>
             <td class=" fw-semibold">Other Concern:</td>
             <td>
-              <p></p>
+              <p>{{ $reservations->other }}</p>
             </td>
           </tr>
 
@@ -342,38 +342,79 @@
             </td>
             <td >{{ $reservations->getAdditionalPrice('fMenu') }}</td>
           </tr>
+        
         </table>
         <div class=" w-50 total-table " >
           <table class="table table-bordered ">
+          @if ($reservations->reservationSelection->choice == 'premade')
             <tr>
               <td class="fw-semibold">
                 Budget:
               </td>
-              <td>18,000</td>
+              <td>{{ $reservations->premades->servicePackage->price }}</td>
              
             </tr>
              <tr>
               <td class="fw-semibold">
                 Total Additional Services:
               </td>
-              <td>7,150</td>
+              <td>{{ $reservations->getAdditionalPrice('peMenu') + $reservations->getAdditionalPrice('pbMenu') + $reservations->getAdditionalPrice('cfMenu') 
+                + $reservations->getAdditionalPrice('fpMenu') + $reservations->getAdditionalPrice('ctMenu') + $reservations->getAdditionalPrice('fMenu')}}</td>
              
             </tr>
-           
-            <tr>
-              <td class="fw-semibold">
-               Charge:
-              </td>
-              <td>350</td>
-             
-            </tr>
+
             <tr>
               <td class="fw-semibold text-bg-secondary">
                Total Amount:
               </td>
-              <td class="text-bg-secondary">25,500</td>
+              <td class="text-bg-secondary">{{ $reservations->premades->servicePackage->price + $reservations->getAdditionalPrice('peMenu') + $reservations->getAdditionalPrice('pbMenu') + $reservations->getAdditionalPrice('cfMenu') 
+                + $reservations->getAdditionalPrice('fpMenu') + $reservations->getAdditionalPrice('ctMenu') + $reservations->getAdditionalPrice('fMenu')}} </td>
              
             </tr>
+            
+
+            @elseif ($reservations->reservationSelection->choice == 'customize')
+            <tr>
+              <td class="fw-semibold">
+                Budget:
+              </td>
+      
+              <td>{{ number_format($reservations->reservationCustomize->price  )  }}</td>
+             
+            </tr>
+             <tr>
+              <td class="fw-semibold">
+                Total Additional Services:
+              </td>
+              <td>{{ $reservations->getAdditionalPrice('peMenu') + $reservations->getAdditionalPrice('pbMenu') + $reservations->getAdditionalPrice('cfMenu') 
+                + $reservations->getAdditionalPrice('fpMenu') + $reservations->getAdditionalPrice('ctMenu') + $reservations->getAdditionalPrice('fMenu')}}</td>
+             
+            </tr>
+         
+            <tr>
+              <td class="fw-semibold">
+               Charge:
+              </td>
+              @if($reservations->reservationCustomize->option == 'option 2')
+              <td>{{ number_format(round(( $reservations->reservationCustomize->pax - round($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
+              @else
+              <td>{{ number_format(round(( $reservations->reservationCustomize->pax - round($reservations->reservationCustomize->price / 350 ))*350  )) }}</td>
+             @endif
+            </tr>
+           
+            <tr>
+              <td class="fw-semibold text-bg-secondary">
+               Total Amount:
+              </td>
+              @if($reservations->reservationCustomize->option == 'option 1')
+              <td class="text-bg-secondary">{{$reservations->reservationCustomize->price + $reservations->getAdditionalPrice('peMenu') + $reservations->getAdditionalPrice('pbMenu') + $reservations->getAdditionalPrice('cfMenu') 
+                + $reservations->getAdditionalPrice('fpMenu') + $reservations->getAdditionalPrice('ctMenu') + $reservations->getAdditionalPrice('fMenu')}} </td>
+                @else
+                <td class="text-bg-secondary">{{$reservations->reservationCustomize->price + $reservations->getAdditionalPrice('peMenu') + $reservations->getAdditionalPrice('pbMenu') + $reservations->getAdditionalPrice('cfMenu') 
+                + $reservations->getAdditionalPrice('fpMenu') + $reservations->getAdditionalPrice('ctMenu') + $reservations->getAdditionalPrice('fMenu') + round(( $reservations->reservationCustomize->pax - round($reservations->reservationCustomize->price / 350 ))*350  )}} </td>
+                @endif
+            </tr>
+            @endif
           </table>
         </div>
         <hr>
