@@ -539,7 +539,7 @@
             <tr>
               <th>Allergies:</th>
               <td>
-                  {{-- Info goes here --}}
+              {{ $event['allergies'] }}
               </td>
               <td></td>
               <td></td>
@@ -548,7 +548,7 @@
             <tr>
               <th>Special Request:</th>
               <td>
-                  {{-- Info goes here --}}
+              {{ $event['special'] }}
               </td>
               <td></td>
               <td></td>
@@ -559,7 +559,7 @@
                 Other Concern
               </th>
               <td>
-                {{-- Info goes here --}}
+              {{ $event['other'] }}
               </td>
 
               <td></td>
@@ -647,51 +647,47 @@
 
             <tr>
               <th>Party Entertainers:</th>
-              <td>2 Clowns with funny hosting, game handler and magic show</td>
+              <td>{{ $event['pe_menu'] }}</td>
               <td></td>
-              <td>1350.00</td>
+              <td>{{ $event['pe_price'] }}</td>
             </tr>
 
             <tr>
               <th>Photo Booth:</th>
-              <td>Unlimited picture for 2 hours with frame and customized template</td>
+              <td>{{ $event['pb_menu'] }}</td>
               <td></td>
-              <td>1350.00</td>
+              <td>{{ $event['pb_price'] }}</td>
             </tr>
 
             <tr>
               <th>Chocolate Fountain Booth:</th>
-              <td>Chocolate fountain only</td>
+              <td>{{ $event['cf_menu'] }}</td>
               <td></td>
-              <td>1350.00</td>
+              <td>{{ $event['cf_price'] }}</td>
             </tr>
 
             <tr>
               <th>Face Painting Booth:</th>
-              <td>1 Face Painter + Unlimited Paint for 2 hrs with your chosen design</td>
+              <td>{{ $event['fp_menu'] }}</td>
               <td></td>
-              <td>1350.00</td>
+              <td>{{ $event['fp_price'] }}</td>
             </tr>
 <tr>
   <th>
     Cupcake Tower Booth:
   </th>
-  <td>
-    Plain Chocolate Moist Cupcake
-  </td>
-<td></td>
-<td>3000.00</td>
+  <td>{{ $event['ct_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['ct_price'] }}</td>
   
 </tr>
 <tr>
   <th>
     Fruits Booth:
   </th>
-  <td>
-    Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango
-  </td>
-<td></td>
-<td>100.00</td>
+  <td>{{ $event['f_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['f_price'] }}</td>
 </tr>
 {{-- TOTAL AMOUNT --}}
 <tr>
@@ -703,23 +699,35 @@
 <tr>
   <td></td>
   <th>Total Additional Services:</th>
-  <td>100.00</td>
+  <td>{{ $event['pe_price'] +$event['pb_price']+$event['ct_price']+$event['fp_price']+$event['cf_price']+$event['f_price'] }}</td>
   <td></td>
   </tr>
   <tr>
   
     <td></td>
+    
     <th>Budget:</th>
-    <td>100.00</td>
+    <td> @if ($event['choice'] == 'premade' && $event['premade_price'])
+                {{ $event['premade_price'] }}
+                @elseif ($event['choice'] == 'customize' && $event['customize_price'])
+                {{ $event['customize_price'] }}
+                @endif</td>
     <td></td>
     </tr>
+    @if ($event['choice'] == 'customize')
     <tr>
      
       <td></td>
+      
       <th class=" border-black">Charge:</th>
-      <td class=" border-black">100.00</td>
+      @if ($event['customize_option'] == 'option 2')
+      <td class=" border-black">{{ number_format(round(( $event['customize_pax'] - round($event['customize_price'] / 350 ))*350  )) }}</td>
+      @else
+      <td class=" border-black">0</td>
+     @endif
       <td></td>
       </tr>
+      @endif
       <tr>
     
         <td></td>

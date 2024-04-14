@@ -78,10 +78,14 @@
           </table>
 
         </section>
+
+        
         @foreach($events as $event)
         
         @include('admin.reservation.viewreservation', ['event' => $event])
         @include('admin.reservation.editreservation', ['event' => $event])
     @endforeach
+
+   
 
         @endsection
