@@ -536,13 +536,6 @@
               <td></td>
             </tr>
 
-            <tr class="mt-10">
-              <th scope="row"  class="fs-6 ">Reservation Status:</th> 
-              <th scope="row"  class="fs-6 ">{{ $event['reservation_status'] }}</th>
-              <td></td>
-              <td></td>
-            </tr>
-
             <tr>
               <th>Allergies:</th>
               <td>
@@ -734,6 +727,20 @@
         <td >100.00</td>
         <td></td>
         </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr class="mt-10">
+          <th scope="row"  class="fs-6 ">Reservation Status:</th> 
+          <th scope="row"  class="fs-6 ">{{ $event['reservation_status'] }}</th>
+          <td></td>
+          <td></td>
+        </tr>
+
 
           </tbody>
         </table>
