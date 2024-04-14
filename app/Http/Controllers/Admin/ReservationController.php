@@ -7,6 +7,7 @@ use App\Mail\ReservationApprovedMail;
 use App\Mail\ReservationDeclinedMail;
 use App\Models\CallStatus;
 use App\Models\MenuSelection;
+use App\Models\AdditionalSelection;
 use App\Models\Reservation;
 use App\Models\ReservationSelection;
 use App\Models\User;
@@ -54,6 +55,9 @@ class ReservationController extends Controller
                 'celebrant_gender' => $reservation->celebrant_gender,
                 'event_theme' => $reservation->event_theme,
                 'reservation_status' => $reservation->reservation_status,
+                'allergies' => $reservation->allergies,
+                'special' => $reservation->special,
+                'other' => $reservation->other,
 
                 'beef_menu' => $reservation->getMenuName('beefMenu'),
                 'pork_menu' => $reservation->getMenuName('porkMenu'),
@@ -65,6 +69,24 @@ class ReservationController extends Controller
                 'dessert_menu' => $reservation->getMenuName('dessertMenu'),
                 'drink_menu' => $reservation->getMenuName('drinkMenu'),
 
+                'pe_menu' => $reservation->getAdditionalName('peMenu'),
+                'pe_price' => $reservation->getAdditionalPrice('peMenu'),
+
+                'pb_menu' => $reservation->getAdditionalName('pbMenu'),
+                'pb_price' => $reservation->getAdditionalPrice('pbMenu'),
+
+                'cf_menu' => $reservation->getAdditionalName('cfMenu'),
+                'cf_price' => $reservation->getAdditionalPrice('cfMenu'),
+
+                'fp_menu' => $reservation->getAdditionalName('fpMenu'),
+                'fp_price' => $reservation->getAdditionalPrice('fpMenu'),
+
+                'ct_menu' => $reservation->getAdditionalName('ctMenu'),
+                'ct_price' => $reservation->getAdditionalPrice('ctMenu'),
+
+                'f_menu' => $reservation->getAdditionalName('fMenu'),
+                'f_price' => $reservation->getAdditionalPrice('fMenu'),
+
                 'choice' => optional($reservation->reservationSelection)->choice,
                 'service_category' => optional($reservation->premades)->servicePackage
                 ? $reservation->premades->servicePackage->serviceSelection->services_category
@@ -75,6 +97,9 @@ class ReservationController extends Controller
                 : null,
                 'customize_pax' => optional($reservation->reservationCustomize)->price
                 ? number_format($reservation->reservationCustomize->pax)
+                : null,
+                'customize_option' => optional($reservation->reservationCustomize)->option
+                ? $reservation->reservationCustomize->option
                 : null,
                 'premade_price' => optional($reservation->premades)->servicePackage
                 ? $reservation->premades->servicePackage->price
@@ -102,13 +127,26 @@ $menus['vegetable'] = MenuSelection::where('menu_category', 'vegetables')->first
 $menus['dessert'] = MenuSelection::where('menu_category', 'desserts')->first()->menus()->where('status', 'active')->get();
 $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menus()->where('status', 'active')->get();
 
-        return view('admin.reservation.index', compact('categories', 'events', 'menus', 'reservation_categories', 'status'));
+$additionals = [];
+$additionals['pe'] = AdditionalSelection::where('additional_category', 'Party Entertainers')->first()->additionals()->get();
+$additionals['pb'] = AdditionalSelection::where('additional_category', 'Photo booth')->first()->additionals()->get();
+$additionals['cf'] = AdditionalSelection::where('additional_category', 'Chocolate Fountain')->first()->additionals()->get();
+$additionals['fp'] = AdditionalSelection::where('additional_category', 'Face Painting Booth')->first()->additionals()->get();
+$additionals['ct'] = AdditionalSelection::where('additional_category', 'Cupcake tower booth ')->first()->additionals()->get();
+$additionals['f'] = AdditionalSelection::where('additional_category', 'Assorted Fruits Booth')->first()->additionals()->get();
+
+
+
+
+
+        return view('admin.reservation.index', compact('categories', 'events', 'menus', 'reservation_categories', 'status', 'additionals'));
     }
 
     public function edit($id)
     {
         $reservation = Reservation::findOrFail($id);
 
+        
         return view('admin.reservation.edit', compact('reservation'));
     }
 
@@ -143,6 +181,17 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'drink_menu' => 'required|exists:menus,id',
             'pasta_menu' => 'required|exists:menus,id',
             'reservation_status' => 'required',
+
+            'pe_menu' => 'nullable|exists:additionals,id',
+            'pb_menu' => 'nullable|exists:additionals,id',
+            'cf_menu' => 'nullable|exists:additionals,id',
+            'fp_menu' => 'nullable|exists:additionals,id',
+            'ct_menu' => 'nullable|exists:additionals,id',
+            'f_menu' => 'nullable|exists:additionals,id',
+
+            'allergies' => 'nullable',
+            'special' => 'nullable',
+            'other' => 'nullable',
         ]);
 
         $reservation->update([
@@ -163,6 +212,18 @@ $menus['drink'] = MenuSelection::where('menu_category', 'drinks')->first()->menu
             'drink_menu_id' => $request->input('drink_menu'),
             'pasta_menu_id' => $request->input('pasta_menu'),
             'reservation_status' => $request->input('reservation_status'),
+
+            'pe_menu_id' => $request->input('pe_menu'),
+            'pb_menu_id' => $request->input('pb_menu'),
+            'cf_menu_id' => $request->input('cf_menu'),
+            'fp_menu_id' => $request->input('fp_menu'),
+            'ct_menu_id' => $request->input('ct_menu'),
+            'f_menu_id' => $request->input('f_menu'),
+
+            'allergies' => $request->input('allergies'),
+            'special' => $request->input('special'),
+            'other' => $request->input('other'),
+            'total_amount' => 0
         ]);
 
         // Check if 'reservation_status' was changed

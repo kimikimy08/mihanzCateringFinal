@@ -1,3 +1,4 @@
+
 <!-- Edit Request detail -->
 <div class="modal fade" id="Editreservation{{ $event['id'] }}" tabindex="-1" aria-labelledby="EditreservationLabel{{ $event['id'] }}" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog-scrollable">
@@ -36,7 +37,7 @@
 
                 <tr>
                   <th scope="row">Contact No.:</th>
-                  <td><input type="tel" name="contact" value="" class="form-control" readonly></td>
+                  <td><input type="tel" name="contact" value="{{ $event['contact_number'] }}" class="form-control" readonly></td>
                   <td></td>
                   <td></td> 
                 </tr>
@@ -165,7 +166,9 @@
                 <td colspan="3">
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Allergies <i class="fs-6">(Optional)</i></label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify allergies."></textarea>
+            
+   
+                    <textarea class="form-control" id="special_request" name="allergies" rows="2">{{ $event['allergies'] }}</textarea>
                   </div>
                 </td>
               </tr>
@@ -174,7 +177,7 @@
               <td colspan="3">
                 <div class="mb-3">
                   <label for="exampleFormControlTextarea1" class="form-label">Special request <i class="fs-6">(Optional)</i></label>
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify special request"></textarea>
+                  <textarea class="form-control" id="special_request" name="special" rows="2">{{ $event['special'] }}</textarea>
                 </div>
               </td>
             </tr>
@@ -182,7 +185,7 @@
                 <td colspan="3">
                   <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label">Other concern <i class="fs-6">(Optional)</i></label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" placeholder="Please specify other concern."></textarea>
+                    <textarea class="form-control" id="special_request" name="other" rows="2">{{ $event['other'] }}</textarea>
                   </div>
                 </td>
               </tr>
@@ -325,13 +328,12 @@
                       </th>
                       
                       <td>
-                        <select name="" id="" class="form-select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                      </td>
-                      <td></td>
-                      <td></td>
-                   
+                      <select name="pe_menu" id="pe_menu" class="form-select">
+    @foreach($additionals['pe'] as $menu)
+    <option value="{{ $menu->id }}" data-price="{{ $menu->price }}" @if ($event['pe_menu'] == $menu->name) selected @endif>{{ $menu->name }}</option>
+    @endforeach
+</select>
+    </td>
                       
                     </tr>
                     <tr>
@@ -339,12 +341,12 @@
                         Photo Booth:
                       </th>
                       <td>
-                        <select name="" id="" class="form-select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                      </td>
-                      <td></td>
-                      <td></td>
+        <select name="pb_menu" id="pb_menu" class="form-select">
+            @foreach($additionals['pb'] as $menu)
+            <option value="{{ $menu->id }}" data-price="{{ $menu->price }}" @if ($event['pb_menu'] == $menu->name) selected @endif>{{ $menu->name }}</option>
+            @endforeach
+        </select>
+    </td>
                       
                     </tr>
                     <tr>
@@ -352,12 +354,12 @@
                         Chocolate Fountain Booth:
                       </th>
                       <td>
-                        <select name="" id="" class="form-select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                      </td>
-                    <td></td>
-                    <td></td>
+        <select name="cf_menu" id="cf_menu" class="form-select">
+            @foreach($additionals['cf'] as $menu)
+            <option value="{{ $menu->id }}" data-price="{{ $menu->price }}" @if ($event['cf_menu'] == $menu->name) selected @endif>{{ $menu->name }}</option>
+            @endforeach
+        </select>
+    </td>
                       
                     </tr>
                     <tr>
@@ -365,12 +367,12 @@
                         Face Painting Booth:
                       </th>
                       <td>
-                        <select name="" id="" class="form-select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                      </td>
-                    <td></td>
-                    <td></td>
+        <select name="fp_menu" id="fp_menu" class="form-select">
+            @foreach($additionals['fp'] as $menu)
+            <option value="{{ $menu->id }}" data-price="{{ $menu->price }}" @if ($event['fp_menu'] == $menu->name) selected @endif>{{ $menu->name }}</option>
+            @endforeach
+        </select>
+    </td>
                       
                     </tr>
                     <tr>
@@ -378,12 +380,12 @@
                         Cupcake Tower Booth:
                       </th>
                       <td>
-                        <select name="" id="" class="form-select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                      </td>
-                    <td></td>
-                    <td></td>
+        <select name="ct_menu" id="ct_menu" class="form-select">
+            @foreach($additionals['ct'] as $menu)
+            <option value="{{ $menu->id }}" data-price="{{ $menu->price }}" @if ($event['ct_menu'] == $menu->name) selected @endif>{{ $menu->name }}</option>
+            @endforeach
+        </select>
+    </td>
                       
                     </tr>
                     <tr>
@@ -391,12 +393,12 @@
                         Fruits Booth:
                       </th>
                       <td>
-                        <select name="" id="" class="form-select">
-                          <option value="" selected disabled>Select</option>
-                        </select>
-                      </td>
-                    <td></td>
-                    <td></td>
+        <select name="f_menu" id="f_menu" class="form-select">
+            @foreach($additionals['f'] as $menu)
+            <option value="{{ $menu->id }}" data-price="{{ $menu->price }}" @if ($event['f_menu'] == $menu->name) selected @endif>{{ $menu->name }}</option>
+            @endforeach
+        </select>
+    </td>
                     </tr>
 
 {{-- Total Amount --}}
@@ -410,14 +412,14 @@
                     <tr>
                       <td></td>
                       <th>Total Additional Services:</th>
-                      <td>100.00</td>
+                      <td><span id="total_additional_services">0.00</span></td>
                       <td></td>
                     </tr>
 
                     <tr>
                       <td></td>
                       <th>Budget:</th>
-                      <td>100.00</td>
+                      <td></td>
                       <td></td>
                     </tr>
 
@@ -448,4 +450,6 @@
               </form>
             </div>
           </div>
+
         </div>
+
