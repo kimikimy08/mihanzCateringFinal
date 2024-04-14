@@ -5,13 +5,13 @@
 
 <h1 class="display-1 ">{{ ucwords($status) }} Reservation</h1>
         
-        <section class="section-pending" >
+    <section class="section-pending" >
           <table class="table">
           @if (session('success'))
-    <div class="alert alert-success mt-3">
-        {{ session('success') }}
-    </div>
-@endif
+        <div class="alert alert-success mt-3">
+            {{ session('success') }}
+        </div>
+        @endif
 
           @if ($errors->any())
                         <div class="alert alert-danger">

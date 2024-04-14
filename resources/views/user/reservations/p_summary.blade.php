@@ -349,14 +349,14 @@
               <td class="fw-semibold">
                 Budget:
               </td>
-              <td>1000</td>
+              <td>18,000</td>
              
             </tr>
              <tr>
               <td class="fw-semibold">
                 Total Additional Services:
               </td>
-              <td>1000</td>
+              <td>7,150</td>
              
             </tr>
            
@@ -364,14 +364,14 @@
               <td class="fw-semibold">
                Charge:
               </td>
-              <td>1000</td>
+              <td>350</td>
              
             </tr>
             <tr>
               <td class="fw-semibold text-bg-secondary">
                Total Amount:
               </td>
-              <td class="text-bg-secondary">1000</td>
+              <td class="text-bg-secondary">25,500</td>
              
             </tr>
           </table>

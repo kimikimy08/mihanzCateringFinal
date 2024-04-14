@@ -569,16 +569,14 @@
                   <th>
                     Total Additional Services:
                   </th>
-                  <td class=" text-decoration-underline">100000</td>
+                  <td class=" text-decoration-underline">7,150</td>
                 </tr>
               </table>
             </div>
             
           </div>
           <div class=" position-sticky bottom-0 d-flex justify-content-center fs-4" style="background: white; height:200px" >
-            Total Amount:
-            
-              {{ number_format((session('budget'))) }}
+            Total Amount:42,150
               
           </div>
         </div>
@@ -598,7 +596,7 @@
               <th>
                 <p>Package type:</p>
               </th>
-              <td class="fs-5">Cuztomize</td>
+              <td class="fs-5"></td>
             </tr>
             <tr>
               <th>
@@ -745,7 +743,7 @@
               <th>
                 Total Additional Services:
               </th>
-              <td class=" fs-5">100000</td>
+              <td class=" fs-5">42,150</td>
             </tr>
             <tr>
               <th>
