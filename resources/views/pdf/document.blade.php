@@ -179,17 +179,17 @@
 {{-- Allergies --}}
                             <tr>
                                 <th>Allergies:</th>
-                                <td></td>
+                                <td>{{ $reservation->allergies }}</td>
                             </tr>
 {{-- Special request --}}
                             <tr>
                                 <th>Special request:</th>
-                                <td></td>
+                                <td>{{ $reservation->special }}</td>
                             </tr>
 {{-- Other Concern --}}
                             <tr>
                                 <th>Other Concern:</th>
-                                <td></td>
+                                <td>{{ $reservation->other }}</td>
                             </tr>
 
                         </tbody>
@@ -333,30 +333,82 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody><tr>
+                        <tbody>
+                        @if ($reservation->reservationSelection->choice == 'premade')    
+                        <tr>
                             
                             <th>Total Additional Services:</th>
-                            <td>100.00</td>
+                            <td>{{ $reservation->getAdditionalPrice('peMenu') + $reservation->getAdditionalPrice('pbMenu') + $reservation->getAdditionalPrice('cfMenu') 
+                                + $reservation->getAdditionalPrice('fpMenu') + $reservation->getAdditionalPrice('ctMenu') + $reservation->getAdditionalPrice('fMenu') }}</td>
                             
                             </tr>
                             <tr>
                             
                               
                               <th>Budget:</th>
-                              <td>100.00</td>
+                              <td>{{ $reservation->premades->servicePackage->price }}</td>
+                              
+                              </tr>
+                           
+                                <tr>
+                                  <th >Total Amount:</th>
+                                  <td >{{ $reservation->getAdditionalPrice('peMenu') + $reservation->getAdditionalPrice('pbMenu') + $reservation->getAdditionalPrice('cfMenu') 
+                                + $reservation->getAdditionalPrice('fpMenu') + $reservation->getAdditionalPrice('ctMenu') + $reservation->getAdditionalPrice('fMenu') + $reservation->premades->servicePackage->price }} </td>
+                                </tr>
+                                @else
+                                @if ($reservation->reservationCustomize->option == 1)    
+                                <th>Total Additional Services:</th>
+                            <td>{{ $reservation->getAdditionalPrice('peMenu') + $reservation->getAdditionalPrice('pbMenu') + $reservation->getAdditionalPrice('cfMenu') 
+                                + $reservation->getAdditionalPrice('fpMenu') + $reservation->getAdditionalPrice('ctMenu') + $reservation->getAdditionalPrice('fMenu') }}</td>
+                            
+                            </tr>
+                            <tr>
+                            
+                              
+                              <th>Budget:</th>
+                              <td>{{number_format( $reservation->reservationCustomize->price) }}</td>
                               
                               </tr>
                               <tr>
                                
                                 
                                 <th class=" border-black">Charge:</th>
-                                <td class=" border-black">100.00</td>
+                                <td class=" border-black">0</td>
                                 
                                 </tr>
                                 <tr>
                                   <th >Total Amount:</th>
-                                  <td >100.00</td>
+                                  <td >{{ $reservation->getAdditionalPrice('peMenu') + $reservation->getAdditionalPrice('pbMenu') + $reservation->getAdditionalPrice('cfMenu') 
+                                + $reservation->getAdditionalPrice('fpMenu') + $reservation->getAdditionalPrice('ctMenu') + $reservation->getAdditionalPrice('fMenu') + $reservation->reservationCustomize->price }}</td>
                                 </tr>
+                                @else
+                                <th>Total Additional Services:</th>
+                            <td>{{ $reservation->getAdditionalPrice('peMenu') + $reservation->getAdditionalPrice('pbMenu') + $reservation->getAdditionalPrice('cfMenu') 
+                                + $reservation->getAdditionalPrice('fpMenu') + $reservation->getAdditionalPrice('ctMenu') + $reservation->getAdditionalPrice('fMenu') }}</td>
+                            
+                            </tr>
+                            <tr>
+                            
+                              
+                              <th>Budget:</th>
+                              <td>{{number_format( $reservation->reservationCustomize->price) }}</td>
+                              
+                              </tr>
+                              <tr>
+                              {{ number_format(((session('pax') - floor(session('budget') / 350)) * 350)) }}
+                                
+                                <th class=" border-black">Charge:</th>
+                                <td class=" border-black">{{$reservation->reservationCustomize->pax - floor($reservation->reservationCustomize->price / 350) *350}}</td>
+                                
+                                </tr>
+                                <tr>
+                                  <th >Total Amount:</th>
+                                  <td >{{ $reservation->getAdditionalPrice('peMenu') + $reservation->getAdditionalPrice('pbMenu') + $reservation->getAdditionalPrice('cfMenu') 
+                                + $reservation->getAdditionalPrice('fpMenu') + $reservation->getAdditionalPrice('ctMenu') + $reservation->getAdditionalPrice('fMenu') + $reservation->reservationCustomize->price
+                            + ($reservation->reservationCustomize->pax - floor($reservation->reservationCustomize->price / 350) *350)  }}</td>
+                                </tr>
+                                @endif
+                                @endif
                             </tbody>
                     </table>
                 </tr>
