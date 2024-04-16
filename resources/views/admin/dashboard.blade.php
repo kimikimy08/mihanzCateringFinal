@@ -212,6 +212,42 @@
                       <td></td>
                     </tr>
                     <tr>
+                      <th scope="row" class=" fs-1" style="font-weight: 500;">Other Information</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Allergies</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Special Request</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th>Other Concern</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
                       <th scope="row" class=" fs-1" style="font-weight: 500;">Menu</th>
                       <td></td>
                       <td></td>

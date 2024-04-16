@@ -360,7 +360,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Party Entertainers</span>
                 <select class="form-select" name="pe_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Party Entertainers</option>
+                <option value="" selected >Select Party Entertainers</option>
                 @foreach($additionals['pe'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('pe_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
@@ -373,7 +373,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Photo Booth</span>
                 <select class="form-select" name="pb_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Photo Booth</option>
+                <option value="" selected >Select Photo Booth</option>
                 @foreach($additionals['pb'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('pb_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
@@ -385,7 +385,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Chocolate Fountain Booth</span>
                 <select class="form-select" name="cf_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Chocolate Fountain Booth</option>
+                <option value="" selected >Select Chocolate Fountain Booth</option>
                 @foreach($additionals['cf'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('cf_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
@@ -398,7 +398,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Face Painting Booth</span>
                 <select class="form-select" name="fp_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Face Painting Booth</option>
+                <option value="" selected >Select Face Painting Booth</option>
                 @foreach($additionals['fp'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('fp_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
@@ -411,7 +411,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Cupcake Tower Booth</span>
                 <select class="form-select" name="ct_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Cupcake Tower Booth</option>
+                <option value="" selected >Select Cupcake Tower Booth</option>
                 @foreach($additionals['ct'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('ct_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
@@ -424,7 +424,7 @@
               <div class="input-group mb-3">
                 <span class="input-group-text" id="inputGroup-sizing-default">Fruits Booth</span>
                 <select class="form-select" name="f_menu" aria-label="Default select example">
-                <option value="" selected disabled>Select Fruits Booth</option>
+                <option value="" selected >Select Fruits Booth</option>
                 @foreach($additionals['f'] as $menu)
                 <option value="{{ $menu->id }}" {{ old('f_menu') == $menu->id ? 'selected' : '' }}>{{ $menu->name }} - {{ $menu->price }}</option>
                 @endforeach
@@ -529,7 +529,7 @@
                 
                 <tr>
                   <th>
-                    Additional Servces
+                    Additional Services
                   </th>
                   <td><div id="selectedServices"></div> </td>
                 </tr>
@@ -622,7 +622,7 @@
                   <th>
                     Additional Servces
                   </th>
-                  <td><div id="selectedServices_summary"></div> </td>
+                  <td> <p><div id="selectedServices_summary"></div></p> </td>
                 </tr>
 
             <tr class="mb-1">
@@ -901,31 +901,31 @@ document.getElementById('menuCategory_1').addEventListener('change', function ()
 
     // Check if a menu is selected in each category before adding it to the selected menu string
     if (porkMenuValue && porkMenuValue !== "") {
-        selectedMenu += "Pork: " + $("#porkMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Pork:</b> <br> " + $("#porkMenuOptions option:selected").text() + "<br> <br>";
     }
     if (beefMenuValue && beefMenuValue !== "") {
-        selectedMenu += "Beef: " + $("#beefMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Beef:</b> <br> " + $("#beefMenuOptions option:selected").text() + "<br> <br>";
     }
     if (chickenMenuValue && chickenMenuValue !== "") {
-        selectedMenu += "Chicken: " + $("#chickenMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Chicken:</b> <br> " + $("#chickenMenuOptions option:selected").text() + "<br> <br>";
     }
     if (seafoodMenuValue && seafoodMenuValue !== "") {
-        selectedMenu += "Seafood: " + $("#seafoodMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Seafood:</b> <br> " + $("#seafoodMenuOptions option:selected").text() + "<br> <br>";
     }
     if (fishMenuValue && fishMenuValue !== "") {
-        selectedMenu += "Fish: " + $("#fishMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Fish:</b> <br> " + $("#fishMenuOptions option:selected").text() + "<br> <br>";
     }
     if (vegetablesMenuValue && vegetablesMenuValue !== "") {
-        selectedMenu += "Vegetables: " + $("#vegetablesMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Vegetable:</b> <br> " + $("#vegetablesMenuOptions option:selected").text() + "<br> <br>";
     }
     if (pastaMenuValue && pastaMenuValue !== "") {
-        selectedMenu += "Pasta: " + $("#pastaMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Pasta:</b> <br> " + $("#pastaMenuOptions option:selected").text() + "<br> <br>";
     }
     if (dessertMenuValue && dessertMenuValue !== "") {
-        selectedMenu += "Dessert: " + $("#dessertMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Dessert:</b> <br> " + $("#dessertMenuOptions option:selected").text() + "<br> <br>";
     }
     if (drinkMenuValue && drinkMenuValue !== "") {
-        selectedMenu += "Drink: " + $("#drinkMenuOptions option:selected").text() + "<br>";
+        selectedMenu += "<b>Drink:</b> <br> " + $("#drinkMenuOptions option:selected").text() + "<br> <br>";
     }
     // Append other menu items as needed
 
@@ -959,22 +959,22 @@ updateSelectedMenu();
 
     // Append selected additional services to the string
     if (partyEntertainersValue && partyEntertainersValue !== "") {
-        selectedServices += "Party Entertainers: " + $("select[name='pe_menu'] option:selected").text() + "<br>";
-    }
+        selectedServices += "<b>Party Entertainers:</b> <br> " + $("select[name='pe_menu'] option:selected").text() + "<br> <br>";
+    } 
     if (photoBoothValue && photoBoothValue !== "") {
-        selectedServices += "Photo Booth: " + $("select[name='pb_menu'] option:selected").text() + "<br>";
+        selectedServices += "<b>Photo Booth:</b> <br> " + $("select[name='pb_menu'] option:selected").text() + "<br> <br>";
     }
     if (chocolateFountainValue && chocolateFountainValue !== "") {
-        selectedServices += "Chocolate Fountain: " + $("select[name='cf_menu'] option:selected").text() + "<br>";
+        selectedServices += "<b>Chocolate Fountain:</b> <br> " + $("select[name='cf_menu'] option:selected").text() + "<br> <br>";
     }
     if (facePaintingValue && facePaintingValue !== "") {
-        selectedServices += "Face Painting: " + $("select[name='fp_menu'] option:selected").text() + "<br>";
+        selectedServices += "<b>Face Painting:</b> <br> " + $("select[name='fp_menu'] option:selected").text() + "<br> <br>";
     }
     if (cupcakeTowerValue && cupcakeTowerValue !== "") {
-        selectedServices += "Cupcake Tower: " + $("select[name='ct_menu'] option:selected").text() + "<br>";
+        selectedServices += "<b>Cupcake Tower:</b> <br> " + $("select[name='ct_menu'] option:selected").text() + "<br> <br>";
     }
     if (fruitsValue && fruitsValue !== "") {
-        selectedServices += "Fruits: " + $("select[name='f_menu'] option:selected").text() + "<br>";
+        selectedServices += "<b>Fruits:</b> <br> " + $("select[name='f_menu'] option:selected").text() + "<br> <br>";
     }
     // Append other additional services as needed
 

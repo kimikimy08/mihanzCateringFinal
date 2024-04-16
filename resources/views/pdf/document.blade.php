@@ -14,140 +14,141 @@
     <!-- Summary -->
     <main>
         <div>
-            <div class="logo"><img src="images/mihanzLogo.png" alt=""></div>
+            <div class="logo"><img src="images/mihanzLogo.png" alt="" height="100px"></div>
         </div>
 
         <div class="display-4 fw-medium mb-3 " >
             Summary
         </div>
         <!-- Informations -->
-        <div class="w-100">
-            <table class="table">
+        <div class="w-100 mb-5">
+            <table class="table table-bordered">
+{{-- Client Information --}}
                 <tr>
-                    <th>
-                        Name:
-                    </th>
-                    <td>
-                    {{ $reservation->user->first_name . ' ' . $reservation->user->last_name }}
-                    </td>
-                    <th>
-                        Contact No. :
-                     </th>
-                     <td>
-                     {{$reservation->user->contact_number}}
-                     </td>
-                     <tr >
-                        <th>
-                            Email:
-                        </th>
-                        <td colspan="">
-                        {{$reservation->user->email}}
-                        </td>
+                    <th>Name:</th>
+                    <td>{{ $reservation->user->first_name . ' ' . $reservation->user->last_name }}</td>
                 </tr>
+
                 <tr>
-                    <!-- Event details -->
-                    <table class="table">
+                    <th>Contact No. :</th>
+                    <td>{{$reservation->user->contact_number}}</td>
+                </tr>
+
+                <tr>
+                    <th>Email:</th>
+                    <td colspan="">{{$reservation->user->email}}</td>
+                </tr>
+{{-- Celebrant Information --}}
+                <tr>
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th colspan="">
-                                    Event details
-                                </th>
+                                <th colspan="2" style="font-weight: 500; font-size:50px">Celebrant information</th>
                             </tr>
                         </thead>
                         <tbody>
-                             <tr>
-                                <!-- Date -->
-                                <th>
-                                 Date:
-                                </th>
-                                <td>
-                                {{$reservation->event_date}}
-                                </td>
-                                <!-- Time -->
-                                <th>
-                                    Time:
-                                </th>
-                                <td>
-                                {{$reservation->event_time}}
-                                </td>
+                            <tr>
+                                <th>Name:</th>
+                                <td>{{$reservation->celebrant_name}}</td>
                             </tr>
                             <tr>
-                                 <!-- Type of event -->
-                                <th>
-                                    Type of event:
-                                </th>
-                                <td>
-                                @if ($reservation->reservationSelection->choice == 'premade')
-                        {{ $reservation->premades->servicePackage->serviceSelection->services_category }}
-                    @elseif ($reservation->reservationSelection->choice == 'customize')
-                        {{ $reservation->reservationSelection->categoryName }}
-                    @endif
-                                </td>
-                                <!-- Location -->
-                                <th>
-                                    Location:
-                                </th>
-                                <td>
-                                {{$reservation->venue_address}}
-                                </td>
+                                <th>Age:</th>
+                                <td>{{$reservation->celebrant_age}}</td>
                             </tr>
-
+    
+                            <tr>
+                                <th >Gender:</th>
+                                <td colspan="4">{{$reservation->celebrant_gender}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </tr>
-
-                <tr>    
-                    <!-- Package details -->
-                    <table class="table">
+                
+                <tr>
+                    <table class="table table-bordered">
                         <thead>
                             <tr>
-                                <th colspan="4">
-                                    Package details
-                                </th>
+                                <th colspan="2" class=" " style="font-weight: 500; font-size:50px">Event Information</th>
                             </tr>
                         </thead>
                         <tbody>
+<!-- Date -->
+                             <tr>
+                                <th>Date:</th>
+                                <td>{{$reservation->event_date}}</td>                                  
+                            </tr>
+<!-- Time -->  
                             <tr>
-                            @if ($reservation->reservationSelection->choice == 'premade')
-                                <!-- Package Type -->
+                                <th>Time:</th>
+                                <td>{{$reservation->event_time}}
+                                </td>
+                            </tr>
+<!-- Type of event -->
+                            <tr>
+                               
+                                <th>Type of event:</th>
+                                <td>
+                                    @if ($reservation->reservationSelection->choice == 'premade')
+                                        {{ $reservation->premades->servicePackage->serviceSelection->services_category }}
+                                    @elseif ($reservation->reservationSelection->choice == 'customize')
+                                        {{ $reservation->reservationSelection->categoryName }}
+                                    @endif
+                                </td>
+                            </tr>
+<!-- Location -->
+                            <tr>
+                                <th>Location:</th>
+                                <td>{{$reservation->venue_address}}</td>
+                            </tr>
+                            <tr>
+                                @if ($reservation->reservationSelection->choice == 'premade')
+<!-- Package Type -->
                                 <th>
                                     Package type:
                                 </th>
                                 <td>
                                 {{ $reservation->premades->servicePackage->name }}
                                 </td>
-                                <!-- Pax -->
-                                <th>
+                            </tr>
+<!-- Pax -->
+                            <tr>
+                                 <th>
                                     Pax:
                                 </th>
                                 <td>
                                 {{ $reservation->premades->servicePackage->pax }}
                                 </td>
                             </tr>
+<!-- Price -->
                             <tr>
-                                <!-- Price -->
                                 <th>
                                     Price:
                                 </th>
                                 <td>
                                 {{ $reservation->premades->servicePackage->price }}
                                 </td>
-                                <!-- Theme -->
-                                <th>
-                                    Theme:
-                                </th>
-                                <td>
-                                {{ $reservation->event_theme }}
-                                </td>
+<!-- Theme -->
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Theme:
+                                    </th>
+                                    <td>
+                                    {{ $reservation->event_theme }}
+                                    </td>
+                                </tr>
+                                <tr>
                                 @elseif ($reservation->reservationSelection->choice == 'customize')
-                                <!-- Package Type -->
+<!-- Package Type -->
                                 <th>
                                     Package type:
                                 </th>
                                 <td>
                                 Customized
                                 </td>
-                                <!-- Pax -->
+                            </tr>
+<!-- Pax -->                        
+                                <tr>
                                 <th>
                                     Pax:
                                 </th>
@@ -155,14 +156,13 @@
                                 {{ number_format($reservation->reservationCustomize->pax) }}
                                 </td>
                             </tr>
+  <!-- Price -->
                             <tr>
-                                <!-- Price -->
-                                <th>
-                                    Price:
-                                </th>
-                                <td>
-                                {{number_format( $reservation->reservationCustomize->price) }}
-                                </td>
+                              
+                                <th>Price:</th>
+                                <td>{{number_format( $reservation->reservationCustomize->price) }}</td> 
+                            </tr>
+                            <tr>
                                 <!-- Theme -->
                                 <th>
                                     Theme:
@@ -172,139 +172,90 @@
                                 </td>
                                 @endif
                             </tr>
-                        </tbody>
-                    </table>
-                </tr>
-                <tr>
-                    <!--  Celebrant information -->
-                    <table class="table">
-                        <thead>
+{{-- Other Information --}}
                             <tr>
-                                <th colspan="4">
-                                    Celebrant information
-                                </th>
+                                <th  colspan="4" style="font-weight: 500; font-size:50px">Other Information</th>
                             </tr>
-                        </thead>
-                        <tbody>
+{{-- Allergies --}}
                             <tr>
-                                <!-- Name -->
-                                <th>
-                                    Name:
-                                </th>
-                                <td>
-                                {{$reservation->celebrant_name}}
-                                </td>
-                                <!-- Age -->
-                                <th>
-                                    Age:
-                                </th>
-                                <td>
-                                {{$reservation->celebrant_age}}
-                                </td>
-                               
+                                <th>Allergies:</th>
+                                <td></td>
                             </tr>
-    
+{{-- Special request --}}
                             <tr>
-                                <!-- Gender -->
-                                <th >
-                                    Gender:
-                                </th>
-                                <td colspan="4">
-                                {{$reservation->celebrant_gender}}
-                                </td>
+                                <th>Special request:</th>
+                                <td></td>
                             </tr>
-                        </tbody>
+{{-- Other Concern --}}
+                            <tr>
+                                <th>Other Concern:</th>
+                                <td></td>
+                            </tr>
 
+                        </tbody>
                     </table>
                 </tr>
+<!-- Menu -->
                 <tr>
-                    <!-- Menu -->
                     <table class="table">
                         <thead>
-                            <th colspan="4">
-                                Menu
+                            <th colspan="4" style="font-weight: 500; font-size:50px">Menu
                             </th>
                         </thead>
                         <tbody>
+<!-- Pork -->
                             <tr>
-                                <!-- Pork -->
-                                <th>
-                                    Pork:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('porkMenu') }}
-                                </td>
-                                <!-- Beef -->
-                                <th>
-                                    Beef:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('beefMenu') }}
-                                </td>
+                                <th>Pork:</th>
+                                <td>{{ $reservation->getMenuName('porkMenu') }}</td>
                             </tr>
+ <!-- Beef -->
                             <tr>
-                                <!-- Pasta -->
-                                <th>
-                                    Pasta:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('pastaMenu') }}
-                                </td>
+                                <th>Beef:</th>
+                                <td>{{ $reservation->getMenuName('beefMenu') }}</td>
                             </tr>
+<!-- Pasta -->
                             <tr>
-                                <!-- Chicken -->
-                                <th>
-                                    Chicken:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('chickenMenu') }}
-                                </td>
-                                <!-- Vegetables -->
-                                <th>
-                                    Vegetables:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('vegetableMenu') }}
-                                </td>
+                                <th>Pasta:</th>
+                                <td>{{ $reservation->getMenuName('pastaMenu') }}</td>
                             </tr>
+<!-- Chicken -->
                             <tr>
-                                <!-- Fish -->
-                                <th>
-                                    Fish:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('fishMenu') }}
-                                </td>
-                                <!-- Seafood -->
-                                <th>
-                                    Seafood:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('seafoodMenu') }}
-                                </td>
+                                <th>Chicken:</th>
+                                <td>{{ $reservation->getMenuName('chickenMenu') }}</td>
                             </tr>
+ <!-- Vegetables -->
                             <tr>
-                                <!-- Dessert -->
-                                <th>
-                                    Dessert:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('dessertMenu') }}
-                                </td>
-                                <!-- Drinks -->
-                                <th>
-                                    Drinks:
-                                </th>
-                                <td>
-                                {{ $reservation->getMenuName('drinkMenu') }}
-                                </td>
+                                <th>Vegetables:</th>
+                                <td>{{ $reservation->getMenuName('vegetableMenu') }}</td>
+                            </tr>
+<!-- Fish -->
+                            <tr>
+                                <th>Fish:</th>
+                                <td>{{ $reservation->getMenuName('fishMenu') }}</td>
+                            </tr>
+<!-- Seafood -->
+                            <tr>
+                                <th>Seafood:</th>
+                                <td>{{ $reservation->getMenuName('seafoodMenu') }}</td>
+                            </tr>
+<!-- Dessert -->
+                            <tr>
+                                <th>Dessert:</th>
+                                <td>{{ $reservation->getMenuName('dessertMenu') }}</td>
+                            </tr>
+<!-- Drinks -->
+                            <tr>
+                                <th>Drinks:</th>
+                                <td>{{ $reservation->getMenuName('drinkMenu') }}</td>
                             </tr>
                         </tbody>
                     </table>
+
                     <table>
                         <tr>
-                            <td class="fw-bolder">Additonal services: </td>    
+                           <th style="font-weight: 500; font-size:50px">Additioanal services</th>    
                           </tr>
+{{--  Party Entertainers --}}
                           <tr>
                             <td class="fw-bolder">
                               Party Entertainers
@@ -315,6 +266,7 @@
                               <p class=" m-3">{{ $reservation->getAdditionalName('peMenu') }} - {{ $reservation->getAdditionalPrice('peMenu') }}</p>
                             </td>
                           </tr>
+{{-- Photo Booth --}}
                           <tr>
                             <td class="fw-bolder">
                               Photo Booth
@@ -325,6 +277,7 @@
                               <p class=" m-3">{{ $reservation->getAdditionalName('pbMenu') }} - {{ $reservation->getAdditionalPrice('pbMenu') }}</p>
                             </td>
                           </tr>
+{{-- Chocolate Fountain Booth --}}
                           <tr>
                             <td class="fw-bolder">
                               Chocolate Fountain Booth
@@ -335,6 +288,7 @@
                               <p class=" m-3">{{ $reservation->getAdditionalName('cfMenu') }} - {{ $reservation->getAdditionalPrice('cfMenu') }}</p>
                             </td>
                           </tr>
+{{-- Face Painting Booth --}}
                           <tr>
                             <td class="fw-bolder">
                               Face Painting Booth
@@ -345,7 +299,7 @@
                               <p class=" m-3">{{ $reservation->getAdditionalName('fpMenu') }} - {{ $reservation->getAdditionalPrice('fpMenu') }}</p>
                             </td>
                           </tr>
-                         
+{{-- Cupcake Tower Booth --}}
                           <tr>
                             <td class="fw-bolder">
                               Cupcake Tower Booth
@@ -356,6 +310,7 @@
                               <p class=" m-3">{{ $reservation->getAdditionalName('ctMenu') }} - {{ $reservation->getAdditionalPrice('ctMenu') }}</p>
                             </td>
                           </tr>
+{{--  Fruits Booths --}}
                           <tr>
                             <td class="fw-bolder">
                               Fruits Booths
@@ -367,6 +322,42 @@
                               <p class=" m-3">{{ $reservation->getAdditionalName('fMenu') }} - {{ $reservation->getAdditionalPrice('fMenu') }}</p>
                             </td>
                           </tr>
+                    </table>
+                </tr>
+                <tr>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody><tr>
+                            
+                            <th>Total Additional Services:</th>
+                            <td>100.00</td>
+                            
+                            </tr>
+                            <tr>
+                            
+                              
+                              <th>Budget:</th>
+                              <td>100.00</td>
+                              
+                              </tr>
+                              <tr>
+                               
+                                
+                                <th class=" border-black">Charge:</th>
+                                <td class=" border-black">100.00</td>
+                                
+                                </tr>
+                                <tr>
+                                  <th >Total Amount:</th>
+                                  <td >100.00</td>
+                                </tr>
+                            </tbody>
                     </table>
                 </tr>
                 
