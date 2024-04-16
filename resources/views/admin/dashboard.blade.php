@@ -300,164 +300,154 @@
                       <td></td>
                     </tr>
                     <tr>
-                      <th>Allergies</th>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
                     <tr>
-                      <th>Special Request</th>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th>Other Concern</th>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th scope="row" class=" fs-1" style="font-weight: 500;">Additional services</th>
-                      <td scope="row" class=" fs-3" style="font-weight: 500;"></td>
-                      <td></td>
-                      <td scope="row" class=" fs-3" style="font-weight: 500;"> Price</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <th>
-                        Party Entertainers:
-                      </th>
-                   
-                      <td>
-                        2 Clowns with funny hosting, game handler and magic show
-                      </td>
-                      <td></td>
-                      <td>1350.00</td>
-                   
-                      
-                    </tr>
-                    <tr>
-                      <th>
-                        Photo Booth:
-                      </th>
-                      <td>
-                        Unlimited picture for 2 hours with frame and customized template
-                      </td>
-                      <td></td>
-                      <td>1350.00</td>
-                      
-                    </tr>
-                    <tr>
-                      <th>
-                        Chocolate Fountain Booth:
-                      </th>
-                      <td>
-                        Chocolate fountain only
-                      </td>
-                    <td></td>
-                    <td>1350.00</td>
-                      
-                    </tr>
-                    <tr>
-                      <th>
-                        Face Painting Booth:
-                      </th>
-                      <td>
-                        1 Face Painter + Unlimited Paint for 2 hrs with your chosen design
-                      </td>
-                    <td></td>
-                    <td>1350.00</td>
-                      
-                    </tr>
-                    <tr>
-                      <th>
-                        Cupcake Tower Booth:
-                      </th>
-                      <td>
-                        Plain Chocolate Moist Cupcake
-                      </td>
-                    <td></td>
-                    <td>3000.00</td>
-                      
-                    </tr>
-                    <tr>
-                      <th>
-                        Fruits Booth:
-                      </th>
-                      <td>
-                        Kiwi, Blueberry, Oranges, Watermelons, Strawberries and Mango
-                      </td>
-                    <td></td>
-                    <td>100.00</td>
-                    </tr>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    
-                  
-                </table>
-                <div class="w-50 total-table">
-                  <table class="table table-bordered ">
-                    <tr>
-{{-- Premade --}}
-                      {{-- <td class="fw-semibold">
-                        Price:
-                      </td>
-                      <td>1000</td> --}}
+              <th>Allergies:</th>
+              <td>
+              {{ $event['allergies'] }}
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
 
-{{-- Customize --}}
-                      <td class="fw-semibold">
-                        Budget:
-                      </td>
-                      <td>1000</td>
-                     
-                    </tr>
-                     <tr>
-                      
-                      <td class="fw-semibold">
-                        Total Additional Services:
-                      </td>
-                      <td>1000</td>
-                      
-                    </tr>
-                   
+            <tr>
+              <th>Special Request:</th>
+              <td>
+              {{ $event['special'] }}
+              </td>
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr>
+              <th>
+                Other Concern
+              </th>
+              <td>
+              {{ $event['other'] }}
+              </td>
+
+              <td></td>
+              <td></td>
+            </tr>
                     <tr>
-{{-- Customize --}}
-                      <td class="fw-semibold">
-                       Charge:
-                      </td>
-                      <td>1000</td>
-                      
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
                     <tr>
-                      
-                      <td class="fw-semibold text-bg-secondary">
-                       Total Amount:
-                      </td>
-                      <td class="text-bg-secondary">1000</td>
-                      
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
+                    </tr>
+              <th scope="row" class=" fs-1" style="font-weight: 500;">Additional services</th>
+              <td scope="row" class=" fs-3" style="font-weight: 500;"></td>
+              <td></td>
+              <td scope="row" class=" fs-3" style="font-weight: 500;"> Price</td>
+            </tr>
+
+            <tr>
+              <th>Party Entertainers:</th>
+              <td>{{ $event['pe_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['pe_price'] }}</td>
+            </tr>
+
+            <tr>
+              <th>Photo Booth:</th>
+              <td>{{ $event['pb_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['pb_price'] }}</td>
+            </tr>
+
+            <tr>
+              <th>Chocolate Fountain Booth:</th>
+              <td>{{ $event['cf_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['cf_price'] }}</td>
+            </tr>
+
+            <tr>
+              <th>Face Painting Booth:</th>
+              <td>{{ $event['fp_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['fp_price'] }}</td>
+            </tr>
+<tr>
+  <th>
+    Cupcake Tower Booth:
+  </th>
+  <td>{{ $event['ct_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['ct_price'] }}</td>
+  
+</tr>
+<tr>
+  <th>
+    Fruits Booth:
+  </th>
+  <td>{{ $event['f_menu'] }}</td>
+              <td></td>
+              <td>{{ $event['f_price'] }}</td>
+</tr>
+{{-- TOTAL AMOUNT --}}
+<tr>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td></td>
+  <th>Total Additional Services:</th>
+  <td>{{ $event['pe_price'] +$event['pb_price']+$event['ct_price']+$event['fp_price']+$event['cf_price']+$event['f_price'] }}</td>
+  <td></td>
+  </tr>
+  <tr>
+  
+    <td></td>
+    
+    <th>Budget:</th>
+    <td> @if ($event['choice'] == 'premade' && $event['premade_price'])
+                {{ $event['premade_price'] }}
+                @elseif ($event['choice'] == 'customize' && $event['customize_price'])
+                {{ $event['customize_price'] }}
+                @endif</td>
+    <td></td>
+    </tr>
+    @if ($event['choice'] == 'customize')
+    <tr>
+     
+      <td></td>
+      
+      <th class=" border-black">Charge:</th>
+      @if ($event['customize_option'] == 'option 2')
+      <td class=" border-black">{{ number_format(round(( $event['customize_pax'] - round($event['customize_price'] / 350 ))*350  )) }}</td>
+      @else
+      <td class=" border-black">0</td>
+     @endif
+      <td></td>
+      </tr>
+      @endif
+      <tr>
+    
+        <td></td>
+        <th >Total Amount:</th>
+        @if ($event['choice'] == 'premade' && $event['premade_price'])
+        <td >{{ ($event['pe_price'] +$event['pb_price']+$event['ct_price']+$event['fp_price']+$event['cf_price']+$event['f_price']) + $event['premade_price'] }}</td>
+        @elseif ($event['choice'] == 'customize')
+        @if ($event['customize_option'] == 'option 1')
+        <td >{{ ($event['pe_price'] +$event['pb_price']+$event['ct_price']+$event['fp_price']+$event['cf_price']+$event['f_price']) +  ($event['customize_price']) + 0 }}</td>
+        @else
+        <td >{{ ($event['pe_price'] +$event['pb_price']+$event['ct_price']+$event['fp_price']+$event['cf_price']+$event['f_price']) +  ($event['customize_price']) + (round(( $event['customize_pax'] - round($event['customize_price'] / 350 ))*350  )) }}</td>
+        @endif
+        @endif
+        <td></td>
+        </tr>
+
+          </tbody>
                   </table>
                 </div>
               </div>

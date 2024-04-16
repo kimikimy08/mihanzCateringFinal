@@ -55,9 +55,7 @@ class ReservationController extends Controller
                 'celebrant_gender' => $reservation->celebrant_gender,
                 'event_theme' => $reservation->event_theme,
                 'reservation_status' => $reservation->reservation_status,
-                'allergies' => $reservation->allergies,
-                'special' => $reservation->special,
-                'other' => $reservation->other,
+                
 
                 'beef_menu' => $reservation->getMenuName('beefMenu'),
                 'pork_menu' => $reservation->getMenuName('porkMenu'),
@@ -68,6 +66,10 @@ class ReservationController extends Controller
                 'pasta_menu' => $reservation->getMenuName('pastaMenu'),
                 'dessert_menu' => $reservation->getMenuName('dessertMenu'),
                 'drink_menu' => $reservation->getMenuName('drinkMenu'),
+
+                'allergies' => $reservation->allergies,
+                'special' => $reservation->special,
+                'other' => $reservation->other,
 
                 'pe_menu' => $reservation->getAdditionalName('peMenu'),
                 'pe_price' => $reservation->getAdditionalPrice('peMenu'),
